@@ -1,0 +1,28 @@
+.containerdo {
+    display: flex;
+  }
+  
+  .boxdo {
+    flex: 1;
+    border: 1px solid rgb(220, 201, 201);
+    margin: 8px;
+    border-radius: 5px;
+  }
+  
+  .containerdo {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .columndo {
+    flex: 1;
+  }
+  
+  .columndo-leftdo p{
+      padding-left: 40px;
+  }
+  
+  .columndo-rightdo p{
+      padding-left: 140px;
+  
+  }

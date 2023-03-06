@@ -1,0 +1,91 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex-containers {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container > div {
+  white-space: nowrap;
+  /* flex: auto; */
+}
+
+.flex-containers > div {
+  text-align: center;
+  white-space: nowrap;
+  justify-content: space-between;
+  /* flex: auto; */
+}
+
+.flex-containers h1 {
+  margin-left: 5%;
+}
+
+.buttons {
+  margin-left: 45vw;
+  margin-top: 4vh;
+  justify-content: space-between;
+  /* padding: 6px; */
+}
+
+.button2 {
+  /* width: "100px"; */
+  /* overflow: "hidden";
+  white-space: "nowrap";
+  text-overflow: "ellipsis"; */
+}
+
+.flex-containers h5 {
+  margin-left: 50px;
+}
+
+.flex-containers button{
+    margin-left: 3px;
+  }
+
+  .flex-container a{
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+    
+  }
+
+  Copy code
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px;
+}
+
+.cell {
+  flex-basis: 30%;
+  margin: 10px;
+}
+
+@media (max-width: 768px) {
+  .cell {
+    flex-basis: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cell {
+    flex-basis: 100%;
+  }
+}
+
+.row3{
+  margin-left: -68px;
+  margin-top: -70px;
+}

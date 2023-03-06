@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Summary from './components/Display/Summary';
+import PC from './components/Display/PC';
+import PeerComp from './components/Display/PeerComp';
+import QuaterlyResults from './components/Display/QuaterlyResults';
+import PF from './components/Display/PF';
+import BalanceSheet from './components/Display/BalanceSheet';
+import CashFlows from './components/Display/CashFlows';
+import Ratios from './components/Display/Ratios';
+import Document from './components/Display/Document';
+
+
+
 
 function App() {
+
+  
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Summary />
+      <PC />
+      <PeerComp />
+      <QuaterlyResults />
+      <PF />
+      <BalanceSheet />
+      <CashFlows />
+      <Ratios />
+      <Document />
+
+
+    </div >
   );
 }
 

@@ -4,8 +4,9 @@ import { Container, CssBaseline } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import Box from "@mui/material/Box";
 import CompanyInfo from './pages/CompanyInfo';
-import SearchAppBar from './components/UI/Navbar';
+import LandingPage from './pages/LandingPage';
 import "react-toastify/dist/ReactToastify.css";
+import SearchAppBar from './components/UI/Navbar';
 
 
 function App() {
@@ -15,10 +16,10 @@ function App() {
     <BrowserRouter>
       <CssBaseline />
       <Box sx={{ position: "relative", minHeight: "100vh" }}>
-        <SearchAppBar />
-        <Box sx={{ paddingTop: "5em", paddingBottom: "4rem" }}>
-        <Container maxWidth={false} sx={{ maxWidth: '85%' }}>
-          <CompanyInfo/>
+      <SearchAppBar/>
+        <Box sx={{ paddingTop: "2em", paddingBottom: "4rem" }}>
+        <Container maxWidth={false} sx={{ maxWidth: '100%' }}>
+          {/* <CompanyInfo/> */}
           <Routes>
             {/* <Route exact path="/" element={<LandingPage/>} />
             <Route exact path="/login" element={<Login />}></Route>
@@ -32,8 +33,8 @@ function App() {
               }
             > */}
               {/* OTHER PROTECTED ROUTES */}
-              {/* <Route path="/home" element={<Home/>} />
-              <Route path="/dashboard" element={<Dashboard />} /> */}
+              <Route path="/landing" element={<LandingPage/>} />
+              <Route path="/CompanyInfo" element={<CompanyInfo/>} />
             {/* </Route> */}
 
             {/* ERROR PAGE */}

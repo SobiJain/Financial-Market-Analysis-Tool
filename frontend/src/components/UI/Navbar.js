@@ -71,7 +71,7 @@ const SearchAppBar =()=> {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Financial Market Analysis Tool
           </Typography>
           <Search>
             <SearchIconWrapper>

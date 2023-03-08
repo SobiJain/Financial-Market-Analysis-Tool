@@ -1,9 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
+import LandingCard from '../components/UI/LandingCard';
+const styles = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '50vh',
+};
 function LandingPage(props) {
   return (
-    <div>LandingPage</div>
+    <div style={styles}> <LandingCard /></div>
+
+
   )
 }
 

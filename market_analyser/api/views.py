@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-import requests
-import json
-from . import cashflow, balancesheet, ratios, profile
+from . import cashflow, balancesheet, ratios, profile, quarter, profit_loss  
 
 # Create your views here.
 def getRoutes(request):
@@ -19,3 +17,9 @@ def getRatio(request):
 
 def getProfile(request):
     return JsonResponse(profile.data_profile, safe=False)
+
+def getQuarter(request):
+    return JsonResponse(quarter.data_quarter, safe=False)
+
+def getProfitLoss(request):
+    return JsonResponse(profit_loss.data_profitnloss, safe=False)

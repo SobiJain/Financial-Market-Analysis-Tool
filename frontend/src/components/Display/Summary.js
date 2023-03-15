@@ -1,26 +1,52 @@
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import DateTime from "./Date";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CardTable from "../UI/CardTable";
+import axios from 'axios'
 
 
 const Test = () => {
 
     const [initial, setInitial] = useState('+ FOLLOW');
+    const [cashData, setCashData] = useState({});
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const fetchData = () => {
+        axios({
+            method: "GET",
+            url: "http://127.0.0.1:8000/profile"
+
+        }).then((response) => {
+            const data = response.data;
+            console.log(data);
+            console.log(typeof data);
+            setCashData(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
 
     const Onchange = () => {
         setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
     }
 
     return <Card>
+        <div>
+            
+        </div>
         <div style={{ display: 'flex' }}>
             <div style={{ flexBasis: '70%' }}>
                 <div >
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> Axis Bank Ltd</h1> </div>
+                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {cashData.Symbol} </h1> </div>
                                 <div style={{ flexBasis: '20%' }}> <h5> ₹ 865 </h5>
                                     <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
                             </div>

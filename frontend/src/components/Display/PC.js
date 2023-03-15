@@ -1,7 +1,27 @@
 import Card from "../UI/Card";
-
+import axios from "axios"
+import { useState, useEffect } from "react";
 
 const PC = () => {
+    const [details, setDetails] = useState(null);
+
+    useEffect(() => {
+        setData()
+    }, []);
+
+    const setData = () => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/proscons"
+
+        }).then((response) => {
+            const data = response.data;
+            setDetails(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
 
     return <Card>
         <div style={{

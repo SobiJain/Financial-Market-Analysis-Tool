@@ -1,13 +1,33 @@
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import DateTime from "./Date";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardTable from "../UI/CardTable";
+import axios from "axios"
 
 
 const Test = () => {
 
     const [initial, setInitial] = useState('+ FOLLOW');
+    const [details, setDetails] = useState(null);
+
+    useEffect(() => {
+        setData()
+    }, []);
+
+    const setData = () => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/summary"
+
+        }).then((response) => {
+            const data = response.data;
+            setDetails(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
 
     const Onchange = () => {
         setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')

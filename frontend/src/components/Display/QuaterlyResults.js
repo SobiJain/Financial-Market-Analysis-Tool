@@ -1,6 +1,31 @@
 import Card from "../UI/Card";
 import './QuaterlyResults.css'
-const QuaterlyResults = () =>{
+import axios from "axios"
+import { useState, useEffect } from "react";
+const QuaterlyResults = () => {
+
+    const [details, setDetails] = useState(null);
+
+    useEffect(() => {
+        setData()
+    }, []);
+
+    const setData = () => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/quaterlyresults"
+
+        }).then((response) => {
+            const data = response.data;
+            setDetails(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
+
+
     return <Card>
         <div class="flex-containerqr">
             <div class="col-1qr">
@@ -137,7 +162,7 @@ const QuaterlyResults = () =>{
                 </table>
 
             </div>
-                <h6> </h6>
+            <h6> </h6>
             <div class="col-4qr">
 
             </div>

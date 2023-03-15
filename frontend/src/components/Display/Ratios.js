@@ -1,6 +1,30 @@
 import Card from "../UI/Card";
 import './QuaterlyResults.css'
-const Ratios = () =>{
+import axios from "axios"
+import { useState, useEffect } from "react";
+const Ratios = () => {
+
+    const [details, setDetails] = useState(null);
+
+    useEffect(() => {
+        setData()
+    }, []);
+
+    const setData = () => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/ratios"
+
+        }).then((response) => {
+            const data = response.data;
+            setDetails(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
+
     return <Card>
         <div class="flex-containerrs">
             <div class="col-1rs">
@@ -55,9 +79,9 @@ const Ratios = () =>{
                 </table>
 
             </div>
-                <h6> </h6>
+            <h6> </h6>
             <div class="col-4rs">
-                        <h7 style= {{color: 'white'}}>hbhdbcjbdj</h7>
+                <h7 style={{ color: 'white' }}>hbhdbcjbdj</h7>
             </div>
         </div>
     </Card>

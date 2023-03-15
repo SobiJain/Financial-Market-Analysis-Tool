@@ -1,6 +1,28 @@
 import Card from '../UI/Card';
 import './PF.css'
+import axios from "axios"
+import { useState, useEffect } from 'react';
 const PF = () => {
+    const [details, setDetails] = useState(null);
+
+    useEffect(() => {
+        setData()
+    }, []);
+
+    const setData = () => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/profitloss"
+
+        }).then((response) => {
+            const data = response.data;
+            setDetails(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
     return <Card>
         <div class="flex-containerpf">
             <div class="col-1pf">

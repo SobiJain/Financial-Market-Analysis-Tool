@@ -3,9 +3,9 @@ import './QuaterlyResults.css'
 import { useState, useEffect } from "react";
 import axios from 'axios'
 
-const QuaterlyResults = () =>{
+const QuaterlyResults = () => {
 
-const [cashData, setCashData] = useState({});
+    const [cashData, setCashData] = useState({});
 
     useEffect(() => {
         fetchData();
@@ -27,11 +27,14 @@ const [cashData, setCashData] = useState({});
         })
     }
 
-    const obj = Object.entries(cashData)
-    obj.forEach(([key, value]) => {
-        if (key !== "symbol")
-            console.log(key, value)
-    })
+    // const obj = Object.entries(cashData)
+    // obj.forEach(([key, value]) => {
+    //     if (key !== "symbol")
+    //         console.log("Key: " + key, "value: " + value)
+    // })
+
+    console.log(cashData.quarterlyEarnings);
+
 
     return <Card>
         <div class="flex-containerqr">
@@ -71,12 +74,17 @@ const [cashData, setCashData] = useState({});
                     </tr>
                     <tr>
                         <td>Reported EPS</td>
+                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 10).map((item) => {
+                            return <td> {item.reportedEPS} </td>
+                           
+                        })}
                         
+
                     </tr>
                 </table>
 
             </div>
-                <h6> </h6>
+            <h6> </h6>
             <div class="col-4qr">
 
             </div>

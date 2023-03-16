@@ -1,6 +1,38 @@
 import Card from "../UI/Card";
 import './QuaterlyResults.css'
+import { useState, useEffect } from "react";
+import axios from 'axios'
+
 const QuaterlyResults = () =>{
+
+const [cashData, setCashData] = useState({});
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const fetchData = () => {
+        axios({
+            method: "GET",
+            url: "http://127.0.0.1:8000/quarter"
+
+        }).then((response) => {
+            const data = response.data;
+            console.log(data);
+            console.log(typeof data);
+            setCashData(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
+    const obj = Object.entries(cashData)
+    obj.forEach(([key, value]) => {
+        if (key !== "symbol")
+            console.log(key, value)
+    })
+
     return <Card>
         <div class="flex-containerqr">
             <div class="col-1qr">
@@ -25,114 +57,21 @@ const QuaterlyResults = () =>{
             <div class="col-3qr">
                 <table>
                     <tr>
-                        <td style={{ width: '5%', marginLeft: '10%' }}>S.No.	</td>
-                        <td style={{ width: '10%' }}>Name</td>
-                        <td style={{ width: '10%' }}>CMP Rs</td>
-                        <td style={{ width: '5%' }}>P/E	</td>
-                        <td style={{ width: '10%' }}>Mar Cap Rs.Cr.</td>
-                        <td style={{ width: '10%' }}>Div Yld %</td>
-                        <td style={{ width: '10%' }}>NP Qtr Rs.Cr.</td>
-                        <td style={{ width: '10%' }}>Qtr Profit Var %</td>
-                        <td style={{ width: '10%' }}>Sales Qtr Rs.Cr.</td>
-                        <td style={{ width: '10%' }}>Qtr Sales Var %</td>
-                        <td style={{ width: '10%' }}>ROCE %</td>
+                        <td style={{ width: '19%', marginLeft: '10%' }}>	</td>
+                        <td style={{ width: '9%' }}>Dec 2020</td>
+                        <td style={{ width: '9%' }}>Mar 2021</td>
+                        <td style={{ width: '9%' }}>Jun 2021	</td>
+                        <td style={{ width: '9%' }}>Sept 2021</td>
+                        <td style={{ width: '9%' }}>Dec 2021</td>
+                        <td style={{ width: '9%' }}>Mar 2022</td>
+                        <td style={{ width: '9%' }}>Jun 2022</td>
+                        <td style={{ width: '9%' }}>Sept 2022</td>
+                        <td style={{ width: '9%' }}>Dec 2022</td>
 
                     </tr>
                     <tr>
-                        <td >1</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-
-
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td >Axis Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Reported EPS</td>
+                        
                     </tr>
                 </table>
 

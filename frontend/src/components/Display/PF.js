@@ -1,6 +1,33 @@
 import Card from '../UI/Card';
 import './PF.css'
+import { useState, useEffect } from "react";
+import axios from 'axios'
+
 const PF = () => {
+
+    const [cashData, setCashData] = useState({});
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const fetchData = () => {
+        axios({
+            method: "GET",
+            url: "http://127.0.0.1:8000/profitloss"
+
+        }).then((response) => {
+            const data = response.data;
+            console.log(data);
+            console.log(typeof data);
+            setCashData(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
+
     return <Card>
         <div class="flex-containerpf">
             <div class="col-1pf">
@@ -24,114 +51,136 @@ const PF = () => {
             <div class="col-3pf">
                 <table>
                     <tr>
-                        <td style={{ width: '5%', marginLeft: '10%' }}>S.No.	</td>
-                        <td style={{ width: '10%' }}>Name</td>
-                        <td style={{ width: '10%' }}>CMP Rs</td>
-                        <td style={{ width: '5%' }}>P/E	</td>
-                        <td style={{ width: '10%' }}>Mar Cap Rs.Cr.</td>
-                        <td style={{ width: '10%' }}>Div Yld %</td>
-                        <td style={{ width: '10%' }}>NP Qtr Rs.Cr.</td>
-                        <td style={{ width: '10%' }}>Qtr Profit Var %</td>
-                        <td style={{ width: '10%' }}>Sales Qtr Rs.Cr.</td>
-                        <td style={{ width: '10%' }}>Qtr Sales Var %</td>
-                        <td style={{ width: '20%' }}>ROCE %</td>
-
+                        <td style={{ width: '19%', marginLeft: '10%' }}>	</td>
+                        <td style={{ width: '9%' }}>Dec 2018</td>
+                        <td style={{ width: '9%' }}>Dec 2019 </td>
+                        <td style={{ width: '9%' }}>Dec 2020</td>
+                        <td style={{ width: '9%' }}>Sept 2021</td>
+                        <td style={{ width: '9%' }}>Dec 2021</td>
+                        <td style={{ width: '9%' }}>Mar 2022</td>
+                        <td style={{ width: '9%' }}>Jun 2022</td>
+                        <td style={{ width: '9%' }}>Sept 2022</td>
+                        <td style={{ width: '9%' }}>Dec 2022</td>
                     </tr>
                     <tr>
-                        <td >1</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-
+                        <td>Goods Cost</td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.costofGoodsAndServicesSold/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.costofGoodsAndServicesSold/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.costofGoodsAndServicesSold/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.costofGoodsAndServicesSold/10000000} </td>
+                        })}
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-
-
+                        <td>Operating Income</td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.operatingIncome/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.operatingIncome/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.operatingIncome/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.operatingIncome/10000000} </td>
+                        })}
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-
+                        <td>Operating Expenses</td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.operatingExpenses/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.operatingExpenses/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.operatingExpenses/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.operatingExpenses/10000000} </td>
+                        })}
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Interest</td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.interestIncome/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.interestIncome/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.interestIncome/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.interestIncome/10000000} </td>
+                        })}
                     </tr>
                     <tr>
-                        <td>5</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-
+                        <td>Depreciation</td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.depreciation/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.depreciation/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.depreciation/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.depreciation/10000000} </td>
+                        })}
                     </tr>
                     <tr>
-                        <td>6</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Income before tax</td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.incomeBeforeTax/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.incomeBeforeTax/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.incomeBeforeTax/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.incomeBeforeTax/10000000} </td>
+                        })}
                     </tr>
                     <tr>
-                        <td>7</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Tax expenses</td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.incomeTaxExpense/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.incomeTaxExpense/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.incomeTaxExpense/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.incomeTaxExpense/10000000} </td>
+                        })}
+                    </tr>
+                    <tr>
+                        <td><b> Net Profit</b></td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.grossProfit/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.grossProfit/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.grossProfit/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.grossProfit/10000000} </td>
+                        })}
                     </tr>
                 </table>
 
@@ -149,10 +198,10 @@ const PF = () => {
 
                             </div>
                             <div class="columnpf-rightpf">
-                                <p > 12% </p>
-                                <p> 9% </p>
-                                <p> 7% </p>
-                                <p> 22% </p>
+                                <p >  </p>
+                                <p>  </p>
+                                <p>  </p>
+                                <p>  </p>
 
                             </div>
                         </div>
@@ -168,10 +217,10 @@ const PF = () => {
 
                             </div>
                             <div class="columnpf-rightpf">
-                                <p > 12% </p>
-                                <p> 22% </p>
-                                <p> 25% </p>
-                                <p> 29% </p>
+                                <p > </p>
+                                <p> </p>
+                                <p> </p>
+                                <p> </p>
 
                             </div>
                         </div>
@@ -186,10 +235,10 @@ const PF = () => {
                                 <p> 1 year: </p>
                             </div>
                             <div class="columnpf-rightpf">
-                                <p > 12% </p>
-                                <p> 22% </p>
-                                <p> 25% </p>
-                                <p> 29% </p>
+                                <p>  </p>
+                                <p> </p>
+                                <p> </p>
+                                <p> </p>
 
                             </div>
                         </div>
@@ -205,10 +254,10 @@ const PF = () => {
 
                             </div>
                             <div class="columnpf-rightpf">
-                                <p > 12% </p>
-                                <p> 22% </p>
-                                <p> 25% </p>
-                                <p> 29% </p>
+                                <p> </p>
+                                <p> </p>
+                                <p> </p>
+                                <p> </p>
 
                             </div>
                         </div>

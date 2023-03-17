@@ -70,16 +70,34 @@ const QuaterlyResults = () => {
                         <td style={{ width: '9%' }}>Jun 2022</td>
                         <td style={{ width: '9%' }}>Sept 2022</td>
                         <td style={{ width: '9%' }}>Dec 2022</td>
-
                     </tr>
                     <tr>
                         <td>Reported EPS</td>
-                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 10).map((item) => {
+                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                             return <td> {item.reportedEPS} </td>
                            
                         })}
-                        
-
+                    </tr>
+                    <tr>
+                        <td>Estimated EPS</td>
+                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                            return <td> {item.estimatedEPS} </td>
+                           
+                        })}
+                    </tr>
+                    <tr>
+                        <td>Surprise</td>
+                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                            return <td> {item.surprise} </td>
+                           
+                        })}
+                    </tr>
+                    <tr>
+                        <td>Surprise Percentage</td>
+                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                            return <td> {item.surprisePercentage} </td>
+                           
+                        })}
                     </tr>
                 </table>
 

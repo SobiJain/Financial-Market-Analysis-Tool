@@ -47,7 +47,7 @@ const Test = () => {
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {cashData.Name} </h1> </div>
-                                <div style={{ flexBasis: '20%' }}> <h5> ₹ 865 </h5>
+                                <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
                                     <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
                             </div>
                         </div>

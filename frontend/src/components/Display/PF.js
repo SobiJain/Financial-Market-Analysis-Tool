@@ -108,7 +108,7 @@ const PF = () => {
                         })}
                     </tr>
                     <tr>
-                        <td>Interest</td>
+                        <td>Interest Income</td>
                         {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
                             return <td> {item.interestIncome/10000000} </td>
                         })}
@@ -120,6 +120,21 @@ const PF = () => {
                         })}
                         {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
                             return <td> {item.interestIncome/10000000} </td>
+                        })}
+                    </tr>
+                    <tr>
+                        <td>Interest Expense</td>
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
+                            return <td> {item.interestExpense/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(12, 13).reverse().map((item) => {
+                            return <td> {item.interestExpense/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(8, 9).reverse().map((item) => {
+                            return <td> {item.interestExpense/10000000} </td>
+                        })}
+                        {cashData.quarterlyReports && cashData.quarterlyReports.slice(0, 6).reverse().map((item) => {
+                            return <td> {item.interestExpense/10000000} </td>
                         })}
                     </tr>
                     <tr>
@@ -138,7 +153,7 @@ const PF = () => {
                         })}
                     </tr>
                     <tr>
-                        <td>Income before tax</td>
+                        <td><b>Income before tax</b></td>
                         {cashData.quarterlyReports && cashData.quarterlyReports.slice(16, 17).reverse().map((item) => {
                             return <td> {item.incomeBeforeTax/10000000} </td>
                         })}

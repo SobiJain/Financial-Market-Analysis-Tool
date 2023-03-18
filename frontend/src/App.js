@@ -10,9 +10,7 @@ import SearchAppBar from './components/UI/Navbar';
 
 
 function App() {
-
-  
-  return (
+return (
     <BrowserRouter>
       <CssBaseline />
       <Box sx={{ position: "relative", minHeight: "100vh" }}>
@@ -33,7 +31,7 @@ function App() {
               }
             > */}
               {/* OTHER PROTECTED ROUTES */}
-              <Route path="/landing" element={<LandingPage/>} />
+              <Route path="/" element={<LandingPage/>} />
               <Route path="/CompanyInfo" element={<CompanyInfo/>} />
             {/* </Route> */}
 

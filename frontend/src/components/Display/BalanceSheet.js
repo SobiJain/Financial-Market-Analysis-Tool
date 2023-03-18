@@ -1,7 +1,28 @@
 import Card from "../UI/Card";
 import './BalanceSheet.css'
+import axios from "axios"
+import { useState, useEffect } from "react";
 const BalanceSheet = () => {
-    return  <Card>
+    const [details, setDetails] = useState(null);
+
+    useEffect(() => {
+        setData()
+    }, []);
+
+    const setData = () => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/balancesheet"
+
+        }).then((response) => {
+            const data = response.data;
+            setDetails(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+    return <Card>
         <div class="flex-containerbs">
             <div class="col-1bs">
                 <h2 style={{ marginLeft: '1.5%' }}>Balance Sheet</h2>

@@ -1,29 +1,27 @@
 import Card from "../UI/Card";
 import './CashFlows.css'
-// import axios from 'axios';
-import React from 'react';
-// class CashFlows extends React.Component {
+import axios from "axios"
+import { useState, useEffect } from "react";
+const CashFlows = () =>{
+    const [details, setDetails] = useState(null);
 
-// 	state = {
-// 		details : [],
-// 	}
+    useEffect(() => {
+        setData()
+    }, []);
 
-// 	componentDidMount() {
+    const setData = () => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/cashflows"
 
-// 		let data ;
+        }).then((response) => {
+            const data = response.data;
+            setDetails(data);
 
-// 		axios.get('http://localhost:8000/')
-// 		.then(res => {
-// 			data = res.data;
-// 			this.setState({
-// 				details : data	
-// 			});
-// 		})
-// 		.catch(err => {})
-// 	}
-// }
-
-const CashFlows = () => {
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
     return <Card>
             <div class="flex-containerqr">
                 <div class="col-1qr">

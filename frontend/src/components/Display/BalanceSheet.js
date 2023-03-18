@@ -49,14 +49,14 @@ const BalanceSheet = () => {
 
             </div>
             <div class="col-3bs">
-                <table style={{ fontSize: '15px' }}>
+                <table >
                     <tr>
-                        <td style={{ width: '5%', marginLeft: '10%' }}>	</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2018</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2019</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2020</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2021</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2022</td>
+                        <td style={{ width: '51%', marginLeft: '10%' }}>	</td>
+                        <td style={{ width: '10%' }}>Mar 2018</td>
+                        <td style={{ width: '10%' }}>Mar 2019</td>
+                        <td style={{ width: '10%' }}>Mar 2020</td>
+                        <td style={{ width: '10%' }}>Mar 2021</td>
+                        <td style={{ width: '10%' }}>Mar 2022</td>
 
 
                     </tr>

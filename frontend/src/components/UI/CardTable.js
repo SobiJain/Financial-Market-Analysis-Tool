@@ -1,6 +1,30 @@
 import React from 'react';
+import { useState, useEffect } from "react";
+import axios from 'axios'
 
 function CardTable() {
+
+    const [cashData, setCashData] = useState({});
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const fetchData = () => {
+        axios({
+            method: "GET",
+            url: "http://127.0.0.1:8000/profile"
+
+        }).then((response) => {
+            const data = response.data;
+            console.log(data);
+            console.log(typeof data);
+            setCashData(data);
+
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
     return (
         <div style={{
             borderRadius: '10px',
@@ -21,27 +45,27 @@ function CardTable() {
                 <tbody>
                     <tr>
                         <td style={{ padding: '10px' }}>Market Cap</td>
-                        <td style={{ padding: '10px' }}>₹ 262,289 Cr.</td>
+                        <td style={{ padding: '10px' }}>$ {cashData.MarketCapitalization}</td>
                         <td style={{ padding: '10px' }}>Current Price</td>
-                        <td style={{ padding: '10px' }}>₹ 853</td>
+                        <td style={{ padding: '10px' }}>$ </td>
                         <td style={{ padding: '10px' }}>High / Low</td>
-                        <td style={{ padding: '10px' }}>₹ 970 / 618</td>
+                        <td style={{ padding: '10px' }}>$ {cashData["52WeekHigh"]} / {cashData["52WeekLow"]}</td>
                     </tr>
                     <tr style={{ backgroundColor: '#e3eaf3' }}>
                         <td style={{ padding: '10px'}}>Stock P/E</td>
-                        <td style={{ padding: '10px'}}>12.7</td>
+                        <td style={{ padding: '10px'}}>{cashData.PERatio}</td>
                         <td style={{ padding: '10px'  }}>Book Value</td>
-                        <td style={{ padding: '10px' }}>₹ 385</td>
+                        <td style={{ padding: '10px' }}>$ {cashData.BookValue}</td>
                         <td style={{ padding: '10px' }}>Dividend Yield</td>
-                        <td style={{ padding: '10px' }}>0.12 %</td>
+                        <td style={{ padding: '10px' }}>{cashData.DividendYield} %</td>
                     </tr>
                     <tr>
                         <td style={{ padding: '10px' }}>ROCE</td>
-                        <td style={{ padding: '10px' }}>5.15 %</td>
-                        <td style={{ padding: '10px' }}>ROE</td>
-                        <td style={{ padding: '10px' }}>12.7 %</td>
+                        <td style={{ padding: '10px' }}> %</td>
+                        <td style={{ padding: '10px' }}>ROE (TTM)</td>
+                        <td style={{ padding: '10px' }}> {cashData.ReturnOnEquityTTM} %</td>
                         <td style={{ padding: '10px' }}>Face Value</td>
-                        <td style={{ padding: '10px' }}>₹ 2.00</td>
+                        <td style={{ padding: '10px' }}>$ </td>
                     </tr>
                 </tbody>
             </table>

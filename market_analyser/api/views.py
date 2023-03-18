@@ -7,13 +7,13 @@ def getRoutes(request):
     return JsonResponse("henlo", safe=False)
 
 def getCashflow(request):
-    return JsonResponse(cashflow.cashflowList, safe=False)
+    return JsonResponse(cashflow.data, safe=False)
 
 def getBalanceSheet(request):
-    return JsonResponse(balancesheet.balanceSheetList, safe=False)
+    return JsonResponse(balancesheet.data, safe=False)
 
 def getRatio(request):
-    return JsonResponse(ratios.roeList, safe=False)
+    return JsonResponse(ratios.annualROE, safe=False)
 
 def getProfile(request):
     return JsonResponse(profile.data_profile, safe=False)

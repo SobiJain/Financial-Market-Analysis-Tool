@@ -7,6 +7,7 @@ import CompanyInfo from './pages/CompanyInfo';
 import LandingPage from './pages/LandingPage';
 import "react-toastify/dist/ReactToastify.css";
 import SearchAppBar from './components/UI/Navbar';
+import List from './pages/CompanyList';
 
 
 function App() {
@@ -33,6 +34,7 @@ return (
               {/* OTHER PROTECTED ROUTES */}
               <Route path="/" element={<LandingPage/>} />
               <Route path="/CompanyInfo" element={<CompanyInfo/>} />
+              <Route path="/CompanyList" element={<List/>} />
             {/* </Route> */}
 
             {/* ERROR PAGE */}

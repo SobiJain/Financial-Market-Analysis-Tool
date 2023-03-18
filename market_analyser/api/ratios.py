@@ -35,4 +35,4 @@ for i in balance_sheet_data:
             roeList[index].append(i['endDate']['fmt'])
             roeList[index].append((float(i['totalStockholderEquity']['raw'])/float(j['netIncome']['raw']))*100)
     index+=1
-print(roeList)
+

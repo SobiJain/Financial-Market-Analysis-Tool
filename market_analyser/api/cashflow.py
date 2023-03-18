@@ -25,4 +25,3 @@ for i in cashflow_data:
     for j in range(len(keyList)):
         cashflowList[index].append(i[keyList[j]]['fmt'])
     index+=1
-print(cashflowList)

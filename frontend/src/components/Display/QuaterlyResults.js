@@ -2,6 +2,7 @@ import Card from "../UI/Card";
 import './QuaterlyResults.css'
 import { useState, useEffect } from "react";
 import axios from 'axios'
+import SingleObj from './Combined'
 
 const QuaterlyResults = () => {
 
@@ -18,8 +19,8 @@ const QuaterlyResults = () => {
 
         }).then((response) => {
             const data = response.data;
-            console.log(data);
-            console.log(typeof data);
+            // console.log(data);
+            // console.log(typeof data);
             setCashData(data);
 
         }).catch((error) => {
@@ -33,8 +34,7 @@ const QuaterlyResults = () => {
     //         console.log("Key: " + key, "value: " + value)
     // })
 
-    console.log(cashData.quarterlyEarnings);
-
+    console.log(SingleObj.allData);
 
     return <Card>
         <div class="flex-containerqr">

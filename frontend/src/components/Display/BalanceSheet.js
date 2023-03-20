@@ -1,28 +1,31 @@
 import Card from "../UI/Card";
 import './BalanceSheet.css'
-import axios from "axios"
 import { useState, useEffect } from "react";
+import axios from 'axios'
+
 const BalanceSheet = () => {
-    const [details, setDetails] = useState(null);
-
+    const [cashData, setCashData] = useState({});
     useEffect(() => {
-        setData()
-    }, []);
+        fetchData();
+    }, [])
 
-    const setData = () => {
+    const fetchData = () => {
         axios({
             method: "GET",
-            url: "http://localhost:8000/balancesheet"
+            url: "http://127.0.0.1:8000/balancesheet"
 
         }).then((response) => {
             const data = response.data;
-            setDetails(data);
+            // console.log(data);
+            // console.log(typeof data);
+            setCashData(data);
 
         }).catch((error) => {
             console.log(error.response);
         })
     }
-    return <Card>
+
+    return  <Card>
         <div class="flex-containerbs">
             <div class="col-1bs">
                 <h2 style={{ marginLeft: '1.5%' }}>Balance Sheet</h2>
@@ -30,7 +33,7 @@ const BalanceSheet = () => {
             <div class="col-2bs">
                 <div class="flex-container1bs">
                     <div class="row-11bs">
-                        <h4 style={{ marginLeft: '3%' }}> Consolidated Figures in Rs. Crores / View Standalone </h4>
+                        <h4 style={{ marginLeft: '3%' }}> Consolidated Figures in Billion USD/ View Standalone </h4>
                     </div>
                     <div class="row-21bs">
                         <h4 style={{ marginLeft: '15%' }}> </h4>
@@ -44,180 +47,103 @@ const BalanceSheet = () => {
 
             </div>
             <div class="col-3bs">
-                <table style={{ fontSize: '15px' }}>
+                <table >
                     <tr>
-                        <td style={{ width: '5%', marginLeft: '10%' }}>	</td>
-                        <td style={{ width: '8.91%', fontSize: '15px' }}>Mar 2011</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2012</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2013</td>
-                        <td style={{ width: '8.91%', fontSize: '15px' }}>Mar 2014</td>
-                        <td style={{ width: '7.45%', fontSize: '15px' }}>Mar 2015</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2016</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2017</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2018</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2019</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2020</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2021</td>
-                        <td style={{ width: '7.91%', fontSize: '15px' }}>Mar 2022</td>
+                        <td style={{ width: '51%', marginLeft: '10%' }}>	</td>
+                        <td style={{ width: '10%' }}>Mar 2018</td>
+                        <td style={{ width: '10%' }}>Mar 2019</td>
+                        <td style={{ width: '10%' }}>Mar 2020</td>
+                        <td style={{ width: '10%' }}>Mar 2021</td>
+                        <td style={{ width: '10%' }}>Mar 2022</td>
 
 
                     </tr>
                     <tr>
-                        <td >Share Capital</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td >Total Assets</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.totalAssets/1000000000} </td>
+                           
+                        })}
 
                     </tr>
                     <tr>
-                        <td>Reserves</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Total Current Assets</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.totalCurrentAssets/1000000000} </td>
+                           
+                        })}
 
 
                     </tr>
                     <tr>
-                        <td>Borrowings</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Other Assets</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {(item.otherCurrentAssets)/1000000000} </td>
+                           
+                        })}
+
 
                     </tr>
+                    <tr>
+                        <td>Total Liabilities</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.totalLiabilities/1000000000} </td>
+                           
+                        })}
+
+                    </tr>
+                    <tr>
+                        <td>Total Current liabilities</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.totalCurrentLiabilities/1000000000} </td>
+                           
+                        })}
+                    </tr>
+
                     <tr>
                         <td>Other liabilities</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {(item.otherCurrentLiabilities/1000000000) } </td>
+                        //   + (item.otherNonCurrentLiabilities/1000000000) 
+                        })}
                     </tr>
                     <tr>
-                        <td>Total liabilities</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Current Debt</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.currentDebt/1000000000} </td>
+                           
+                        })}
 
                     </tr>
                     <tr>
-                        <td>Fixed Assests</td>
-                        <td >HDFC Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Short Term Investments</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.shortTermInvestments/1000000000} </td>
+                           
+                        })}
                     </tr>
                     <tr>
-                        <td>CWIP</td>
-                        <td >Axis Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Long Term Investments</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.longTermInvestments/1000000000} </td>
+                           
+                        })}
                     </tr>
                     <tr>
-                        <td>Investments</td>
-                        <td >Axis Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Total Shareholder Equity</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.totalShareholderEquity/1000000000} </td>
+                           
+                        })}
                     </tr>
                     <tr>
-                        <td>Other Assests</td>
-                        <td >Axis Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
+                        <td>Inventory</td>
+                        {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            return <td> {item.inventory/1000000000} </td>
+                           
+                        })}
                     </tr>
-                    <tr>
-                        <td>Total Assests</td>
-                        <td >Axis Bank</td>
-                        <td >1615.90</td>
-                        <td>20.56</td>
-                        <td >901502.84</td>
-                        <td >0.96</td>
-                        <td >12735.43</td>
-                        <td >19.89</td>
-                        <td>45002.11</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                        <td >30.11</td>
-                        <td >5.83</td>
-                    </tr>
-
+                   
                 </table>
 
             </div>

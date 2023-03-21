@@ -33,10 +33,3 @@ import requests
 url = 'https://www.alphavantage.co/query?function=CASH_FLOW&symbol=IBM&apikey=8YYV8RAUMPILRH5D'
 r = requests.get(url)
 data = r.json()
-
-index = 1
-for i in cashflow_data:
-    for j in range(len(keyList)):
-        cashflowList[index].append(i[keyList[j]]['fmt'])
-    index+=1
-print(data)

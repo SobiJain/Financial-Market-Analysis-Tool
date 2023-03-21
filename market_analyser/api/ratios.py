@@ -45,11 +45,14 @@ from . import balancesheet
 
 balancesheetData = balancesheet.data
 cashflowData = cashflow.data
+
+print(balancesheetData['annualReports'])
+
 length = len(balancesheetData['annualReports'])
 roeList = []
+
 for i in range(length):
     roeList.append({'roe': float(cashflowData['annualReports'][i]['netIncome'])/float(balancesheetData['annualReports'][i]['totalShareholderEquity'])})
 
 annualROE = {'annualROE': roeList}
-#djd
-print(annualROE)
+

@@ -47,5 +47,3 @@ import requests
 url = 'https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=IBM&apikey=8YYV8RAUMPILRH5D'
 r = requests.get(url)
 data = r.json()
-
-print(data)

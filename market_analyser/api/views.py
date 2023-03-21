@@ -1,19 +1,19 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from . import cashflow, balancesheet, ratios, profile, quarter, profit_loss  
+from . import cashflow, balancesheet, ratios, profile, quarter, profit_loss, companyList
 
 # Create your views here.
 def getRoutes(request):
     return JsonResponse("henlo", safe=False)
 
 def getCashflow(request):
-    return JsonResponse(cashflow.cashflowList, safe=False)
+    return JsonResponse(cashflow.data, safe=False)
 
 def getBalanceSheet(request):
-    return JsonResponse(balancesheet.balanceSheetList, safe=False)
+    return JsonResponse(balancesheet.data, safe=False)
 
 def getRatio(request):
-    return JsonResponse(ratios.roeList, safe=False)
+    return JsonResponse(ratios.annualROE, safe=False)
 
 def getProfile(request):
     return JsonResponse(profile.data_profile, safe=False)
@@ -23,3 +23,6 @@ def getQuarter(request):
 
 def getProfitLoss(request):
     return JsonResponse(profit_loss.data_profitnloss, safe=False)
+
+def getCompanyList(request):
+    return JsonResponse(companyList.json_obj, safe=False)

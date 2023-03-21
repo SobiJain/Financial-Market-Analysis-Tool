@@ -18,8 +18,8 @@ const PF = () => {
 
         }).then((response) => {
             const data = response.data;
-            console.log(data);
-            console.log(typeof data);
+            // console.log(data);
+            // console.log(typeof data);
             setCashData(data);
 
         }).catch((error) => {

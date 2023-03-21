@@ -7,5 +7,5 @@ url_profile = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&ap
 response_profile = requests.request("GET", url_profile)
 
 data_profile = json.loads(response_profile.content)
-print(data_profile)
+
 

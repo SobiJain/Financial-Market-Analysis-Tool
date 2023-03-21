@@ -15,8 +15,7 @@ const SingleObj = () => {
 
         }).then((response) => {
             const data = response.data;
-            console.log(data);
-            console.log(typeof data);
+            console.log("QuaterData: " + data);
             setQuarterData(data);
 
         }).catch((error) => {
@@ -37,8 +36,7 @@ const SingleObj = () => {
 
         }).then((response) => {
             const data = response.data;
-            console.log(data);
-            console.log(typeof data);
+            console.log("Cash Data: " + data);
             setCashData(data);
 
         }).catch((error) => {
@@ -59,8 +57,7 @@ const SingleObj = () => {
 
         }).then((response) => {
             const data = response.data;
-            console.log(data);
-            console.log(typeof data);
+            console.log("Balance Data: " + data);
             setBalanceData(data);
 
         }).catch((error) => {
@@ -81,8 +78,7 @@ const SingleObj = () => {
 
         }).then((response) => {
             const data = response.data;
-            console.log(data);
-            console.log(typeof data);
+            console.log("Profile Data: " + data);
             setProfileData(data);
 
         }).catch((error) => {
@@ -103,8 +99,7 @@ const SingleObj = () => {
 
         }).then((response) => {
             const data = response.data;
-            console.log(data);
-            console.log(typeof data);
+            console.log("Ratio Data: " + data);
             setRatioData(data);
 
         }).catch((error) => {
@@ -125,8 +120,7 @@ const SingleObj = () => {
 
         }).then((response) => {
             const data = response.data;
-            console.log(data);
-            console.log(typeof data);
+            console.log("Profile Data: " + data);
             setProfitData(data);
 
         }).catch((error) => {
@@ -143,7 +137,8 @@ const SingleObj = () => {
         quarter: quarterData
     }
 
-    console.log(allData)
+    console.log("All combined data: " + allData)
+    
 }
 
 export default SingleObj;

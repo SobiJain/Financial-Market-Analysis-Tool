@@ -27,7 +27,7 @@ const CompanyList = () => {
         })
     }
 
-    console.log(typeof cashData.nse) 
+    console.log(typeof cashData) 
 
     return <Card>
         <div class="flex-containerpf">
@@ -41,11 +41,11 @@ const CompanyList = () => {
             </div>
             <div class="col-3pf">
                 <table>
-                    <tr>
-                        {cashData.nse && cashData.nse.slice(0, 11700).map((item) => {
-                            <td> {item} </td> 
+                    
+                        {cashData.comp && cashData.comp.slice(0, 11700).map((item) => {
+                           return <tr> {item} </tr> 
                         })}
-                    </tr>
+                    
                 </table>
             </div>
         </div>

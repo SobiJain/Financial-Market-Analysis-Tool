@@ -8,6 +8,12 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import Button from '@mui/material/Button';
+import { useDispatch } from 'react-redux';
+import { getData } from '../../features/company/companySlice';
+import { companyList } from '../../data/companyList'; 
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -52,6 +58,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchAppBar =()=> {
+  const dispatch = useDispatch();
+  const [input,setInput]=React.useState("");
+  const [active, setActive]=React.useState(false);
+  const handleInput = (value) => {
+      setInput(value)
+      setActive(value?true:false)
+      console.log(value)
+  }
+  const handleClick = () => {
+      if(input){
+          setActive(false);
+          //redirect to CompanyInfo
+          dispatch(getData(input.key)).then(() => {
+              setActive(true)
+          });
+         
+      }
+     
+
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{backgroundColor: "black"}}>
@@ -81,7 +107,16 @@ const SearchAppBar =()=> {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
+            {/* <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={companyList}
+                sx={{ }}
+                onChange={(event,value) => handleInput(value)}
+                renderInput={(params) => <TextField color='primary' {...params} label="Company"  />}
+            /> */}
           </Search>
+          <Button  variant="contained" onClick={ () => handleClick() } disabled={!active}><SearchIcon /></Button>
         </Toolbar>
       </AppBar>
     </Box>

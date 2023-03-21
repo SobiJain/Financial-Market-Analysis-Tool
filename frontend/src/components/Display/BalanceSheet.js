@@ -1,29 +1,20 @@
 import Card from "../UI/Card";
 import './BalanceSheet.css'
 import { useState, useEffect } from "react";
-import axios from 'axios'
+import { CombinedObject } from "./CombinedObject";
 
 const BalanceSheet = () => {
     const [cashData, setCashData] = useState({});
-    useEffect(() => {
-        fetchData();
-    }, [])
+   
+    useEffect(() =>{
 
-    const fetchData = () => {
-        axios({
-            method: "GET",
-            url: "http://127.0.0.1:8000/balancesheet"
+        CombinedObject().then((response)=>{
+            setCashData(response);
 
-        }).then((response) => {
-            const data = response.data;
-            // console.log(data);
-            // console.log(typeof data);
-            setCashData(data);
-
-        }).catch((error) => {
-            console.log(error.response);
         })
-    }
+
+    })
+    
 
     return  <Card>
         <div class="flex-containerbs">

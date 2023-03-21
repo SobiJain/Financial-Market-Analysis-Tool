@@ -67,6 +67,7 @@ const LandingCard = () => {
     const [input, setInput] = React.useState("");
     const [active, setActive] = React.useState(false);
     const [companyData, setCompanyData] = React.useState({});
+    const [companySymbol, setCompanySymbol] = React.useState({});
 
     React.useEffect(() => {
         fetchData();
@@ -84,10 +85,16 @@ const LandingCard = () => {
             console.log(obj.comp);
             console.log(obj.nse);
             setCompanyData(obj.comp);
+            setCompanySymbol(obj.nse)
 
         }).catch((error) => {
             // console.log(error.response);
         })
+    }
+
+    let mapping = {};
+    for(var i=1; i<companySymbol.length; i++) {
+        mapping[companyData[i]] = companySymbol[i];
     }
 
     const handleInput = (value) => {
@@ -99,9 +106,9 @@ const LandingCard = () => {
         if (input) {
             setActive(false);
             console.log(input)
-            console.log(input.key)
+            console.log(mapping[input])
             //redirect to CompanyInfo
-            dispatch(getData(input.key)).then(() => {
+            dispatch(getData(mapping[input])).then(() => {
                 setActive(true)
             });
 

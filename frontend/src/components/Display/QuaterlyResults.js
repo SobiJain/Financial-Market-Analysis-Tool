@@ -28,14 +28,6 @@ const QuaterlyResults = () => {
         })
     }
 
-    // const obj = Object.entries(cashData)
-    // obj.forEach(([key, value]) => {
-    //     if (key !== "symbol")
-    //         console.log("Key: " + key, "value: " + value)
-    // })
-
-    console.log(SingleObj.allData);
-
     return <Card>
         <div class="flex-containerqr">
             <div class="col-1qr">

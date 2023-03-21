@@ -19,15 +19,15 @@ const CompanyList = () => {
         }).then((response) => {
             const data = response.data;
             const obj = JSON.parse(data)
-            console.log(obj);
+            // console.log(obj);
             setCashData(obj);
 
         }).catch((error) => {
-            console.log(error.response);
+            // console.log(error.response);
         })
     }
 
-    console.log(typeof cashData) 
+    // console.log(typeof cashData) 
 
     return <Card>
         <div class="flex-containerpf">

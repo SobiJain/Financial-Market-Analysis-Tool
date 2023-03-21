@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
 import { companyList } from '../../data/companyList';
+import axios from 'axios';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -63,25 +64,51 @@ const styles = {
 };
 const LandingCard = () => {
     const dispatch = useDispatch();
-    const [input,setInput]=React.useState("");
-    const [active, setActive]=React.useState(false);
+    const [input, setInput] = React.useState("");
+    const [active, setActive] = React.useState(false);
+    const [companyData, setCompanyData] = React.useState({});
+
+    React.useEffect(() => {
+        fetchData();
+    }, [])
+
+    const fetchData = () => {
+        axios({
+            method: "GET",
+            url: "http://127.0.0.1:8000/companies"
+
+        }).then((response) => {
+            const data = response.data;
+            const obj = JSON.parse(data)
+            console.log(obj);
+            console.log(obj.comp);
+            console.log(obj.nse);
+            setCompanyData(obj.comp);
+
+        }).catch((error) => {
+            // console.log(error.response);
+        })
+    }
+
     const handleInput = (value) => {
         setInput(value)
-        setActive(value?true:false)
+        setActive(value ? true : false)
         console.log(value)
     }
     const handleClick = () => {
-        if(input){
+        if (input) {
             setActive(false);
             //redirect to CompanyInfo
             dispatch(getData(input.key)).then(() => {
                 setActive(true)
             });
-           
+
         }
-       
+
 
     }
+
+    const companyDataX = companyData;
     return (
         <React.Fragment>
             <CssBaseline />
@@ -99,25 +126,25 @@ const LandingCard = () => {
                                         Stock analysis tool for investors
                                     </Typography>
                                 </h1>
-                                <div style={{display:'flex'}}>
-                                <Search style={{width:"80%", marginRight:"1rem"}}>
-                                    {/* <SearchIconWrapper>
+                                <div style={{ display: 'flex' }}>
+                                    <Search style={{ width: "80%", marginRight: "1rem" }}>
+                                        {/* <SearchIconWrapper>
                                         <SearchIcon />
                                     </SearchIconWrapper> */}
-                                    {/* <StyledInputBase
+                                        {/* <StyledInputBase
                                         placeholder="Search…"
                                         inputProps={{ 'aria-label': 'search' }}
                                     /> */}
-                                    <Autocomplete
-                                        disablePortal
-                                        id="combo-box-demo"
-                                        options={companyList}
-                                        sx={{ }}
-                                        onChange={(event,value) => handleInput(value)}
-                                        renderInput={(params) => <TextField {...params} label="Company"  />}
-                                    />
-                                </Search>
-                                <Button  variant="contained" onClick={ () => handleClick() } disabled={!active}><SearchIcon /></Button>
+                                        <Autocomplete
+                                            disablePortal
+                                            id="combo-box-demo"
+                                            options={companyDataX}
+                                            sx={{}}
+                                            onChange={(event, value) => handleInput(value)}
+                                            renderInput={(params) => <TextField {...params} label="Company" />}
+                                        />
+                                    </Search>
+                                    <Button variant="contained" onClick={() => handleClick()} disabled={!active}><SearchIcon /></Button>
                                 </div>
                             </div>
 

@@ -13,40 +13,40 @@ import CompanyList from './components/Display/CompanyList';
 
 function App() {
 return (
-    // <BrowserRouter>
-    //   <CssBaseline />
-    //   <Box sx={{ position: "relative", minHeight: "100vh" }}>
-    //   <SearchAppBar/>
-    //     <Box sx={{ paddingTop: "2em", paddingBottom: "4rem" }}>
-    //     <Container maxWidth={false} sx={{ maxWidth: '100%' }}>
-    //       {/* <CompanyInfo/> */}
-    //       <Routes>
-    //         {/* <Route exact path="/" element={<LandingPage/>} />
-    //         <Route exact path="/login" element={<Login />}></Route>
-    //         <Route exact path="/register" element={<Register />}></Route> */}
-    //         {/* <Route
-    //           path="/"
-    //           element={
-    //             <ProtectedRoutes>
-    //               <SharedLayout />
-    //             </ProtectedRoutes>
-    //           }
-    //         > */}
-    //           {/* OTHER PROTECTED ROUTES */}
-    //           <Route path="/" element={<LandingPage/>} />
-    //           <Route path="/CompanyInfo" element={<CompanyInfo/>} />
-    //           <Route path="/CompanyList" element={<List/>} />
-    //         {/* </Route> */}
+    <BrowserRouter>
+      <CssBaseline />
+      <Box sx={{ position: "relative", minHeight: "100vh" }}>
+      <SearchAppBar/>
+        <Box sx={{ paddingTop: "2em", paddingBottom: "4rem" }}>
+        <Container maxWidth={false} sx={{ maxWidth: '100%' }}>
+          {/* <CompanyInfo/> */}
+          <Routes>
+            {/* <Route exact path="/" element={<LandingPage/>} />
+            <Route exact path="/login" element={<Login />}></Route>
+            <Route exact path="/register" element={<Register />}></Route> */}
+            {/* <Route
+              path="/"
+              element={
+                <ProtectedRoutes>
+                  <SharedLayout />
+                </ProtectedRoutes>
+              }
+            > */}
+              {/* OTHER PROTECTED ROUTES */}
+              <Route path="/" element={<LandingPage/>} />
+              <Route path="/CompanyInfo" element={<CompanyInfo/>} />
+              <Route path="/CompanyList" element={<List/>} />
+            {/* </Route> */}
 
-    //         {/* ERROR PAGE */}
-    //         {/* <Route exact path="*" element={<Error />}></Route> */}
-    //       </Routes>
-    //       <ToastContainer position="top-center" />
-    //       </Container>
-    //     </Box>
-    //   </Box>
-    // </BrowserRouter>
-    <CompanyList/>
+            {/* ERROR PAGE */}
+            {/* <Route exact path="*" element={<Error />}></Route> */}
+          </Routes>
+          <ToastContainer position="top-center" />
+          </Container>
+        </Box>
+      </Box>
+    </BrowserRouter>
+    // <CompanyList/>
   );
 }
 

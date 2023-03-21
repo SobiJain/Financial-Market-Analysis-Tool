@@ -35,7 +35,7 @@ const companySlice = createSlice({
         state.isLoading = false;
         state.companyData=payload.companyData;
         console.log(state.companyData);
-        toast.success(`darquasth successful`);
+        toast.success(`data successful`);
       },
       [getData.rejected]: (state, {payload}) => {
         state.isLoading = false;

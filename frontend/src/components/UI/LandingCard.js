@@ -98,14 +98,14 @@ const LandingCard = () => {
     const handleClick = () => {
         if (input) {
             setActive(false);
+            console.log(input)
+            console.log(input.key)
             //redirect to CompanyInfo
             dispatch(getData(input.key)).then(() => {
                 setActive(true)
             });
 
         }
-
-
     }
 
     const companyDataX = companyData;

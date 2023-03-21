@@ -9,5 +9,6 @@ urlpatterns = [
     path('profile', views.getProfile, name="profile"),
     path('quarter', views.getQuarter, name="quarter"),
     path('profitloss', views.getProfitLoss, name="profitloss"),
-    path('companies',views.getCompanyList,name='companies')
+    path('companies',views.getCompanyList,name='companies'),
+    path('getData',views.sendCompanyName,name='getData'),
 ]

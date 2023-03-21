@@ -46,7 +46,7 @@ from . import balancesheet
 balancesheetData = balancesheet.data
 cashflowData = cashflow.data
 
-print(balancesheetData['annualReports'])
+# print(balancesheetData['annualReports'])
 
 length = len(balancesheetData['annualReports'])
 roeList = []

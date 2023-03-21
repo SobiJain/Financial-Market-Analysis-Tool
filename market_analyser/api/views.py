@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework import status
 from . import cashflow, balancesheet, ratios, profile, quarter, profit_loss, companyList
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
+from environ import environ
+import cgitb
+
+cgitb.enable()
 
 # Create your views here.
 def getRoutes(request):
@@ -26,3 +34,9 @@ def getProfitLoss(request):
 
 def getCompanyList(request):
     return JsonResponse(companyList.json_obj, safe=False)
+
+@csrf_exempt
+@api_view(['POST',])
+def sendCompanyName(request):
+    print(request.body)
+    return Response(status=status.HTTP_201_CREATED)

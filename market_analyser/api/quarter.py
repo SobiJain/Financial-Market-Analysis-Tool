@@ -7,5 +7,4 @@ url_quarter = "https://www.alphavantage.co/query?function=EARNINGS&symbol=IBM&ap
 response_quarter = requests.request("GET", url_quarter)
 
 data_quarter = json.loads(response_quarter.content)
-print(data_quarter)
 

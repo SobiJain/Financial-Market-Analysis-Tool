@@ -7,5 +7,5 @@ url_profitnloss = "https://www.alphavantage.co/query?function=INCOME_STATEMENT&s
 response_profitnloss = requests.request("GET", url_profitnloss)
 
 data_profitnloss = json.loads(response_profitnloss.content)
-print(data_profitnloss)
+
 

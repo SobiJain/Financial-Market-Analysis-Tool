@@ -1,11 +1,14 @@
 from . import cashflow
-from . import balancesheet
+from . import balancesheet, combined
 
 # import cashflow
 # import balancesheet
 def ratio(key):
-    balancesheetData = balancesheet.balancesheet(key)
-    cashflowData = cashflow.cash(key)
+    balancesheet = combined.BalanceSheet()
+    cashflow = combined.Cashflow()
+
+    balancesheetData = balancesheet.getData(key)
+    cashflowData = cashflow.getData(key)
 
     # length = len(balancesheetData['annualReports'])
     roeList = []

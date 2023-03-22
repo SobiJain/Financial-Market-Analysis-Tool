@@ -35,7 +35,7 @@ const Test = () => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {data.profileDataResult.Name} </h1> </div>
+                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> name </h1> </div>
                                 <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
                                     <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
                             </div>
@@ -54,7 +54,8 @@ const Test = () => {
                                 </div>
                                 <div style={{ flexBasis: '17%' }}>
                                     <a href="https://www.nseindia.com/get-quotes/equity?symbol=AXISBANK" target="_blank" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
-                                        NSE : {data.profileDataResult.Symbol}
+                                        {/* NSE : {data.profileDataResult.Symbol} */}
+                                        NSE: nse
                                     </a>
                                 </div>
                             </div>
@@ -107,7 +108,8 @@ const Test = () => {
                     <div style={{ flexBasis: '60%' }}>
                         <p>
                             ABOUT [ edit ] <br></br>
-                            {data.profileDataResult.Description}
+                            {/* {data.profileDataResult.Description} */}
+                            desc
                         </p>
                     </div>
                 </div>

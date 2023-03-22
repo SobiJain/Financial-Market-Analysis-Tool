@@ -15,6 +15,7 @@ import { getData } from '../../features/company/companySlice';
 import { companyList } from '../../data/companyList';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import {Navigate} from 'react-router-dom';
 // import { companyActions } from '../../features/company/companySlice';
 import Card from '../UI/Card'
 
@@ -117,6 +118,7 @@ const LandingCard = () => {
             dispatch(getData(mapping[input])).then(() => {
                 setActive(true)
             });
+            <Navigate replace to="/CompanyInfo" />
             // dispatch(getData(input.key)).then(() => {
             //     setActive(true)
             // });

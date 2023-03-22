@@ -17,7 +17,7 @@ const Test = () => {
             // console.log("Summary: " + JSON.stringify(result.profileDataResult.Name));
 
         })
-    }, [data]);
+    }, []);
 
     console.log(data)
 

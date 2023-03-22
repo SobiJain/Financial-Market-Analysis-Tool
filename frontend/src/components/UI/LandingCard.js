@@ -15,7 +15,7 @@ import { getData } from '../../features/company/companySlice';
 import { companyList } from '../../data/companyList';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import {Navigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 // import { companyActions } from '../../features/company/companySlice';
 import Card from '../UI/Card'
 
@@ -86,12 +86,8 @@ const LandingCard = () => {
         }).then((response) => {
             const data = response.data;
             const obj = JSON.parse(data)
-            // console.log(obj);
-            // console.log(obj.comp);
-            // console.log(obj.nse);
             setCompanyData(obj.comp);
             setCompanySymbol(obj.nse)
-            // console.log(obj.cmp);
         }).catch((error) => {
             // console.log(error.response);
         })
@@ -107,18 +103,18 @@ const LandingCard = () => {
         setActive(value ? true : false)
         // console.log(value)
     }
+
+    const navigate = useNavigate();
+
     const handleClick = () => {
         if (input) {
             setActive(false);
             companyKeygh = mapping[input];
-            // console.log("Updated Company Key Value: " + companyKeygh);
-            // //dispatching companykey
-            // dispatch(companyActions.getCompanyKey(mapping[input]));
-            //redirect to CompanyInfo
             dispatch(getData(mapping[input])).then(() => {
                 setActive(true)
             });
-            <Navigate replace to="/CompanyInfo" />
+            navigate('/CompanyInfo')
+            // <Navigate replace to="/CompanyInfo" />
             // dispatch(getData(input.key)).then(() => {
             //     setActive(true)
             // });

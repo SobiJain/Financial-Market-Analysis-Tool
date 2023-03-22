@@ -3,23 +3,22 @@ import Card from "../UI/Card";
 import DateTime from "./Date";
 import { useState, useEffect } from "react";
 import CardTable from "../UI/CardTable";
-import axios from 'axios'
 import { CombinedObject } from "../../data/combinedObject";
 import { useSelector } from 'react-redux'
 
 const Test = () => {
-    const companyData = useSelector((store) => store.company.companyData);
+    const companyData = useSelector((store) => store.company);
     const [initial, setInitial] = useState('+ FOLLOW');
-    const [data, setData] = useState({});
+    // const [data, setData] = useState({});
 
-    useEffect(() => {
-        CombinedObject().then((result) => {
-            setData(result);
+    // useEffect(() => {
+    //     CombinedObject().then((result) => {
+    //         setData(result);
 
-        })
-    }, [data]);
+    //     })
+    // }, [data]);
 
-    console.log(data)
+    console.log(companyData.companyData.profileDataResult)
 
     const Onchange = () => {
         setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
@@ -35,7 +34,7 @@ const Test = () => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {data.profileDataResult} </h1> </div>
+                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {companyData.companyData.profileDataResult.Name} </h1> </div>
                                 <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
                                     <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
                             </div>
@@ -108,7 +107,7 @@ const Test = () => {
                     <div style={{ flexBasis: '60%' }}>
                         <p>
                             ABOUT [ edit ] <br></br>
-                            {/* {data.profileDataResult.Description} */}
+                            {companyData.companyData.profileDataResult.Description}
                             desc
                         </p>
                     </div>

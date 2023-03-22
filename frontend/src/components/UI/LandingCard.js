@@ -114,16 +114,16 @@ const LandingCard = () => {
             // //dispatching companykey
             // dispatch(companyActions.getCompanyKey(mapping[input]));
             //redirect to CompanyInfo
-            // dispatch(getData(mapping[input])).then(() => {
-            //     setActive(true)
-            // });
-            dispatch(getData(input.key)).then(() => {
+            dispatch(getData(mapping[input])).then(() => {
                 setActive(true)
             });
+            // dispatch(getData(input.key)).then(() => {
+            //     setActive(true)
+            // });
         }
     }
 
-    const companyDataX = companyData;
+    // const companyDataX = companyData;
     // console.log(companyDataX)
     return (
         <React.Fragment>
@@ -154,7 +154,7 @@ const LandingCard = () => {
                                         <Autocomplete
                                             disablePortal
                                             id="combo-box-demo"
-                                            options={companyList}
+                                            options={companyData}
                                             sx={{}}
                                             onChange={(event, value) => handleInput(value)}
                                             renderInput={(params) => <TextField {...params} label="Company" />}

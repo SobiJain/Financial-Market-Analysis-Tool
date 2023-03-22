@@ -19,9 +19,7 @@ const Test = () => {
         })
     }, [data]);
 
-
-
-
+    console.log(data)
 
     const Onchange = () => {
         setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')

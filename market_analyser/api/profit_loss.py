@@ -2,10 +2,13 @@
 import requests
 import json
 
-url_profitnloss = "https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=IBM&apikey=8YYV8RAUMPILRH5D"
+def profit(key):
 
-response_profitnloss = requests.request("GET", url_profitnloss)
+    url_profitnloss = f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={key}&apikey=8YYV8RAUMPILRH5D"
 
-data_profitnloss = json.loads(response_profitnloss.content)
+    response_profitnloss = requests.request("GET", url_profitnloss)
+
+    data_profitnloss = json.loads(response_profitnloss.content)
+    return data_profitnloss
 
 

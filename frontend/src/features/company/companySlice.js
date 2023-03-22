@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getCompanyThunk, getDataThunk } from "./companyThunk";
 import { toast } from "react-toastify";
+import { CombinedObject } from "../../data/combinedObject";
 
 const initialState = {
   isLoading: false,
@@ -9,7 +10,8 @@ const initialState = {
 }
 
 export const getCompany = createAsyncThunk("company/getCompany", getCompanyThunk);
-export const getData = createAsyncThunk("company/getData", getDataThunk);
+export const getData = createAsyncThunk("company/getData", CombinedObject);
+
 const companySlice = createSlice({
   name: "company",
   initialState,

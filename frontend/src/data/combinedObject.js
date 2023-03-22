@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useSelector } from '@reduxjs/toolkit';
+// import { useSelector } from 'react-redux';
 
-export const CombinedObject = async () => {
+export const CombinedObject = async (companyKey) => {
 
-    const companyKey = useSelector((state) => state.companyKeyData.companyKey);
+    // const companyKey = useSelector((state) => state.companyKeyData.companyKey);
     console.log("CompanyKeyValue from CombinedObject: " + companyKey);
 
     const quarter = axios.get("http://127.0.0.1:8000/quarter", {
@@ -47,8 +47,8 @@ export const CombinedObject = async () => {
         profileDataResult: profileData.data,
         ratioData: ratioData.data,
         profitLossDataResult: profitLossData.data
-
     }
+    console.log(combinedData)
     return combinedData;
 
 }

@@ -4,33 +4,22 @@ import DateTime from "./Date";
 import { useState, useEffect } from "react";
 import CardTable from "../UI/CardTable";
 import axios from 'axios'
+import { CombinedObject } from "../../data/combinedObject";
 
 
 const Test = () => {
 
     const [initial, setInitial] = useState('+ FOLLOW');
-    const [cashData, setCashData] = useState({});
+    const [data, setData] = useState({});
 
     useEffect(() => {
-        fetchData();
-    }, [])
+        CombinedObject().then((result) => {
+            setData(result);
 
-    const fetchData = () => {
-        axios({
-            method: "GET",
-            url: "http://127.0.0.1:8000/profile"
-
-        }).then((response) => {
-            const data = response.data;
-            // console.log(data);
-            // console.log(typeof data);
-            setCashData(data);
-
-        }).catch((error) => {
-            console.log(error.response);
         })
-    }
+    }, [data]);
 
+    console.log(data)
 
     const Onchange = () => {
         setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
@@ -46,7 +35,7 @@ const Test = () => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {cashData.Name} </h1> </div>
+                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {data.profileDataResult.Name} </h1> </div>
                                 <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
                                     <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
                             </div>
@@ -65,7 +54,7 @@ const Test = () => {
                                 </div>
                                 <div style={{ flexBasis: '17%' }}>
                                     <a href="https://www.nseindia.com/get-quotes/equity?symbol=AXISBANK" target="_blank" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
-                                        NSE : {cashData.Symbol}
+                                        NSE : {data.profileDataResult.Symbol}
                                     </a>
                                 </div>
                             </div>
@@ -118,7 +107,7 @@ const Test = () => {
                     <div style={{ flexBasis: '60%' }}>
                         <p>
                             ABOUT [ edit ] <br></br>
-                            {cashData.Description}
+                            {data.profileDataResult.Description}
                         </p>
                     </div>
                 </div>

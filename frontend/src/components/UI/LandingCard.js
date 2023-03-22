@@ -72,8 +72,7 @@ const LandingCard = () => {
     const [companyData, setCompanyData] = React.useState({});
     const [companySymbol, setCompanySymbol] = React.useState({});
     let companyKeygh = useSelector((state) => state.companyKeyData.companyKey);
-    console.log("Original companyKey Value: " + companyKeygh);
-
+    
     React.useEffect(() => {
         fetchData();
     }, [])
@@ -110,12 +109,10 @@ const LandingCard = () => {
     const handleClick = () => {
         if (input) {
             setActive(false);
-            console.log("Company Name: " + input)
-            console.log("Company Key: " + mapping[input])
             companyKeygh = mapping[input];
             console.log("Updated Company Key Value: " + companyKeygh);
-            //dispatching companykey
-            dispatch(companyActions.getCompanyKey(mapping[input]));
+            // //dispatching companykey
+            // dispatch(companyActions.getCompanyKey(mapping[input]));
             //redirect to CompanyInfo
             dispatch(getData(mapping[input])).then(() => {
                 setActive(true)

@@ -15,22 +15,29 @@ def getRoutes(request):
     return JsonResponse("henlo", safe=False)
 
 def getCashflow(request):
-    return JsonResponse(cashflow.data, safe=False)
+    key = request.GET['companyKeyValue']
+    return JsonResponse(cashflow.cash(key), safe=False)
 
 def getBalanceSheet(request):
-    return JsonResponse(balancesheet.data, safe=False)
+    key = request.GET['companyKeyValue']
+    return JsonResponse(balancesheet.balancesheet(key), safe=False)
 
 def getRatio(request):
-    return JsonResponse(ratios.annualROE, safe=False)
+    key = request.GET['companyKeyValue']
+    return JsonResponse(ratios.ratio(key), safe=False)
 
 def getProfile(request):
-    return JsonResponse(profile.data_profile, safe=False)
+    key = request.GET['companyKeyValue']
+    return JsonResponse(profile.summary(key), safe=False)
 
 def getQuarter(request):
-    return JsonResponse(quarter.data_quarter, safe=False)
+    print(request.GET.get('companyKeyValue'))
+    key = request.GET.get('companyKeyValue')
+    return JsonResponse(quarter.quarter(key), safe=False)
 
 def getProfitLoss(request):
-    return JsonResponse(profit_loss.data_profitnloss, safe=False)
+    key = request.GET['companyKeyValue']
+    return JsonResponse(profit_loss.profit(key), safe=False)
 
 def getCompanyList(request):
     return JsonResponse(companyList.json_obj, safe=False)

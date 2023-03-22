@@ -2,9 +2,11 @@
 import requests
 import json
 
-url_quarter = "https://www.alphavantage.co/query?function=EARNINGS&symbol=IBM&apikey=8YYV8RAUMPILRH5D"
+def quarter(key):
+    url_quarter = f"https://www.alphavantage.co/query?function=EARNINGS&symbol={key}&apikey=8YYV8RAUMPILRH5D"
 
-response_quarter = requests.request("GET", url_quarter)
+    response_quarter = requests.request("GET", url_quarter)
 
-data_quarter = json.loads(response_quarter.content)
+    data_quarter = json.loads(response_quarter.content)
+    return data_quarter
 

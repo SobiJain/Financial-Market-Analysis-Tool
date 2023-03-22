@@ -2,39 +2,20 @@ import Card from "../UI/Card";
 import './QuaterlyResults.css'
 import { useState, useEffect } from "react";
 import axios from 'axios'
+import { CombinedObject } from "../../data/combinedObject";
 
 const QuaterlyResults = () => {
 
-    const [cashData, setCashData] = useState({});
+    const [data, setData] = useState({});
 
     useEffect(() => {
-        fetchData();
-    }, [])
+        CombinedObject().then((result) => {
+            setData(result);
 
-    const fetchData = () => {
-        axios({
-            method: "GET",
-            url: "http://127.0.0.1:8000/quarter"
-
-        }).then((response) => {
-            const data = response.data;
-            // console.log(data);
-            // console.log(typeof data);
-            setCashData(data);
-
-        }).catch((error) => {
-            console.log(error.response);
         })
-    }
+    }, [data]);
 
-    // const obj = Object.entries(cashData)
-    // obj.forEach(([key, value]) => {
-    //     if (key !== "symbol")
-    //         console.log("Key: " + key, "value: " + value)
-    // })
-
-    console.log(cashData.quarterlyEarnings);
-
+    console.log("Summary: " + JSON.stringify(data.profileDataResult));
 
     return <Card>
         <div class="flex-containerqr">
@@ -71,34 +52,34 @@ const QuaterlyResults = () => {
                         <td style={{ width: '9%' }}>Sept 2022</td>
                         <td style={{ width: '9%' }}>Dec 2022</td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <td>Reported EPS</td>
-                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                        {data.quarterDataResult.quarterlyEarnings && data.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                             return <td> {item.reportedEPS} </td>
                            
                         })}
                     </tr>
                     <tr>
                         <td>Estimated EPS</td>
-                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                        {data.quarterDataResult.quarterlyEarnings && data.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                             return <td> {item.estimatedEPS} </td>
                            
                         })}
                     </tr>
                     <tr>
                         <td>Surprise</td>
-                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                        {data.quarterDataResult.quarterlyEarnings && data.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                             return <td> {item.surprise} </td>
                            
                         })}
                     </tr>
                     <tr>
                         <td>Surprise Percentage</td>
-                        {cashData.quarterlyEarnings && cashData.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                        {data.quarterDataResult.quarterlyEarnings && data.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                             return <td> {item.surprisePercentage} </td>
                            
                         })}
-                    </tr>
+                    </tr> */}
                 </table>
 
             </div>

@@ -28,6 +28,7 @@ def getRatio(request):
 
 def getProfile(request):
     key = request.GET['companyKeyValue']
+    print(profile.summary(key))
     return JsonResponse(profile.summary(key), safe=False)
 
 def getQuarter(request):

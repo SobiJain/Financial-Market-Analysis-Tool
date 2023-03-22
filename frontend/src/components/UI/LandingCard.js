@@ -105,8 +105,8 @@ const LandingCard = () => {
     const handleClick = () => {
         if (input) {
             setActive(false);
-            console.log(input)
-            console.log(mapping[input])
+            console.log("Company Name: " + input)
+            console.log("Company Key: " + mapping[input])
             //redirect to CompanyInfo
             dispatch(getData(mapping[input])).then(() => {
                 setActive(true)

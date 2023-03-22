@@ -15,7 +15,7 @@ import { getData } from '../../features/company/companySlice';
 import { companyList } from '../../data/companyList';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { companyActions } from '../../features/company/companySlice';
+// import { companyActions } from '../../features/company/companySlice';
 import Card from '../UI/Card'
 
 const Search = styled('div')(({ theme }) => ({
@@ -85,12 +85,12 @@ const LandingCard = () => {
         }).then((response) => {
             const data = response.data;
             const obj = JSON.parse(data)
-            console.log(obj);
-            console.log(obj.comp);
-            console.log(obj.nse);
+            // console.log(obj);
+            // console.log(obj.comp);
+            // console.log(obj.nse);
             setCompanyData(obj.comp);
             setCompanySymbol(obj.nse)
-
+            // console.log(obj.cmp);
         }).catch((error) => {
             // console.log(error.response);
         })
@@ -104,24 +104,27 @@ const LandingCard = () => {
     const handleInput = (value) => {
         setInput(value)
         setActive(value ? true : false)
-        console.log(value)
+        // console.log(value)
     }
     const handleClick = () => {
         if (input) {
             setActive(false);
             companyKeygh = mapping[input];
-            console.log("Updated Company Key Value: " + companyKeygh);
+            // console.log("Updated Company Key Value: " + companyKeygh);
             // //dispatching companykey
             // dispatch(companyActions.getCompanyKey(mapping[input]));
             //redirect to CompanyInfo
-            dispatch(getData(mapping[input])).then(() => {
+            // dispatch(getData(mapping[input])).then(() => {
+            //     setActive(true)
+            // });
+            dispatch(getData(input.key)).then(() => {
                 setActive(true)
             });
-
         }
     }
 
     const companyDataX = companyData;
+    // console.log(companyDataX)
     return (
         <React.Fragment>
             <CssBaseline />
@@ -151,7 +154,7 @@ const LandingCard = () => {
                                         <Autocomplete
                                             disablePortal
                                             id="combo-box-demo"
-                                            options={companyDataX}
+                                            options={companyList}
                                             sx={{}}
                                             onChange={(event, value) => handleInput(value)}
                                             renderInput={(params) => <TextField {...params} label="Company" />}

@@ -10,7 +10,7 @@ const initialState = {
 }
 
 export const getCompany = createAsyncThunk("company/getCompany", getCompanyThunk);
-export const getData = createAsyncThunk("company/getData", CombinedObject);
+export const getData = createAsyncThunk("company/getData", getDataThunk);
 
 const companySlice = createSlice({
   name: "company",
@@ -24,7 +24,7 @@ const companySlice = createSlice({
     [getCompany.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.companyList = payload.companyList;
-      toast.success(`darquasth successful`);
+      toast.success(`request successful`);
     },
     [getCompany.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -36,7 +36,7 @@ const companySlice = createSlice({
     [getData.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.companyData = payload.companyData;
-      console.log(state.companyData);
+      // console.log(state.companyData);
       toast.success(`data successful`);
     },
     [getData.rejected]: (state, { payload }) => {

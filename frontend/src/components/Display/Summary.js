@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import CardTable from "../UI/CardTable";
 import axios from 'axios'
 import { CombinedObject } from "../../data/combinedObject";
-
+import { useSelector } from 'react-redux'
 
 const Test = () => {
-
+    const companyData = useSelector((store) => store.company.companyData);
     const [initial, setInitial] = useState('+ FOLLOW');
     const [data, setData] = useState({});
 

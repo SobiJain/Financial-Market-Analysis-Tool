@@ -35,7 +35,7 @@ const Test = () => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> name </h1> </div>
+                                <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {data.profileDataResult} </h1> </div>
                                 <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
                                     <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
                             </div>

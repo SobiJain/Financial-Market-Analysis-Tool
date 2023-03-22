@@ -72,7 +72,7 @@ const LandingCard = () => {
     const [active, setActive] = React.useState(false);
     const [companyData, setCompanyData] = React.useState({});
     const [companySymbol, setCompanySymbol] = React.useState({});
-    let companyKeygh = useSelector((state) => state.companyKeyData.companyKey);
+    let companyKeygh = useSelector((state) => state.company.companyKey);
     
     React.useEffect(() => {
         fetchData();

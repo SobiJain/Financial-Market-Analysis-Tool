@@ -9,7 +9,6 @@ def ratio(key):
     balancesheetData = balancesheet.getData(key)
     cashflowData = cashflow.getData(key)
 
-    # length = len(balancesheetData['annualReports'])
     roeList = []
 
     # for i in range(length):

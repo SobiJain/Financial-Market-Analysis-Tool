@@ -46,8 +46,7 @@ const Test = () => {
                                     </div>
                                     <div style={{ flexBasis: '17%' }}>
                                         <a href="https://www.nseindia.com/get-quotes/equity?symbol=AXISBANK" target="_blank" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
-                                            {/* NSE : {data.profileDataResult.Symbol} */}
-                                            NSE: nse
+                                            NSE : {companyData.companyData.profileDataResult.Symbol}
                                         </a>
                                     </div>
                                 </div>

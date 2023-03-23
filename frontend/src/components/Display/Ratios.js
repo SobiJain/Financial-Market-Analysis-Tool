@@ -1,6 +1,7 @@
 import Card from "../UI/Card";
 import './QuaterlyResults.css'
 import { useSelector } from 'react-redux'
+import BalanceSheet from "./BalanceSheet";
 
 const Ratios = () =>{
     
@@ -9,6 +10,19 @@ const Ratios = () =>{
 
     if(!isLoading)
     {
+        const balancesheetData = companyData.companyData.balanceDataResult
+        const cashflowData = companyData.companyData.cashDataResult
+
+        const sz = balancesheetData.annualReports.length;
+        let roeList = []
+
+        if( cashflowData.annualReports!==null && balancesheetData.annualReports!==null) {
+            for (var i=0; i<sz; i++) {
+                roeList.push({roe: cashflowData.annualReports[i]['netIncome']/balancesheetData.annualReports[i]['totalShareholderEquity']})
+            }
+        }
+
+        console.log(roeList)
         return <Card>
             <div class="flex-containerrs">
                 <div class="col-1rs">
@@ -43,10 +57,10 @@ const Ratios = () =>{
                         </tr>
                         <tr>
                             <td >ROE</td>
-                            {/* {cashData.annualROE && cashData.annualROE.slice(0, 6).map((item) => {
+                            {roeList.map((item) => {
                                 return <td> {item.roe} </td>
                             
-                            })} */}
+                            })}
 
                         </tr>
                     </table>

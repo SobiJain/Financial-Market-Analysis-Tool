@@ -53,7 +53,7 @@ export const getDataThunk = async(companyKey, thunkAPI) => {
         })
     
     
-        const [quarterData, cashData, balanceData, profileData, ratioData, profitLossData, priceData] = await Promise.all([quarter, cash, balance, profile, ratio, profitLoss, price]);
+        const [quarterData, cashData, balanceData, profileData, ratioData, profitLossData] = await Promise.all([quarter, cash, balance, profile, ratio, profitLoss]);
     
         const combinedData = {
             quarterDataResult: quarterData.data,
@@ -62,7 +62,7 @@ export const getDataThunk = async(companyKey, thunkAPI) => {
             profileDataResult: profileData.data,
             ratioData: ratioData.data,
             profitLossDataResult: profitLossData.data,
-            priceDataResult: priceData.data,
+            // priceDataResult: priceData.data,
         }
         console.log(combinedData);
         return combinedData;

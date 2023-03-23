@@ -41,9 +41,9 @@ const CashFlows = () => {
                             <td style={{ width: '10%' }}>Dec 2021</td>
                             <td style={{ width: '10%' }}>Dec 2022</td>
                         </tr>
-                        {/* <tr>
+                        <tr>
                             <td>Operating Cashflow</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.operatingCashflow/1000000000} </td>
                             
                             })}
@@ -51,7 +51,7 @@ const CashFlows = () => {
                         </tr>
                         <tr>
                             <td>Cashflow from Investment</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.cashflowFromInvestment/1000000000} </td>
                             
                             })}
@@ -60,7 +60,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Cashflow from Financing</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.cashflowFromFinancing/1000000000} </td>
                             
                             })}
@@ -69,7 +69,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Dividend Payout</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.dividendPayout/1000000000} </td>
                             
                             })}
@@ -77,7 +77,7 @@ const CashFlows = () => {
                         </tr>
                         <tr>
                             <td>Net Income</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.netIncome/1000000000} </td>
                             
                             })}
@@ -86,7 +86,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Capital Expenditure</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.capitalExpenditures/1000000000} </td>
                             
                             })}
@@ -95,7 +95,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Change in Receivables</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.changeInReceivables/1000000000} </td>
                             
                             })}
@@ -104,7 +104,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Change in Inventory</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.changeInInventory/1000000000} </td>
                             
                             })}
@@ -113,7 +113,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Change in Operating Liabilities</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.changeInOperatingLiabilities/1000000000} </td>
                             
                             })}
@@ -122,7 +122,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Change in Operating Assets</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.changeInOperatingAssets/1000000000} </td>
                             
                             })}
@@ -131,7 +131,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Payments for Operating Activities</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.paymentsForOperatingActivities/1000000000} </td>
                             
                             })}
@@ -140,7 +140,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Proceeds from Repurchase of Equity</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.proceedsFromRepurchaseOfEquity/1000000000} </td>
                             
                             })}
@@ -149,7 +149,7 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Proceeds From Repayments Of Short Term Debt</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.proceedsFromRepaymentsOfShortTermDebt/1000000000} </td>
                             
                             })}
@@ -158,12 +158,12 @@ const CashFlows = () => {
 
                         <tr>
                             <td>Proceeds From Issuance Of Long Term Debt And Capital Securities Net</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.proceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet/1000000000} </td>
                             
                             })}
 
-                        </tr> */}
+                        </tr>
 
                     </table>
                 </div>

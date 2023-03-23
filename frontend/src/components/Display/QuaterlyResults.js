@@ -43,34 +43,34 @@ const QuaterlyResults = () => {
                             <td style={{ width: '9%' }}>Sept 2022</td>
                             <td style={{ width: '9%' }}>Dec 2022</td>
                         </tr>
-                        {/* <tr>
+                        <tr>
                             <td>Reported EPS</td>
-                            {data.quarterDataResult.quarterlyEarnings && data.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                            {companyData.companyData.quarterDataResult.quarterlyEarnings && companyData.companyData.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                                 return <td> {item.reportedEPS} </td>
                             
                             })}
                         </tr>
                         <tr>
                             <td>Estimated EPS</td>
-                            {data.quarterDataResult.quarterlyEarnings && data.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                            {companyData.companyData.quarterDataResult.quarterlyEarnings && companyData.companyData.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                                 return <td> {item.estimatedEPS} </td>
                             
                             })}
                         </tr>
                         <tr>
                             <td>Surprise</td>
-                            {data.quarterDataResult.quarterlyEarnings && data.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                            {companyData.companyData.quarterDataResult.quarterlyEarnings && companyData.companyData.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                                 return <td> {item.surprise} </td>
                             
                             })}
                         </tr>
                         <tr>
                             <td>Surprise Percentage</td>
-                            {data.quarterDataResult.quarterlyEarnings && data.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
+                            {companyData.companyData.quarterDataResult.quarterlyEarnings && companyData.companyData.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                                 return <td> {item.surprisePercentage} </td>
                             
                             })}
-                        </tr> */}
+                        </tr>
                     </table>
 
                 </div>

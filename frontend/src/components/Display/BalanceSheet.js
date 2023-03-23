@@ -44,9 +44,9 @@ const BalanceSheet = () => {
 
 
                         </tr>
-                        {/* <tr>
+                        <tr>
                             <td >Total Assets</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.totalAssets/1000000000} </td>
                             
                             })}
@@ -54,7 +54,7 @@ const BalanceSheet = () => {
                         </tr>
                         <tr>
                             <td>Total Current Assets</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.totalCurrentAssets/1000000000} </td>
                             
                             })}
@@ -63,7 +63,7 @@ const BalanceSheet = () => {
                         </tr>
                         <tr>
                             <td>Other Assets</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {(item.otherCurrentAssets)/1000000000} </td>
                             
                             })}
@@ -72,7 +72,7 @@ const BalanceSheet = () => {
                         </tr>
                         <tr>
                             <td>Total Liabilities</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.totalLiabilities/1000000000} </td>
                             
                             })}
@@ -80,7 +80,7 @@ const BalanceSheet = () => {
                         </tr>
                         <tr>
                             <td>Total Current liabilities</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.totalCurrentLiabilities/1000000000} </td>
                             
                             })}
@@ -88,14 +88,14 @@ const BalanceSheet = () => {
 
                         <tr>
                             <td>Other liabilities</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {(item.otherCurrentLiabilities/1000000000) } </td>
                             //   + (item.otherNonCurrentLiabilities/1000000000) 
                             })}
                         </tr>
                         <tr>
                             <td>Current Debt</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.currentDebt/1000000000} </td>
                             
                             })}
@@ -103,32 +103,32 @@ const BalanceSheet = () => {
                         </tr>
                         <tr>
                             <td>Short Term Investments</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.shortTermInvestments/1000000000} </td>
                             
                             })}
                         </tr>
                         <tr>
                             <td>Long Term Investments</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.longTermInvestments/1000000000} </td>
                             
                             })}
                         </tr>
                         <tr>
                             <td>Total Shareholder Equity</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.totalShareholderEquity/1000000000} </td>
                             
                             })}
                         </tr>
                         <tr>
                             <td>Inventory</td>
-                            {cashData.annualReports && cashData.annualReports.slice(0, 6).map((item) => {
+                            {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
                                 return <td> {item.inventory/1000000000} </td>
                             
                             })}
-                        </tr> */}
+                        </tr>
                     
                     </table>
 

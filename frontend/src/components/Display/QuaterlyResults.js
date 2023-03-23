@@ -1,21 +1,9 @@
 import Card from "../UI/Card";
 import './QuaterlyResults.css'
 import { useState, useEffect } from "react";
-import axios from 'axios'
-import { CombinedObject } from "../../data/combinedObject";
+import {getDataThunk} from '../../features/company/companyThunk'
 
 const QuaterlyResults = () => {
-
-    const [data, setData] = useState({});
-
-    useEffect(() => {
-        CombinedObject().then((result) => {
-            setData(result);
-
-        })
-    }, [data]);
-
-    console.log("Summary: " + JSON.stringify(data.profileDataResult));
 
     return <Card>
         <div class="flex-containerqr">

@@ -22,3 +22,26 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Built files
+/build
+/dist
+*.log
+
+# Local environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Dependency cache
+/.yarn/cache

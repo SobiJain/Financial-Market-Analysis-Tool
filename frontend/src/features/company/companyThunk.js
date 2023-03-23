@@ -59,7 +59,7 @@ export const getDataThunk = async(companyKey, thunkAPI) => {
             ratioData: ratioData.data,
             profitLossDataResult: profitLossData.data
         }
-        console.log(combinedData)
+        console.log(combinedData);
         return combinedData;
     
     } catch (error) {

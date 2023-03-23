@@ -12,12 +12,12 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
-import { companyList } from '../../data/companyList';
+// import { companyList } from '../../data/companyList';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 // import { companyActions } from '../../features/company/companySlice';
-import Card from '../UI/Card'
+// import Card from '../UI/Card'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -72,7 +72,7 @@ const LandingCard = () => {
     const [active, setActive] = React.useState(false);
     const [companyData, setCompanyData] = React.useState({});
     const [companySymbol, setCompanySymbol] = React.useState({});
-    let companyKeygh = useSelector((state) => state.company.companyKey);
+    // let companyKeygh = useSelector((state) => state.company.companyKey);
     
     React.useEffect(() => {
         fetchData();
@@ -109,7 +109,7 @@ const LandingCard = () => {
     const handleClick = () => {
         if (input) {
             setActive(false);
-            companyKeygh = mapping[input];
+            // companyKeygh = mapping[input];
             dispatch(getData(mapping[input])).then(() => {
                 setActive(true)
             });

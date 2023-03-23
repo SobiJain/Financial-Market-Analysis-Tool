@@ -12,13 +12,10 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
-// import { companyList } from '../../data/companyList';
 import axios from 'axios';
-// import { useSelector } from 'react-redux';
-import {useNavigate} from 'react-router-dom';
-// import { companyActions } from '../../features/company/companySlice';
-// import Card from '../UI/Card'
+import { useNavigate } from 'react-router-dom';
 
+//styling of the search component
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -33,33 +30,7 @@ const Search = styled('div')(({ theme }) => ({
         width: 'auto',
     },
 }));
-// const SearchIconWrapper = styled('div')(({ theme }) => ({
-//     padding: theme.spacing(0, 2),
-//     height: '100%',
-//     position: 'absolute',
-//     pointerEvents: 'none',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-// }));
 
-// const StyledInputBase = styled(InputBase)(({ theme }) => ({
-//     color: 'inherit',
-//     '& .MuiInputBase-input': {
-//         padding: theme.spacing(1, 1, 1, 0),
-//         // vertical padding + font size from searchIcon
-//         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-//         transition: theme.transitions.create('width'),
-//         width: '100%',
-//         height: '30px',
-//         [theme.breakpoints.up('sm')]: {
-//             width: '120ch',
-//             '&:focus': {
-//                 width: '100ch',
-//             },
-//         },
-//     },
-// }));
 const styles = {
     display: 'flex',
     alignItems: 'center',
@@ -72,12 +43,12 @@ const LandingCard = () => {
     const [active, setActive] = React.useState(false);
     const [companyData, setCompanyData] = React.useState({});
     const [companySymbol, setCompanySymbol] = React.useState({});
-    // let companyKeygh = useSelector((state) => state.company.companyKey);
-    
+
     React.useEffect(() => {
         fetchData();
     }, [])
 
+    // fetching the list of companies to be displayed on the landing page
     const fetchData = () => {
         axios({
             method: "GET",
@@ -89,12 +60,13 @@ const LandingCard = () => {
             setCompanyData(obj.comp);
             setCompanySymbol(obj.nse)
         }).catch((error) => {
-            // console.log(error.response);
+            console.log(error.response);
         })
     }
 
+    // mapping the company key and their symbol fetched from the above function
     let mapping = {};
-    for(var i=1; i<companySymbol.length; i++) {
+    for (var i = 1; i < companySymbol.length; i++) {
         mapping[companyData[i]] = companySymbol[i];
     }
 
@@ -106,13 +78,15 @@ const LandingCard = () => {
 
     const navigate = useNavigate();
 
+    // this function is used when the user search for a particular company and hit the search button
     const handleClick = () => {
         if (input) {
             setActive(false);
-            // companyKeygh = mapping[input];
+            //dispatching the key to the react store to forward it to the backend
             dispatch(getData(mapping[input])).then(() => {
                 setActive(true)
             });
+            //navigating to the user to the CompanyInfo page
             navigate('/CompanyInfo')
             // <Navigate replace to="/CompanyInfo" />
             // dispatch(getData(input.key)).then(() => {
@@ -121,8 +95,6 @@ const LandingCard = () => {
         }
     }
 
-    // const companyDataX = companyData;
-    // console.log(companyDataX)
     return (
         <React.Fragment>
             <CssBaseline />

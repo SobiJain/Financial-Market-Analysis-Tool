@@ -1,4 +1,3 @@
-// import customFetch from "../../utils/axios";
 import axios from "axios";
 export const getCompanyThunk = async(_, thunkAPI) => {
     try{

@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getCompanyThunk, getDataThunk } from "./companyThunk";
 import { toast } from "react-toastify";
-// import { CombinedObject } from "../../data/combinedObject";
 
 const initialState = {
   isLoading: true,
@@ -61,23 +60,5 @@ const companySlice = createSlice({
   },
 });
 
-// const companyKeySlice = createSlice({
-//   name: "Comapny Key",
-//   initialState: { companyKey: "" },
-//   reducers: {
-//     getCompanyKey(state, action) {
-//       state.companyKey = action.payload;
-
-//     }
-//   }
-// })
-
-// export const companyActions = companyKeySlice.actions
-
-//export const { } = companySlice.actions;
-// export const ereducer = {
-//   companySlice: companySlice.reducer,
-//   companyKeySlice: companyKeySlice.reducer
-// }
 export default companySlice.reducer;
-// export default companyKeySlice.reducer;
+

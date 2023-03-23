@@ -3,31 +3,22 @@ import Card from "../UI/Card";
 import DateTime from "./Date";
 import { useState } from "react";
 import CardTable from "../UI/CardTable";
-// import { CombinedObject } from "../../data/combinedObject";
 import { useSelector } from 'react-redux'
 
 const Test = () => {
+
+    //fetching the isloading state from the redux-store setup
     const isLoading = useSelector((state) => state.company.isLoading);
-    console.log("isloading: " + isLoading);
+    // fetching the companyData state from redux-store setup 
     const companyData = useSelector((store) => store.company);
-    console.log("company Data", JSON.stringify(companyData));
+
+    //temporary change function
     const [initial, setInitial] = useState('+ FOLLOW');
-    // const [data, setData] = useState({});
-
-    // useEffect(() => {
-    //     CombinedObject().then((result) => {
-    //         setData(result);
-
-    //     })
-    // }, [data]);
-
-    // console.log(companyData.companyData.profileDataResult)
-
     const Onchange = () => {
         setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
     }
 
-
+// the if statement is responsible for rendering the Card component only if the state of isLoading is false, i.e when the entire data of the company is fetched
     if (!isLoading)
         return <Card>
             <div style={{ display: 'flex' }}>
@@ -55,35 +46,13 @@ const Test = () => {
                                     </div>
                                     <div style={{ flexBasis: '17%' }}>
                                         <a href="https://www.nseindia.com/get-quotes/equity?symbol=AXISBANK" target="_blank" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
-                                            {/* NSE : {data.profileDataResult.Symbol} */}
-                                            NSE: nse
+                                            NSE : {companyData.companyData.profileDataResult.Symbol}
                                         </a>
                                     </div>
                                 </div>
 
                             </div>
                             <div style={{ flexBasis: '50%', }}>
-                                {/* <div style={{ overflowX: 'auto', paddingTop: '2%', paddingLeft: '1.5%'}}>
-                                <table style={{ border: '1px solid black', borderCollapse: 'collapse' }}>
-                                    <tbody>
-                                        <tr>
-                                            <td style={{ padding: '10px' }}>Row 1, Column 1</td>
-                                            <td style={{ padding: '10px' }}>Row 1, Column 2</td>
-                                            <td style={{ padding: '10px' }}>Row 1, Column 3</td>
-                                        </tr>
-                                        <tr >
-                                            <td style={{ padding: '10px' }}>Row 2, Column 1</td>
-                                            <td style={{ padding: '10px' }}>Row 2, Column 2</td>
-                                            <td style={{ padding: '10px' }}>Row 2, Column 3</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{ padding: '10px' }}>Row 3, Column 1</td>
-                                            <td style={{ padding: '10px' }}>Row 3, Column 2</td>
-                                            <td style={{ padding: '10px' }}>Row 3, Column 3</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> */}
                                 <CardTable></CardTable>
                             </div>
                         </div>

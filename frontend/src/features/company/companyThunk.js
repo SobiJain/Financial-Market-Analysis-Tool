@@ -1,4 +1,3 @@
-// import customFetch from "../../utils/axios";
 import axios from "axios";
 export const getCompanyThunk = async(_, thunkAPI) => {
     try{
@@ -47,6 +46,11 @@ export const getDataThunk = async(companyKey, thunkAPI) => {
                 companyKeyValue: companyKey
             }
         });
+        const price = axios.get("http://127.0.0.1:8000/price", {
+            params: {
+                companyKeyValue: companyKey
+            }
+        })
     
     
         const [quarterData, cashData, balanceData, profileData, ratioData, profitLossData] = await Promise.all([quarter, cash, balance, profile, ratio, profitLoss]);
@@ -57,7 +61,8 @@ export const getDataThunk = async(companyKey, thunkAPI) => {
             balanceDataResult: balanceData.data,
             profileDataResult: profileData.data,
             ratioData: ratioData.data,
-            profitLossDataResult: profitLossData.data
+            profitLossDataResult: profitLossData.data,
+            // priceDataResult: priceData.data,
         }
         console.log(combinedData);
         return combinedData;

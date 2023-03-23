@@ -13,14 +13,14 @@ function CompanyInfo(props) {
   return (
     <>
         <Summary />
-        <PC />
-        <PeerComp />
+        {/* <PC />
+        <PeerComp /> */}
         <QuaterlyResults />
         <PF />
         <BalanceSheet />
         <CashFlows />
         <Ratios />
-        <Document />
+        {/* <Document /> */}
     </>
   )
 }

@@ -13,7 +13,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
-import { companyList } from '../../data/companyList'; 
+import { companyList } from '../../data/companyList';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -57,30 +59,61 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchAppBar =()=> {
+const SearchAppBar = () => {
   const dispatch = useDispatch();
-  const [input,setInput]=React.useState("");
-  const [active, setActive]=React.useState(false);
-  const handleInput = (value) => {
-      setInput(value)
-      setActive(value?true:false)
-      console.log(value)
+  const [input, setInput] = React.useState("");
+  const [active, setActive] = React.useState(false);
+  const [companyData, setCompanyData] = React.useState({});
+  const [companySymbol, setCompanySymbol] = React.useState({});
+
+  React.useEffect(() => {
+    fetchData();
+  }, [])
+
+  // fetching the list of companies to be displayed on the navbar
+  const fetchData = () => {
+    axios({
+      method: "GET",
+      url: "http://127.0.0.1:8000/companies"
+
+    }).then((response) => {
+      const data = response.data;
+      const obj = JSON.parse(data)
+      setCompanyData(obj.comp);
+      setCompanySymbol(obj.nse)
+    }).catch((error) => {
+      console.log(error.response);
+    })
   }
+
+  let mapping = {};
+  for (var i = 1; i < companySymbol.length; i++) {
+    mapping[companyData[i]] = companySymbol[i];
+  }
+
+  const handleInput = (value) => {
+    setInput(value)
+    setActive(value ? true : false)
+    // console.log(value)
+  }
+  const navigate = useNavigate();
   const handleClick = () => {
-      if(input){
-          setActive(false);
-          //redirect to CompanyInfo
-          dispatch(getData(input.key)).then(() => {
-              setActive(true)
-          });
-         
-      }
-     
+    if (input) {
+      setActive(false);
+      //redirect to CompanyInfo
+      dispatch(getData(mapping[input])).then(() => {
+        setActive(true)
+      });
+      //navigating to the user to the CompanyInfo page
+      navigate('/CompanyInfo')
+
+    }
+
 
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{backgroundColor: "black"}}>
+      <AppBar position="static" style={{ backgroundColor: "#6084a0" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -99,27 +132,22 @@ const SearchAppBar =()=> {
           >
             Financial Market Analysis Tool
           </Typography>
-          <Search>
-
-
-
-            {/* <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            /> */}
+          <Search sx={{ backgroundColor: 'white' }}>
             <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={companyList}
-                sx={{  }}
-                onChange={(event,value) => handleInput(value)}
-                renderInput={(params) => <TextField color='primary' {...params} label="Company"  />}
+              disablePortal
+              id="combo-box-demo"
+              options={companyData}
+              sx={{
+                width: '450px', // increase width to 100%
+                '& .MuiInputBase-root': {
+                  backgroundColor: 'white'
+                }
+              }}
+              onChange={(event, value) => handleInput(value)}
+              renderInput={(params) => <TextField color='primary' {...params} label="Company" />}
             />
           </Search>
-          <Button  variant="contained" onClick={ () => handleClick() } disabled={!active}><SearchIcon /></Button>
+          <Button variant="contained" onClick={() => handleClick()} disabled={!active} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}><SearchIcon /></Button>
         </Toolbar>
       </AppBar>
     </Box>

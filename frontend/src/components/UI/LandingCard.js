@@ -103,9 +103,9 @@ const LandingCard = () => {
                     <header className="header" >
                         <div className="header-container" >
                             <div className="logo-container" >
-                                <div style={styles}>
-                                    <img src="/logo.png" alt="Logo" className="logo" />
-                                </div>
+                                {/* <div style={styles}>
+                                    <img src="Financial-Market-Analysis-Tool\frontend\src\components\UI\logo.jpg" alt="Logo" className="logo" />
+                                </div> */}
 
                                 <h1 className="punchline">
                                     <Typography align='center' sx={{ fontSize: 24 }} color="text.primary" gutterBottom >

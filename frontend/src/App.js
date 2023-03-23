@@ -9,22 +9,26 @@ import "react-toastify/dist/ReactToastify.css";
 import SearchAppBar from './components/UI/Navbar';
 import List from './pages/CompanyList';
 import CompanyList from './components/Display/CompanyList';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+import WelcomePage from './pages/WelcomePage';
+
 
 
 function App() {
-return (
+  return (
     <BrowserRouter>
       <CssBaseline />
       <Box sx={{ position: "relative", minHeight: "100vh" }}>
-      <SearchAppBar/>
+        <SearchAppBar />
         <Box sx={{ paddingTop: "2em", paddingBottom: "4rem" }}>
-        <Container maxWidth={false} sx={{ maxWidth: '100%' }}>
-          {/* <CompanyInfo/> */}
-          <Routes>
-            {/* <Route exact path="/" element={<LandingPage/>} />
+          <Container maxWidth={false} sx={{ maxWidth: '100%' }}>
+            {/* <CompanyInfo/> */}
+            <Routes>
+              {/* <Route exact path="/" element={<LandingPage/>} />
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/register" element={<Register />}></Route> */}
-            {/* <Route
+              {/* <Route
               path="/"
               element={
                 <ProtectedRoutes>
@@ -32,16 +36,20 @@ return (
                 </ProtectedRoutes>
               }
             > */}
-              {/* OTHER PROTECTED ROUTES */}
-              <Route path="/" element={<LandingPage/>} />
-              <Route path="/CompanyInfo" element={<CompanyInfo/>} />
-              <Route path="/CompanyList" element={<List/>} />
-            {/* </Route> */}
 
-            {/* ERROR PAGE */}
-            {/* <Route exact path="*" element={<Error />}></Route> */}
-          </Routes>
-          <ToastContainer position="top-center" />
+              {/* OTHER PROTECTED ROUTES */}
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/Signup" element={<Signup />} />
+              <Route path="/Signin" element={<Signin />} />
+              <Route path="/WelcomePage" element={<WelcomePage />} />
+              <Route path="/CompanyInfo" element={<CompanyInfo />} />
+              <Route path="/CompanyList" element={<List />} />
+              {/* </Route> */}
+
+              {/* ERROR PAGE */}
+              {/* <Route exact path="*" element={<Error />}></Route> */}
+            </Routes>
+            <ToastContainer position="top-center" />
           </Container>
         </Box>
       </Box>

@@ -1,0 +1,45 @@
+.success-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: auto;
+
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px #ccc;
+}
+
+.svg1 {
+    stroke-width: 3;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    stroke: #4bf3a2;
+    fill: none;
+    animation: success-check 0.5s ease-in-out forwards;
+}
+
+.head {
+
+    font-size: 1rem;
+    text-align: center;
+    color: #6b6b6b;
+}
+
+@keyframes success-check {
+    0% {
+        stroke-dashoffset: 50;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}

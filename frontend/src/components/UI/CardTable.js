@@ -1,29 +1,10 @@
 import React from 'react';
-import { useState, useEffect } from "react";
-import axios from 'axios'
+import { useSelector } from 'react-redux';
 
 function CardTable() {
 
-    const [cashData, setCashData] = useState({});
-    useEffect(() => {
-        fetchData();
-    }, [])
+    const companyData = useSelector((store) => store.company);
 
-    const fetchData = () => {
-        axios({
-            method: "GET",
-            url: "http://127.0.0.1:8000/profile"
-
-        }).then((response) => {
-            const data = response.data;
-            console.log(data);
-            console.log(typeof data);
-            setCashData(data);
-
-        }).catch((error) => {
-            console.log(error.response);
-        })
-    }
 
     return (
         <div style={{
@@ -45,33 +26,41 @@ function CardTable() {
                 <tbody>
                     <tr>
                         <td style={{ padding: '10px' }}>Market Cap</td>
-                        <td style={{ padding: '10px' }}>$ {cashData.MarketCapitalization}</td>
+                        <td style={{ padding: '10px' }}>$ {companyData.companyData.profileDataResult.MarketCapitalization}</td>
                         <td style={{ padding: '10px' }}>Current Price</td>
                         <td style={{ padding: '10px' }}>$ </td>
                         <td style={{ padding: '10px' }}>High / Low</td>
-                        <td style={{ padding: '10px' }}>$ {cashData["52WeekHigh"]} / {cashData["52WeekLow"]}</td>
+                        <td style={{ padding: '10px' }}>$ {companyData.companyData.profileDataResult["52WeekHigh"]} / {companyData.companyData.profileDataResult["52WeekLow"]}</td>
                     </tr>
                     <tr style={{ backgroundColor: '#e3eaf3' }}>
-                        <td style={{ padding: '10px'}}>Stock P/E</td>
-                        <td style={{ padding: '10px'}}>{cashData.PERatio}</td>
-                        <td style={{ padding: '10px'  }}>Book Value</td>
-                        <td style={{ padding: '10px' }}>$ {cashData.BookValue}</td>
+                        <td style={{ padding: '10px' }}>Stock P/E</td>
+                        <td style={{ padding: '10px' }}>{companyData.companyData.profileDataResult.PERatio}</td>
+                        <td style={{ padding: '10px' }}>Book Value</td>
+                        <td style={{ padding: '10px' }}>$ {companyData.companyData.profileDataResult.BookValue}</td>
                         <td style={{ padding: '10px' }}>Dividend Yield</td>
-                        <td style={{ padding: '10px' }}>{cashData.DividendYield} %</td>
+                        <td style={{ padding: '10px' }}>{companyData.companyData.profileDataResult.DividendYield} %</td>
                     </tr>
                     <tr>
-                        <td style={{ padding: '10px' }}>ROCE</td>
-                        <td style={{ padding: '10px' }}> %</td>
+                        <td style={{ padding: '10px' }}> Revenue (TTM)</td>
+                        <td style={{ padding: '10px' }}> {companyData.companyData.profileDataResult.RevenueTTM} </td>
                         <td style={{ padding: '10px' }}>ROE (TTM)</td>
-                        <td style={{ padding: '10px' }}> {cashData.ReturnOnEquityTTM} %</td>
-                        <td style={{ padding: '10px' }}>Face Value</td>
-                        <td style={{ padding: '10px' }}>$ </td>
+                        <td style={{ padding: '10px' }}> {companyData.companyData.profileDataResult.ReturnOnEquityTTM} %</td>
+                        <td style={{ padding: '10px' }}>ROA (TTM)</td>
+                        <td style={{ padding: '10px' }}> {companyData.companyData.profileDataResult.ReturnOnAssestsTTM} </td>
+                    </tr>
+                    <tr>
+                        <td style={{ padding: '10px' }}> Sector </td>
+                        <td style={{ padding: '10px' }}> {companyData.companyData.profileDataResult.Sector} </td>
+                        <td style={{ padding: '10px' }}>Industry </td>
+                        <td style={{ padding: '10px' }}> {companyData.companyData.profileDataResult.Industry} %</td>
+                        <td style={{ padding: '10px' }}>Assest Type</td>
+                        <td style={{ padding: '10px' }}> {companyData.companyData.profileDataResult.AssestType} </td>
                     </tr>
                 </tbody>
             </table>
             <div>
                 <h5>Add ratio to table</h5>
-                <input placeholder= 'eg: Promoter holding'>
+                <input placeholder='eg: Promoter holding'>
                 </input>
             </div>
         </div>

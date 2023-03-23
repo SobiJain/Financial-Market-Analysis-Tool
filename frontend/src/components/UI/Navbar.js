@@ -100,21 +100,24 @@ const SearchAppBar =()=> {
             Financial Market Analysis Tool
           </Typography>
           <Search>
-            <SearchIconWrapper>
+
+
+
+            {/* <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-            />
-            {/* <Autocomplete
+            /> */}
+            <Autocomplete
                 disablePortal
                 id="combo-box-demo"
                 options={companyList}
-                sx={{ }}
+                sx={{  }}
                 onChange={(event,value) => handleInput(value)}
                 renderInput={(params) => <TextField color='primary' {...params} label="Company"  />}
-            /> */}
+            />
           </Search>
           <Button  variant="contained" onClick={ () => handleClick() } disabled={!active}><SearchIcon /></Button>
         </Toolbar>

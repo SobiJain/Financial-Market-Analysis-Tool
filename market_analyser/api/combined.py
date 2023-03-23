@@ -4,7 +4,7 @@ import requests
 class FetchData(ABC):
 
     def sendKey(self):
-        return "3AL8AAIOSNI9YS1Q"
+        return "C3WTADNI1HN9QZ3Q"
 
     def getData(self, key):
         url = f'https://www.alphavantage.co/query?function={self.component}&symbol={key}{self.params}&apikey={self.sendKey()}'

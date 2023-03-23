@@ -1,12 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-function CardTable() {
+function CardTable(props) {
 
     const companyData = useSelector((store) => store.company);
     const isLoading = useSelector((state) => state.company.isLoading);
 
     if(!isLoading) {
+        let dataToExtract = [{
+            MarketCap: companyData.companyData.profileDataResult.MarketCapitalization,
+            HighLow : companyData.companyData.profileDataResult["52WeekHigh"]/companyData.companyData.profileDataResult["52WeekLow"]
+
+
+        }];
+
+        props.onDataExtracter(dataToExtract);
         return (
             <div style={{
                 borderRadius: '10px',

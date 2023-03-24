@@ -1,8 +1,17 @@
 from dataclasses import field
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as authUser
 from rest_framework.authtoken.views import Token
+from .models import Wishlist, User
 
+class WishlistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Wishlist
+        fields = ('id', 'user', 'item')
+
+    def create(self, validated_data):
+        user = User.objects()
+        return Wishlist.objects.create(user=user, item=validated_data.get('key'))
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,6 +24,10 @@ class UserSerializer(serializers.ModelSerializer):
         }}
 
     def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
+        user = authUser.objects.create_user(**validated_data)
         Token.objects.create(user=user)
+        User.objects.create(username=validated_data.get('username'), token=validated_data.get('token'))
         return user    
+    
+
+    

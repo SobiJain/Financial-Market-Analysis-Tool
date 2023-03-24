@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     "corsheaders",
     "api.apps.ApiConfig",
     'crispy_forms',
-    'accounts',
     'rest_framework.authtoken',
-    'rest_framework'
+    'rest_framework',
+    "accounts.apps.AccountsConfig"
 ]
 
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ WSGI_APPLICATION = "market_analyser.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'desis',
+        'NAME': 'screener',
         'USER': 'root',
         'PASSWORD': 'desisproject',
         'HOST': 'localhost',   

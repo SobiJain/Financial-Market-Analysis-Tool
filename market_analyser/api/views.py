@@ -117,15 +117,18 @@ def verify(request):
 @csrf_exempt 
 def login(request):
     
-    # try:
+    try:
         user = json.loads(request.body.decode('utf-8'))
 
         email, input_password =  user["email"], user["password"]
     
-        db_user = User.objects.get(email=email, verified=True)
+        db_user = User.objects.get(email=email)
 
         if db_user is None:
-            return JsonResponse({'success': False}, status=400, safe=False)
+            return JsonResponse({'success': False, "message":'Invalid Credentials'}, status=400, safe=False)
+        
+        if not db_user.verified:
+            return JsonResponse({'success': False, "message":'Please Verify your email'}, status=401, safe=False)
 
         hashed_password = db_user.password
 
@@ -139,10 +142,10 @@ def login(request):
                 token = str(token)
             return JsonResponse({'success': True, 'token': token}, status=200, safe=False)
 
-        return JsonResponse({'success': False}, status=400, safe=False)
+        return JsonResponse({'success': False, "message":'Invalid Credentials'}, status=400, safe=False)
 
-    # except:
-        # return JsonResponse({'success': False}, status=400, safe=False)
+    except:
+        return JsonResponse({'success': False, "message":'Invalid Credentials'}, status=400, safe=False)
 
 @csrf_exempt 
 def forgot(request):

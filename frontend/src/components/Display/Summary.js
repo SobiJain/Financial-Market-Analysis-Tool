@@ -4,8 +4,6 @@ import DateTime from "./Date";
 import { useState } from "react";
 import CardTable from "../UI/CardTable";
 import { useSelector } from 'react-redux'
-import * as XLSX from 'xlsx'
-import { saveAs } from 'file-saver';
 
 const Test = () => {
 
@@ -16,27 +14,11 @@ const Test = () => {
 
     //temporary change function
     const [initial, setInitial] = useState('+ FOLLOW');
-    const [excelData, setExcelData] = useState();
     const Onchange = () => {
         setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
     }
 
-    const dataExtracter = (dataToBeExtracted) => {
-        setExcelData(dataToBeExtracted);
-
-    }
-
-    const exportToExcel = () => {
-        console.log("inside export to excel");
-        const worksheet = XLSX.utils.json_to_sheet(excelData);
-        const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-        const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-        const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
-        saveAs(blob, 'data.xlsx');
-    }
-
-    // the if statement is responsible for rendering the Card component only if the state of isLoading is false, i.e when the entire data of the company is fetched
+// the if statement is responsible for rendering the Card component only if the state of isLoading is false, i.e when the entire data of the company is fetched
     if (!isLoading)
         return <Card>
             <div style={{ display: 'flex' }}>
@@ -71,7 +53,7 @@ const Test = () => {
 
                             </div>
                             <div style={{ flexBasis: '50%', }}>
-                                <CardTable onDataExtracter={dataExtracter} ></CardTable>
+                                <CardTable></CardTable>
                             </div>
                         </div>
                     </div>
@@ -81,7 +63,7 @@ const Test = () => {
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <div style={{ flexBasis: '50%', marginTop: "10%" }}>
-                                    <Button onClick={exportToExcel}>
+                                    <Button>
                                         EXPORT TO EXCEL
                                     </Button>
                                 </div>

@@ -136,6 +136,7 @@ const LandingCard = () => {
 
                         </div>
                     </header>
+                    
                 </Box>
 
 

@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import SearchAppBar from './components/UI/Navbar';
 import List from './pages/CompanyList';
 import CompanyList from './components/Display/CompanyList';
+import Login from './components/UI/Login'
 
 
 function App() {
@@ -22,7 +23,6 @@ return (
           {/* <CompanyInfo/> */}
           <Routes>
             {/* <Route exact path="/" element={<LandingPage/>} />
-            <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/register" element={<Register />}></Route> */}
             {/* <Route
               path="/"
@@ -33,7 +33,8 @@ return (
               }
             > */}
               {/* OTHER PROTECTED ROUTES */}
-              <Route path="/" element={<LandingPage/>} />
+              {/* <Route path="/" element={<LandingPage/>} /> */}
+              <Route path="/" element={<Login />}></Route>
               <Route path="/CompanyInfo" element={<CompanyInfo/>} />
               <Route path="/CompanyList" element={<List/>} />
             {/* </Route> */}

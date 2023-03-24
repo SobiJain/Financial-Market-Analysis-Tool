@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "api.apps.ApiConfig",
+    'crispy_forms',
+    'accounts',
+    'rest_framework.authtoken',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -70,6 +74,8 @@ TEMPLATES = [
     },
 ]
 
+CRISPY_TEMPLATE_PACK =  'bootstrap4'
+
 WSGI_APPLICATION = "market_analyser.wsgi.application"
 
 
@@ -77,10 +83,14 @@ WSGI_APPLICATION = "market_analyser.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'desis',
+        'USER': 'root',
+        'PASSWORD': 'desisproject',
+        'HOST': 'localhost',   
+        'PORT': '3306',
+    } 
 }
 
 CORS_ORIGIN_ALLOW_ALL = False

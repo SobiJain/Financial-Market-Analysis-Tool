@@ -16,6 +16,11 @@ import { getData } from '../../features/company/companySlice';
 import { companyList } from '../../data/companyList';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
+
+import { logout } from '../../auth/actions';
+
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -65,6 +70,8 @@ const SearchAppBar = () => {
   const [active, setActive] = React.useState(false);
   const [companyData, setCompanyData] = React.useState({});
   const [companySymbol, setCompanySymbol] = React.useState({});
+
+  let auth = useSelector((state) => state.auth);
 
   React.useEffect(() => {
     fetchData();
@@ -132,7 +139,10 @@ const SearchAppBar = () => {
           >
             Financial Market Analysis Tool
           </Typography>
-          <Search sx={{ backgroundColor: 'white' }}>
+          {
+            auth.isAuthenticated ?
+            <>
+            <Search sx={{ backgroundColor: 'white' }}>
             <Autocomplete
               disablePortal
               id="combo-box-demo"
@@ -148,6 +158,11 @@ const SearchAppBar = () => {
             />
           </Search>
           <Button variant="contained" onClick={() => handleClick()} disabled={!active} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}><SearchIcon /></Button>
+          <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button>
+          </>:null
+        }
+          
+          
         </Toolbar>
       </AppBar>
     </Box>

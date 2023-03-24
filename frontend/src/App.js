@@ -10,6 +10,7 @@ import SearchAppBar from './components/UI/Navbar';
 import List from './pages/CompanyList';
 import CompanyList from './components/Display/CompanyList';
 import Login from './components/UI/Login'
+import Register from './components/UI/Signup';
 
 
 function App() {
@@ -22,19 +23,10 @@ return (
         <Container maxWidth={false} sx={{ maxWidth: '100%' }}>
           {/* <CompanyInfo/> */}
           <Routes>
-            {/* <Route exact path="/" element={<LandingPage/>} />
-            <Route exact path="/register" element={<Register />}></Route> */}
-            {/* <Route
-              path="/"
-              element={
-                <ProtectedRoutes>
-                  <SharedLayout />
-                </ProtectedRoutes>
-              }
-            > */}
               {/* OTHER PROTECTED ROUTES */}
-              {/* <Route path="/" element={<LandingPage/>} /> */}
-              <Route path="/" element={<Login />}></Route>
+              <Route path="/" element={<LandingPage/>} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />}/>
               <Route path="/CompanyInfo" element={<CompanyInfo/>} />
               <Route path="/CompanyList" element={<List/>} />
             {/* </Route> */}

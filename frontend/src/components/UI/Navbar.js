@@ -17,7 +17,6 @@ import { companyList } from '../../data/companyList';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {useCookies} from 'react-cookie';
-import {useState} from 'react'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -140,9 +139,15 @@ const SearchAppBar = () => {
           >
             Financial Market Analysis Tool
           </Typography>
-          <a href ="/login" className="nav-link active" >Log in</a>
-          <a href ="/register" className="nav-link active">Register</a>
-          <a href ="/" className="nav-link active" onClick={logoutBtn}>Log out</a>
+          { String(token['mytoken']) === 'undefined' && <>
+            <a href ="/login" className="nav-link active" >Log in</a>
+                <a href ="/register" className="nav-link active">Register</a>
+            </>
+          }
+          { String(token['mytoken']) !== 'undefined' && <>
+                <a href ="/" className="nav-link active" onClick={logoutBtn}>Log out</a>
+            </>
+          }
           <Search sx={{ backgroundColor: 'white' }}>
             <Autocomplete
               disablePortal

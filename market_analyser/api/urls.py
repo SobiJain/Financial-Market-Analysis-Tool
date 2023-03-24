@@ -10,5 +10,11 @@ urlpatterns = [
     path('quarter', views.getQuarter, name="quarter"),
     path('profitloss', views.getProfitLoss, name="profitloss"),
     path('companies',views.getCompanyList,name='companies'),
-    path('price', views.getPrice, name='price')
+    path('price', views.getPrice, name='price'),
+
+    path('register', views.register, name='register'),
+    path('verify', views.verify, name='verify'),
+    path('login', views.login, name='login'),
+    path('forgot', views.forgot, name='forgot'),
+    path('reset', views.reset, name='reset'),
 ]

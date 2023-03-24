@@ -1,10 +1,15 @@
 from abc import ABC
 import requests
+import random
 
 class FetchData(ABC):
 
     def sendKey(self):
-        return "9EA6DOJBHMGO0LO3"
+        # keys= ["E4RZZFV65NX33A70" ,"3AL8AAIOSNI9YS1Q","L4530JCCRYTND6MY" ,"C3WTADNI1HN9QZ3Q" ,"46O3W22SFPXN88X6"
+        #        ,"TNLEIFZKCJ8MHWQF" ,"80NB0H7LDATSS8ZA" ,"8YYV8RAUMPILRH5D" ,"M7OAKXRNW6V10MYQ","JQW7E2QQPKRN35QB"
+        #         ,"9TIZPDP8X8JM3UMQ" ,"8ARKA9EPGUZ3ZU0D" ,"7J8RXR1KX04UITEM" ,"D2K2RT93N660NRQ9" ,"17XQUUBSD290NAPY" ,"0LVHUTR3TIYLR8HY"]
+        # return keys[random.randint(0,15)]
+        return "8ARKA9EPGUZ3ZU0D"
 
     def getData(self, key):
         url = f'https://www.alphavantage.co/query?function={self.component}&symbol={key}{self.params}&apikey={self.sendKey()}'

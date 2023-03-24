@@ -26,7 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = authUser.objects.create_user(**validated_data)
         Token.objects.create(user=user)
-        User.objects.create(username=validated_data.get('username'), token=validated_data.get('token'))
+        User.objects.create(username=validated_data.get('username'), password=validated_data.get('password'))
         return user    
     
 

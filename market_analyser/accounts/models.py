@@ -7,4 +7,4 @@ class User(models.Model):
 
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    item = models.CharField(max_length=10, unique=True)
+    item = models.CharField(max_length=10, unique=False)

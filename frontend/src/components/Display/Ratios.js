@@ -16,7 +16,8 @@ const Ratios = () =>{
         const sz = balancesheetData.annualReports.length;
         let roeList = []
 
-        if( cashflowData.annualReports!==null && balancesheetData.annualReports!==null) {
+        
+        if( cashflowData.annualReports!==null && balancesheetData.annualReports!==null && cashflowData.Note===null && balancesheetData.Note===null) {
             for (var i=0; i<sz; i++) {
                 roeList.push({roe: cashflowData.annualReports[i]['netIncome']/balancesheetData.annualReports[i]['totalShareholderEquity']})
             }

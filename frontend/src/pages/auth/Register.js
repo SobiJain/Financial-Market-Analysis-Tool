@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import ButtonC from '../../components/UI/ButtonC'
 
 const Register = () => {
   
@@ -108,7 +109,7 @@ const Register = () => {
             </div>
           </div>
           <a href="/login" className="discrete" >Already a user? Log in</a>
-          <button type="button" onClick={()=>handleSubmit()}>Sign up</button>
+          <ButtonC type="button" onClick={()=>handleSubmit()}>Sign up</ButtonC>
         </form>
       </div>
   );

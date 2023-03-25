@@ -25,7 +25,7 @@ const Search = styled('div')(({ theme }) => ({
     '&:hover': {
         backgroundColor: alpha(theme.palette.common.black),
     },
-    marginLeft: 0,
+    marginRight: '1rem',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
@@ -40,6 +40,15 @@ const styles = {
 
 };
 const LandingCard = () => {
+
+    const customPopperStyles = {
+        // Add your custom styles here
+        backgroundColor: '#ffffff',
+        borderRadius: '4px',
+        boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
+        zIndex: 9999
+    };
+
     const dispatch = useDispatch();
     const [input, setInput] = React.useState("");
     const [active, setActive] = React.useState(false);
@@ -130,6 +139,9 @@ const LandingCard = () => {
                                             sx={{}}
                                             onChange={(event, value) => handleInput(value)}
                                             renderInput={(params) => <TextField {...params} label="Company" />}
+                                            PopperProps={{
+                                                style: customPopperStyles
+                                            }}
                                         />
                                     </Search>
                                     <Button variant="contained" onClick={() => handleClick()} disabled={!active}><SearchIcon /></Button>

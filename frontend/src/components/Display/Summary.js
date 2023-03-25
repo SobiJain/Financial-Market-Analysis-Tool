@@ -1,4 +1,4 @@
-import Button from "../UI/Button";
+import Button from "../UI/ButtonC";
 import Card from "../UI/Card";
 import DateTime from "./Date";
 import { useState } from "react";

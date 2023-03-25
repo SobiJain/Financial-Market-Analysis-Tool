@@ -17,6 +17,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { logout, companyfound } from '../../auth/actions';
+import ButtonC from './ButtonC';
 
 
 
@@ -123,7 +124,7 @@ const SearchAppBar = () => {
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ backgroundColor: "#6084a0" }}>
+      <AppBar position="static" style={{ backgroundColor: "#7a90c1" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -132,7 +133,7 @@ const SearchAppBar = () => {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
           </IconButton>
           <Typography
             variant="h6"
@@ -148,7 +149,7 @@ const SearchAppBar = () => {
               id="combo-box-demo"
               options={companyData}
               sx={{
-                width: '450px', // increase width to 100%
+                width: '350px', // increase width to 100%
                 '& .MuiInputBase-root': {
                   backgroundColor: 'white'
                 }
@@ -159,12 +160,12 @@ const SearchAppBar = () => {
           </Search>
           <Button variant="contained" onClick={() => handleClick()} disabled={!active} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}><SearchIcon /></Button>
           { auth.isAuthenticated ? <>
-          <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button> 
-          <Button variant="contained" onClick={() => (navigate('/wishlist'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Wishlist</Button> 
+          <ButtonC variant="contained" onClick={() => (dispatch(logout()))}>Logout</ButtonC> 
+          <ButtonC variant="contained" onClick={() => (navigate('/wishlist'))} >Wishlist</ButtonC> 
           </>: 
           <>
-          <Button variant="contained" onClick={() => (navigate('/login'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Login</Button>
-          <Button variant="contained" onClick={() => (navigate('/register'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Register</Button>
+          <ButtonC variant="contained" onClick={() => (navigate('/login'))} >Login</ButtonC>
+          <ButtonC variant="contained" onClick={() => (navigate('/register'))} >Register</ButtonC>
           </>
             }
           

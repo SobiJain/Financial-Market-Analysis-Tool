@@ -20,7 +20,7 @@ const Test = () => {
     const [initial, setInitial] = useState('+ FOLLOW');
     const [wishItem, setWishItem] = useState({'email':'','company':'', 'state':''})
 
-    const Onchange = () => {
+    const Onchange = () =>  {
         const url = "http://127.0.0.1:8000/wishlist"
         if(initial==='+ FOLLOW') {
             setWishItem({...wishItem,"email": localStorage.getItem("email"),"company": companyData.companyData.profileDataResult.Symbol, state:'true'})

@@ -49,54 +49,6 @@ const Login = () => {
   }
 
   return (
-    // <div className="login-form">
-    //   <h2>Login</h2>
-    //   <form>
-    //     <div className="form-group">
-    //       <label htmlFor="password">Email:</label>
-    //       <input
-    //         type="email"
-    //         id="email"
-    //         name="email"
-    //         value={user.email}
-    //         onChange={(event) =>
-    //           setUser({ ...user, email: event.target.value })
-    //         }
-    //       />
-    //     </div>
-
-    //     <div className="form-group">
-    //       <label htmlFor="password">Password:</label>
-    //       <input
-    //         type="password"
-    //         id="password"
-    //         name="password"
-    //         value={user.password}
-    //         onChange={(event) =>
-    //           setUser({ ...user, password: event.target.value })
-    //         }
-    //       />
-    //     </div>
-
-    //     <div className="login-links">
-    //       <div className="forgot-password">
-    //           <a href="/register">
-    //               Register
-    //           </a>
-    //       </div>
-
-    //       <div className="forgot-password">
-    //           <a href="/forgot" onClick={()=>handleForgotPasswordClick()}>
-    //               Forgot password?
-    //           </a>
-    //       </div>
-    //     </div>
-
-        
-
-    //     <button type="button" className="auth-submit" onClick={()=>handleSubmit()}>Submit</button>
-    //   </form>
-    // </div>
 
     <div className="session">
         <div className="left">

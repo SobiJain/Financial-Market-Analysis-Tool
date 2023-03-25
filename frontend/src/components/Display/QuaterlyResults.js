@@ -1,17 +1,33 @@
 import Card from "../UI/Card";
 import './QuaterlyResults.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import RefreshButton from "../UI/RefreshButton";
+import { getQuaterData } from "../../features/company/companySlice";
+
 
 const QuaterlyResults = () => {
 
     const isLoading = useSelector((state) => state.company.isLoading);
     const companyData = useSelector((store) => store.company);
+    const quaterIsLoading = useSelector((state) => state.quaterIsLoading)
 
-    if(!isLoading) {
+    const dispatch = useDispatch();
+    const QuaterHandler = () => {
+        const key = localStorage.getItem('company');
+        dispatch(getQuaterData(key));
+
+
+    }
+
+
+    if (!isLoading && !quaterIsLoading) {
         return <Card>
             <div class="flex-containerqr">
                 <div class="col-1qr">
-                    <h2 style={{ marginLeft: '1.5%' }}>Quarterly Results</h2>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <h2 style={{ marginLeft: '1.5%' }}>Quarterly Results</h2>
+                        <RefreshButton onClick ={QuaterHandler}></RefreshButton>
+                    </div>
                 </div>
                 <div class="col-2qr">
                     <div class="flex-container1qr">
@@ -23,7 +39,7 @@ const QuaterlyResults = () => {
                         </div>
                         <div class="row-31qr">
                             <button>
-                                PRODUCT SEGMENTS
+                                EXPORT TO EXCEL
                             </button>
                         </div>
                     </div>
@@ -47,28 +63,28 @@ const QuaterlyResults = () => {
                             <td>Reported EPS</td>
                             {companyData.companyData.quarterDataResult.quarterlyEarnings && companyData.companyData.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                                 return <td> {item.reportedEPS} </td>
-                            
+
                             })}
                         </tr>
                         <tr>
                             <td>Estimated EPS</td>
                             {companyData.companyData.quarterDataResult.quarterlyEarnings && companyData.companyData.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                                 return <td> {item.estimatedEPS} </td>
-                            
+
                             })}
                         </tr>
                         <tr>
                             <td>Surprise</td>
                             {companyData.companyData.quarterDataResult.quarterlyEarnings && companyData.companyData.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                                 return <td> {item.surprise} </td>
-                            
+
                             })}
                         </tr>
                         <tr>
                             <td>Surprise Percentage</td>
                             {companyData.companyData.quarterDataResult.quarterlyEarnings && companyData.companyData.quarterDataResult.quarterlyEarnings.slice(0, 9).reverse().map((item) => {
                                 return <td> {item.surprisePercentage} </td>
-                            
+
                             })}
                         </tr>
                     </table>

@@ -9,6 +9,7 @@ import BalanceSheet from '../components/Display/BalanceSheet'
 import CashFlows from '../components/Display/CashFlows'
 import Ratios from '../components/Display/Ratios'
 import Document from '../components/Display/Document'
+import Footer from '../components/UI/Footer'
 function CompanyInfo(props) {
   return (
     <>
@@ -21,6 +22,8 @@ function CompanyInfo(props) {
         <CashFlows />
         <Ratios />
         {/* <Document /> */}
+       
+
     </>
   )
 }

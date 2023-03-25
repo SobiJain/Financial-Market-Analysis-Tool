@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import RefreshButton from './RefreshButton';
 
 //styling of the search component
 const Search = styled('div')(({ theme }) => ({

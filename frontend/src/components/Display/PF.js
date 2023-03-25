@@ -1,6 +1,9 @@
 import Card from '../UI/Card';
 import './PF.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { getProfitLossData } from "../../features/company/companySlice";
+import RefreshButton from '../UI/RefreshButton';
+
 
 const PF = () => {
 
@@ -8,12 +11,27 @@ const PF = () => {
     const isLoading = useSelector((state) => state.company.isLoading);
     // fetching the companyData state from redux-store setup 
     const companyData = useSelector((store) => store.company);
+    const PFIsLoading = useSelector((state) => state.profitLossIsLoading)
 
-    if(!isLoading) {
+    const dispatch = useDispatch();
+
+    const PFHandler = () => {
+        const key = localStorage.getItem('company');
+        dispatch(getProfitLossData(key));
+
+
+    }
+
+
+    if (!isLoading && !PFIsLoading) {
         return <Card>
             <div class="flex-containerpf">
                 <div class="col-1pf">
-                    <h2 style={{ marginLeft: '1.5%' }}>Profit & Loss</h2>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+
+                        <h2 style={{ marginLeft: '1.5%' }}>Profit & Loss</h2>
+                        <RefreshButton onClick={PFHandler}></RefreshButton>
+                    </div>
                 </div>
                 <div class="col-2pf">
                     <div class="flex-container1pf">
@@ -24,7 +42,7 @@ const PF = () => {
                         </div>
                         <div class="row-31pf">
                             <button>
-                                PRODUCT SEGMENTS
+                               EXPORT TO EXCEL
                             </button>
                         </div>
                     </div>
@@ -47,136 +65,136 @@ const PF = () => {
                         <tr>
                             <td>Goods Cost</td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.costofGoodsAndServicesSold/10000000} </td>
+                                return <td> {item.costofGoodsAndServicesSold / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.costofGoodsAndServicesSold/10000000} </td>
+                                return <td> {item.costofGoodsAndServicesSold / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.costofGoodsAndServicesSold/10000000} </td>
+                                return <td> {item.costofGoodsAndServicesSold / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.costofGoodsAndServicesSold/10000000} </td>
+                                return <td> {item.costofGoodsAndServicesSold / 10000000} </td>
                             })}
                         </tr>
                         <tr>
                             <td>Operating Income</td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.operatingIncome/10000000} </td>
+                                return <td> {item.operatingIncome / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.operatingIncome/10000000} </td>
+                                return <td> {item.operatingIncome / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.operatingIncome/10000000} </td>
+                                return <td> {item.operatingIncome / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.operatingIncome/10000000} </td>
+                                return <td> {item.operatingIncome / 10000000} </td>
                             })}
                         </tr>
                         <tr>
                             <td>Operating Expenses</td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.operatingExpenses/10000000} </td>
+                                return <td> {item.operatingExpenses / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.operatingExpenses/10000000} </td>
+                                return <td> {item.operatingExpenses / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.operatingExpenses/10000000} </td>
+                                return <td> {item.operatingExpenses / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.operatingExpenses/10000000} </td>
+                                return <td> {item.operatingExpenses / 10000000} </td>
                             })}
                         </tr>
                         <tr>
                             <td>Interest Income</td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.interestIncome/10000000} </td>
+                                return <td> {item.interestIncome / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.interestIncome/10000000} </td>
+                                return <td> {item.interestIncome / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.interestIncome/10000000} </td>
+                                return <td> {item.interestIncome / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.interestIncome/10000000} </td>
+                                return <td> {item.interestIncome / 10000000} </td>
                             })}
                         </tr>
                         <tr>
                             <td>Interest Expense</td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.interestExpense/10000000} </td>
+                                return <td> {item.interestExpense / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.interestExpense/10000000} </td>
+                                return <td> {item.interestExpense / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.interestExpense/10000000} </td>
+                                return <td> {item.interestExpense / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.interestExpense/10000000} </td>
+                                return <td> {item.interestExpense / 10000000} </td>
                             })}
                         </tr>
                         <tr>
                             <td>Depreciation</td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.depreciation/10000000} </td>
+                                return <td> {item.depreciation / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.depreciation/10000000} </td>
+                                return <td> {item.depreciation / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.depreciation/10000000} </td>
+                                return <td> {item.depreciation / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.depreciation/10000000} </td>
+                                return <td> {item.depreciation / 10000000} </td>
                             })}
                         </tr>
                         <tr>
                             <td><b>Income before tax</b></td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.incomeBeforeTax/10000000} </td>
+                                return <td> {item.incomeBeforeTax / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.incomeBeforeTax/10000000} </td>
+                                return <td> {item.incomeBeforeTax / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.incomeBeforeTax/10000000} </td>
+                                return <td> {item.incomeBeforeTax / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.incomeBeforeTax/10000000} </td>
+                                return <td> {item.incomeBeforeTax / 10000000} </td>
                             })}
                         </tr>
                         <tr>
                             <td>Tax expenses</td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.incomeTaxExpense/10000000} </td>
+                                return <td> {item.incomeTaxExpense / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.incomeTaxExpense/10000000} </td>
+                                return <td> {item.incomeTaxExpense / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.incomeTaxExpense/10000000} </td>
+                                return <td> {item.incomeTaxExpense / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.incomeTaxExpense/10000000} </td>
+                                return <td> {item.incomeTaxExpense / 10000000} </td>
                             })}
                         </tr>
                         <tr>
                             <td><b> Net Profit</b></td>
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(16, 17).reverse().map((item) => {
-                                return <td> {item.grossProfit/10000000} </td>
+                                return <td> {item.grossProfit / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(12, 13).reverse().map((item) => {
-                                return <td> {item.grossProfit/10000000} </td>
+                                return <td> {item.grossProfit / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(8, 9).reverse().map((item) => {
-                                return <td> {item.grossProfit/10000000} </td>
+                                return <td> {item.grossProfit / 10000000} </td>
                             })}
                             {companyData.companyData.profitLossDataResult.quarterlyReports && companyData.companyData.profitLossDataResult.quarterlyReports.slice(0, 6).reverse().map((item) => {
-                                return <td> {item.grossProfit/10000000} </td>
+                                return <td> {item.grossProfit / 10000000} </td>
                             })}
                         </tr>
                     </table>

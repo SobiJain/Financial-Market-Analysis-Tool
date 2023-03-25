@@ -1,7 +1,10 @@
 import Card from "../UI/Card";
 import './CashFlows.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import React from 'react';
+import { getCashData } from "../../features/company/companySlice";
+import RefreshButton from "../UI/RefreshButton";
+
 
 
 const CashFlows = () => {
@@ -9,14 +12,26 @@ const CashFlows = () => {
     const isLoading = useSelector((state) => state.company.isLoading);
     // fetching the companyData state from redux-store setup 
     const companyData = useSelector((store) => store.company);
+    const cashIsLoading = useSelector((state) => state.cashDataIsLoading);
 
-    if(!isLoading)
-    {
+    const dispatch = useDispatch();
+
+    const CashHandler = () => {
+        const key = localStorage.getItem('company');
+        dispatch(getCashData(key));
+
+
+    }
+
+    if (!isLoading) {
         return <Card>
-                <div class="flex-containerqr">
-                    <div class="col-1qr">
+            <div class="flex-containerqr">
+                <div class="col-1qr">
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
                         <h2 style={{ marginLeft: '1.5%' }}>Cash Flows</h2>
+                        <RefreshButton onClick = {CashHandler}></RefreshButton>
                     </div>
+                </div>
                 <div class="col-2qr">
                     <div class="flex-container1qr">
                         <div class="row-11qr">
@@ -26,7 +41,7 @@ const CashFlows = () => {
                             <h4 style={{ marginLeft: '15%' }}> </h4>
                         </div>
                         <div class="row-31qr">
-                                        
+
                         </div>
                     </div>
 
@@ -44,16 +59,16 @@ const CashFlows = () => {
                         <tr>
                             <td>Operating Cashflow</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.operatingCashflow/1000000000} </td>
-                            
+                                return <td> {item.operatingCashflow / 1000000000} </td>
+
                             })}
 
                         </tr>
                         <tr>
                             <td>Cashflow from Investment</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.cashflowFromInvestment/1000000000} </td>
-                            
+                                return <td> {item.cashflowFromInvestment / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -61,8 +76,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Cashflow from Financing</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.cashflowFromFinancing/1000000000} </td>
-                            
+                                return <td> {item.cashflowFromFinancing / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -70,16 +85,16 @@ const CashFlows = () => {
                         <tr>
                             <td>Dividend Payout</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.dividendPayout/1000000000} </td>
-                            
+                                return <td> {item.dividendPayout / 1000000000} </td>
+
                             })}
 
                         </tr>
                         <tr>
                             <td>Net Income</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.netIncome/1000000000} </td>
-                            
+                                return <td> {item.netIncome / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -87,8 +102,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Capital Expenditure</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.capitalExpenditures/1000000000} </td>
-                            
+                                return <td> {item.capitalExpenditures / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -96,8 +111,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Change in Receivables</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.changeInReceivables/1000000000} </td>
-                            
+                                return <td> {item.changeInReceivables / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -105,8 +120,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Change in Inventory</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.changeInInventory/1000000000} </td>
-                            
+                                return <td> {item.changeInInventory / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -114,8 +129,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Change in Operating Liabilities</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.changeInOperatingLiabilities/1000000000} </td>
-                            
+                                return <td> {item.changeInOperatingLiabilities / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -123,8 +138,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Change in Operating Assets</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.changeInOperatingAssets/1000000000} </td>
-                            
+                                return <td> {item.changeInOperatingAssets / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -132,8 +147,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Payments for Operating Activities</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.paymentsForOperatingActivities/1000000000} </td>
-                            
+                                return <td> {item.paymentsForOperatingActivities / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -141,8 +156,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Proceeds from Repurchase of Equity</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.proceedsFromRepurchaseOfEquity/1000000000} </td>
-                            
+                                return <td> {item.proceedsFromRepurchaseOfEquity / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -150,8 +165,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Proceeds From Repayments Of Short Term Debt</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.proceedsFromRepaymentsOfShortTermDebt/1000000000} </td>
-                            
+                                return <td> {item.proceedsFromRepaymentsOfShortTermDebt / 1000000000} </td>
+
                             })}
 
                         </tr>
@@ -159,8 +174,8 @@ const CashFlows = () => {
                         <tr>
                             <td>Proceeds From Issuance Of Long Term Debt And Capital Securities Net</td>
                             {companyData.companyData.cashDataResult.annualReports && companyData.companyData.cashDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.proceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet/1000000000} </td>
-                            
+                                return <td> {item.proceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet / 1000000000} </td>
+
                             })}
 
                         </tr>

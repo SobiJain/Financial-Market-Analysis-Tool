@@ -1,14 +1,26 @@
 import Card from "../UI/Card";
 import './QuaterlyResults.css'
-import { useSelector } from 'react-redux'
-import BalanceSheet from "./BalanceSheet";
+import { useSelector, useDispatch } from 'react-redux'
+import RefreshButton from "../UI/RefreshButton";
+import { getRatioData } from "../../features/company/companySlice";
+
 
 const Ratios = () =>{
     
     const isLoading = useSelector((state) => state.company.isLoading);
     const companyData = useSelector((store) => store.company);
+    const ratioIsLoading = useSelector((state) => state.ratioIsLoading);
 
-    if(!isLoading)
+    const dispatch = useDispatch();
+
+    const RatioHandler = () => {
+        const key = localStorage.getItem('company');
+        dispatch(getRatioData(key));
+
+
+    }
+
+    if(!isLoading && !ratioIsLoading)
     {
         const balancesheetData = companyData.companyData.balanceDataResult
         const cashflowData = companyData.companyData.cashDataResult
@@ -26,7 +38,11 @@ const Ratios = () =>{
         return <Card>
             <div class="flex-containerrs">
                 <div class="col-1rs">
+                <div style={{ display: 'flex', alignItems: 'center' }}>
                     <h2 style={{ marginLeft: '1.5%', paddingTop: '1.5%' }}>Ratios</h2>
+                    <RefreshButton onClick={RatioHandler} />
+
+                </div>
                 </div>
                 <div class="col-2rs">
                     <div class="flex-container1rs">

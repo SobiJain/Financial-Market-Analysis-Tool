@@ -15,3 +15,5 @@ class User(models.Model):
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     item = models.CharField(max_length=10, unique=False)
+    def __str__(self):
+        return self.item

@@ -70,6 +70,7 @@ const SearchAppBar = () => {
   const [active, setActive] = React.useState(false);
   const [companyData, setCompanyData] = React.useState({});
   const [companySymbol, setCompanySymbol] = React.useState({});
+  const [wishItem, setWishItem] = React.useState({})
 
   let auth = useSelector((state) => state.auth);
 
@@ -110,6 +111,7 @@ const SearchAppBar = () => {
       //redirect to CompanyInfo
       dispatch(getData(mapping[input])).then(() => {
         setActive(true)
+        setWishItem({'email':localStorage.getItem("email"),'company':mapping[input], 'state':'true'})
       });
       //navigating to the user to the CompanyInfo page
       navigate('/CompanyInfo')

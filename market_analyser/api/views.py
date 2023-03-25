@@ -204,6 +204,5 @@ def wishlist(request):
             print(wishItem)
             wishItem.delete()
         return JsonResponse({'success': True}, status=200, safe=False)
-
     except :
         return JsonResponse({'success': False}, status=400, safe=False)

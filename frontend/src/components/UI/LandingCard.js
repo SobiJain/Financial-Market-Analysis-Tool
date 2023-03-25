@@ -14,6 +14,8 @@ import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { companyfound } from '../../auth/actions';
+// import './LandingCard.css'
 
 //styling of the search component
 const Search = styled('div')(({ theme }) => ({
@@ -23,7 +25,7 @@ const Search = styled('div')(({ theme }) => ({
     '&:hover': {
         backgroundColor: alpha(theme.palette.common.black),
     },
-    marginLeft: 0,
+    marginRight: '1rem',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
@@ -38,6 +40,15 @@ const styles = {
 
 };
 const LandingCard = () => {
+
+    const customPopperStyles = {
+        // Add your custom styles here
+        backgroundColor: '#ffffff',
+        borderRadius: '4px',
+        boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
+        zIndex: 9999
+    };
+
     const dispatch = useDispatch();
     const [input, setInput] = React.useState("");
     const [active, setActive] = React.useState(false);
@@ -86,20 +97,20 @@ const LandingCard = () => {
             dispatch(getData(mapping[input])).then(() => {
                 setActive(true)
             });
+            dispatch(companyfound(mapping[input])).then(() => {
+                localStorage.setItem("company", mapping[input])
+                localStorage.setItem("state", 'true')
+            });
             //navigating to the user to the CompanyInfo page
             navigate('/CompanyInfo')
-            // <Navigate replace to="/CompanyInfo" />
-            // dispatch(getData(input.key)).then(() => {
-            //     setActive(true)
-            // });
         }
     }
 
     return (
         <React.Fragment>
-            <CssBaseline />
-            <Container maxWidth="lg">
-                <Box sx={{}}>
+            {/* <CssBaseline /> */}
+            <Container maxWidth="lg" id="hero-area">
+                <Box >
                     <header className="header" >
                         <div className="header-container" >
                             <div className="logo-container" >
@@ -128,6 +139,9 @@ const LandingCard = () => {
                                             sx={{}}
                                             onChange={(event, value) => handleInput(value)}
                                             renderInput={(params) => <TextField {...params} label="Company" />}
+                                            PopperProps={{
+                                                style: customPopperStyles
+                                            }}
                                         />
                                     </Search>
                                     <Button variant="contained" onClick={() => handleClick()} disabled={!active}><SearchIcon /></Button>
@@ -142,8 +156,7 @@ const LandingCard = () => {
 
             </Container>
         </React.Fragment >
-
-
+        
     );
 };
 

@@ -43,9 +43,6 @@ const BasicCard=(props)=> {
           {'"a benevolent smile"'}
         </Typography> */}
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }

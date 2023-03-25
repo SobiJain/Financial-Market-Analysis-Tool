@@ -21,11 +21,6 @@ const QuaterlyResults = () => {
                         <div class="row-21qr">
                             <h4 style={{ marginLeft: '15%' }}> </h4>
                         </div>
-                        <div class="row-31qr">
-                            <button>
-                                PRODUCT SEGMENTS
-                            </button>
-                        </div>
                     </div>
 
                 </div>

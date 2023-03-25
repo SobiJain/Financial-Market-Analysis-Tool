@@ -24,11 +24,6 @@ const BalanceSheet = () => {
                         <div class="row-21bs">
                             <h4 style={{ marginLeft: '15%' }}> </h4>
                         </div>
-                        <div class="row-31bs">
-                            <button>
-                                CORPORATE ACTIONS
-                            </button>
-                        </div>
                     </div>
 
                 </div>

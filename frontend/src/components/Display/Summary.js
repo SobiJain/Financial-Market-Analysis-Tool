@@ -1,9 +1,10 @@
-import Button from "../UI/Button";
+import Button from "../UI/ButtonC";
 import Card from "../UI/Card";
 import DateTime from "./Date";
 import { useState } from "react";
 import CardTable from "../UI/CardTable";
 import { useSelector } from 'react-redux'
+import { toast } from "react-toastify";
 
 const Test = () => {
 
@@ -11,11 +12,72 @@ const Test = () => {
     const isLoading = useSelector((state) => state.company.isLoading);
     // fetching the companyData state from redux-store setup 
     const companyData = useSelector((store) => store.company);
-
+    let auth = useSelector((state) => state.auth);
+    console.log(auth)
     //temporary change function
     const [initial, setInitial] = useState('+ FOLLOW');
-    const Onchange = () => {
-        setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
+    const [wishItem, setWishItem] = useState({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+
+    console.log(initial + JSON.stringify(wishItem))
+
+
+    const Onchange = () =>  {
+        const url = "http://127.0.0.1:8000/wishlist"
+        if(initial==='+ FOLLOW') {
+            // setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'true'})
+            console.log(JSON.stringify(wishItem))
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(wishItem),
+            })
+            .then(response=>{
+                if(response.status!==200) {
+                    console.log(response.error)
+                    toast.error("Already in wishlist")
+                    setInitial('- UNFOLLOW')
+                    localStorage.setItem("state", 'false')
+                    setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+            }
+            else {
+                toast.success("Added to wishlist successfully");
+                setInitial('- UNFOLLOW')
+                localStorage.setItem("state", 'false')
+                setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+                }
+                return response.json()
+            });
+        }
+        else
+        {
+            // setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'false'})
+            console.log(JSON.stringify(wishItem))
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(wishItem),
+            })
+            .then(response=>{
+                if(response.status!==200) {
+                    setInitial('+ FOLLOW')
+                    localStorage.setItem("state", 'true')
+                    setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+                    toast.error("Never was in Wishlist")
+            }
+            else {
+                toast.success("Removed from wishlist successfully ");
+                setInitial('+ FOLLOW')
+                localStorage.setItem("state", 'true')
+                setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+                }
+                return response.json()
+            });
+        }
+        // setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
     }
 
 // the if statement is responsible for rendering the Card component only if the state of isLoading is false, i.e when the entire data of the company is fetched
@@ -29,7 +91,7 @@ const Test = () => {
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {companyData.companyData.profileDataResult.Name} </h1> </div>
                                     <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
-                                        <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
+                                        <h5 style={{ marginTop: "2px" }}> <DateTime /> </h5></div>
                                 </div>
                             </div>
                             <div style={{ flexBasis: '20%' }}>
@@ -62,22 +124,25 @@ const Test = () => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div style={{ flexBasis: '50%', marginTop: "10%" }}>
+                                {/* <div style={{ flexBasis: '50%', marginTop: "10%" }}>
                                     <Button>
                                         EXPORT TO EXCEL
                                     </Button>
-                                </div>
-                                <div style={{ flexBasis: '50%', marginTop: "10%" }}>
-                                    <Button onClick={Onchange}>
-                                        {initial}
-                                    </Button>
-                                </div>
+                                </div> */}
+                                {auth.isAuthenticated && wishItem.email!=='' &&
+                                    <div style={{ flexBasis: '50%', marginTop: "10%" }}>
+                                        <Button onClick={Onchange}>
+                                            {initial}
+                                        </Button>
+                                    </div>
+                                }
+                                
                             </div>
                         </div>
                         <div style={{ flexBasis: '20%', color: 'white' }}> dnjkdnvjjsvd </div>
                         <div style={{ flexBasis: '60%' }}>
                             <p>
-                                ABOUT [ edit ] <br></br>
+                                ABOUT<br></br>
                                 {companyData.companyData.profileDataResult.Description}
                                 desc
                             </p>

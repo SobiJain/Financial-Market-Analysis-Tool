@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from . import ratios, companyList, combined
+from . import companyList, combined
 import cgitb
 from django.conf import settings
 
@@ -11,7 +11,7 @@ import json
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
-from django.utils.html import strip_tags
+from django.core import serializers
 import jwt
 
 cgitb.enable()
@@ -29,10 +29,6 @@ def getBalanceSheet(request):
     key = request.GET.get('companyKeyValue')
     obj = combined.BalanceSheet()
     return JsonResponse(obj.getData(key), safe=False)
-
-def getRatio(request):
-    key = request.GET.get('companyKeyValue')
-    return JsonResponse(ratios.ratio(key), safe=False)
 
 def getProfile(request):
     key = request.GET.get('companyKeyValue')
@@ -72,12 +68,11 @@ def register(request):
     
     try:
         user = json.loads(request.body.decode('utf-8'))
-    
         email, password, otp = user["email"], user["password"], get_otp()
         salt = bcrypt.gensalt()
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
-
         user = User(email=email, password=hashed_password, otp=otp, verified=False)
+        print("user mila?", email, hashed_password)
         user.save()
 
         subject = 'Confirm your email address'
@@ -199,6 +194,29 @@ def wishlist(request):
         wishItem.save()
 
         return JsonResponse({'success': True}, status=200, safe=False)
-
-    except:
+    except :
+        return JsonResponse({'success': False}, status=400, safe=False)
+    
+@csrf_exempt
+def getwishlist(request):
+    try:
+        email = request.GET.get('email')
+        wishlist = Wishlist.objects.filter(user = User.objects.get(email=email))
+        wishlist_json = serializers.serialize('json',wishlist)
+        print(wishlist_json)
+        return JsonResponse(wishlist_json, status=200, safe=False)
+    except :
+        return JsonResponse({'success': False}, status=400, safe=False)
+    
+def isWishlisted(request):
+    try:
+        email = request.GET.get('email')
+        item =  request.GET.get('company')
+        wishlist = Wishlist.objects.filter(user = User.objects.get(email=email), item = item)
+        wishlist_json = serializers.serialize('json',wishlist)
+        if len(wishlist_json)==2:
+            return JsonResponse({'resp': "Yes"}, status=200, safe=False)
+        else:
+            return JsonResponse({'resp': "No"}, status=200, safe=False)
+    except :
         return JsonResponse({'success': False}, status=400, safe=False)

@@ -13,11 +13,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
-import { companyList } from '../../data/companyList';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { logout } from '../../auth/actions';
+import { logout, companyfound } from '../../auth/actions';
+import ButtonC from './ButtonC';
 
 
 
@@ -111,6 +111,10 @@ const SearchAppBar = () => {
       dispatch(getData(mapping[input])).then(() => {
         setActive(true)
       });
+      dispatch(companyfound(mapping[input])).then(() => {
+        localStorage.setItem("company", mapping[input])
+        localStorage.setItem("state", 'true')
+      });
       //navigating to the user to the CompanyInfo page
       navigate('/CompanyInfo')
 
@@ -155,8 +159,10 @@ const SearchAppBar = () => {
             />
           </Search>
           <Button variant="contained" onClick={() => handleClick()} disabled={!active} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}><SearchIcon /></Button>
-          { auth.isAuthenticated ? 
-          <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button> : 
+          { auth.isAuthenticated ? <>
+          <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button> 
+          <Button variant="contained" onClick={() => (navigate('/wishlist'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Wishlist</Button> 
+          </>: 
           <>
           <Button variant="contained" onClick={() => (navigate('/login'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Login</Button>
           <Button variant="contained" onClick={() => (navigate('/register'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Register</Button>

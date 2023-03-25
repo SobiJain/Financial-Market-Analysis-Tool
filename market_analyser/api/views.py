@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from . import ratios, companyList, combined
+from . import companyList, combined
 import cgitb
 from django.conf import settings
 
@@ -29,10 +29,6 @@ def getBalanceSheet(request):
     key = request.GET.get('companyKeyValue')
     obj = combined.BalanceSheet()
     return JsonResponse(obj.getData(key), safe=False)
-
-def getRatio(request):
-    key = request.GET.get('companyKeyValue')
-    return JsonResponse(ratios.ratio(key), safe=False)
 
 def getProfile(request):
     key = request.GET.get('companyKeyValue')
@@ -220,7 +216,7 @@ def getwishlist(request):
         return JsonResponse({'success': False}, status=400, safe=False)
     
 def isWishlisted(request):
-    # try:
+    try:
         email = request.GET.get('email')
         item =  request.GET.get('company')
         wishlist = Wishlist.objects.filter(user = User.objects.get(email=email), item = item)
@@ -229,5 +225,5 @@ def isWishlisted(request):
             return JsonResponse({'resp': "Yes"}, status=200, safe=False)
         else:
             return JsonResponse({'resp': "No"}, status=200, safe=False)
-    # except :
-    #     return JsonResponse({'success': False}, status=400, safe=False)
+    except :
+        return JsonResponse({'success': False}, status=400, safe=False)

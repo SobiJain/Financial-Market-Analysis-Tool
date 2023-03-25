@@ -92,7 +92,7 @@ const Test = () => {
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {companyData.companyData.profileDataResult.Name} </h1> </div>
                                     <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
-                                        <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
+                                        <h5 style={{ marginTop: "2px" }}> <DateTime /> </h5></div>
                                 </div>
                             </div>
                             <div style={{ flexBasis: '20%' }}>
@@ -143,7 +143,7 @@ const Test = () => {
                         <div style={{ flexBasis: '20%', color: 'white' }}> dnjkdnvjjsvd </div>
                         <div style={{ flexBasis: '60%' }}>
                             <p>
-                                ABOUT [ edit ] <br></br>
+                                ABOUT<br></br>
                                 {companyData.companyData.profileDataResult.Description}
                                 desc
                             </p>

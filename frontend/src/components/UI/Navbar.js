@@ -13,7 +13,6 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
-import { companyList } from '../../data/companyList';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";

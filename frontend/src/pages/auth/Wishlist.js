@@ -1,20 +1,27 @@
 import Card from "../../components/UI/Card";
 import '../../components/Display/QuaterlyResults.css'
+import { useEffect, useState } from 'react'
 
 
 const Wishlist = () => {
-    let roeList = []
-    fetch("http://127.0.0.1:8000/getwishlist?" + new URLSearchParams({
+
+    const [wishlist, setWishlist] = useState([])
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/getwishlist?" + new URLSearchParams({
             email: localStorage.getItem("email")
         }))
         .then((response) => response.json())
         .then((user) => {
             let wishlist = JSON.parse(user)
+            let newWish = []
             for(var i=0;i<wishlist.length;i++) {
-                roeList.push({roe:wishlist[i].fields.item})
+                newWish.push({"roe":wishlist[i].fields.item})
             }
+            setWishlist(newWish)
         });
-    console.log(roeList)
+    },[])
+    console.log(wishlist)
     return <Card>
             <div class="flex-containerrs">
                 <div class="col-1rs">
@@ -22,7 +29,7 @@ const Wishlist = () => {
                 </div>
                 <div class="col-3rs">
                     <table>
-                            {roeList.map((item) => {
+                            {wishlist.map((item) => {
                                 return <tr><td> {item.roe} </td> </tr>
                             
                             })}

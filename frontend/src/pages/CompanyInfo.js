@@ -7,7 +7,6 @@ import QuaterlyResults from '../components/Display/QuaterlyResults'
 import PF from '../components/Display/PF'
 import BalanceSheet from '../components/Display/BalanceSheet'
 import CashFlows from '../components/Display/CashFlows'
-import Ratios from '../components/Display/Ratios'
 import Document from '../components/Display/Document'
 function CompanyInfo(props) {
   return (
@@ -19,7 +18,6 @@ function CompanyInfo(props) {
         <PF />
         <BalanceSheet />
         <CashFlows />
-        <Ratios />
         {/* <Document /> */}
     </>
   )

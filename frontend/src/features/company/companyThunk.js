@@ -28,11 +28,6 @@ export const getDataThunk = async(companyKey, thunkAPI) => {
                 companyKeyValue: companyKey
             }
         });
-        const ratio = axios.get("http://127.0.0.1:8000/ratio", {
-            params: {
-                companyKeyValue: companyKey
-            }
-        });
         const profitLoss = axios.get("http://127.0.0.1:8000/profitloss", {
             params: {
                 companyKeyValue: companyKey
@@ -45,14 +40,13 @@ export const getDataThunk = async(companyKey, thunkAPI) => {
         })
     
     
-        const [quarterData, cashData, balanceData, profileData, ratioData, profitLossData] = await Promise.all([quarter, cash, balance, profile, ratio, profitLoss]);
+        const [quarterData, cashData, balanceData, profileData, profitLossData] = await Promise.all([quarter, cash, balance, profile, profitLoss]);
     
         const combinedData = {
             quarterDataResult: quarterData.data,
             cashDataResult: cashData.data,
             balanceDataResult: balanceData.data,
             profileDataResult: profileData.data,
-            ratioData: ratioData.data,
             profitLossDataResult: profitLossData.data,
             // priceDataResult: priceData.data,
         }

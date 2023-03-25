@@ -22,11 +22,6 @@ const PF = () => {
 
                             </h4>
                         </div>
-                        <div class="row-31pf">
-                            <button>
-                                PRODUCT SEGMENTS
-                            </button>
-                        </div>
                     </div>
 
                 </div>

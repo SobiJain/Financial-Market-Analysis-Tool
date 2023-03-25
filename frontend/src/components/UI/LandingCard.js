@@ -15,6 +15,7 @@ import { getData } from '../../features/company/companySlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { companyfound } from '../../auth/actions';
+// import './LandingCard.css'
 
 //styling of the search component
 const Search = styled('div')(({ theme }) => ({
@@ -98,9 +99,9 @@ const LandingCard = () => {
 
     return (
         <React.Fragment>
-            <CssBaseline />
-            <Container maxWidth="lg">
-                <Box sx={{}}>
+            {/* <CssBaseline /> */}
+            <Container maxWidth="lg" id="hero-area">
+                <Box >
                     <header className="header" >
                         <div className="header-container" >
                             <div className="logo-container" >
@@ -143,8 +144,7 @@ const LandingCard = () => {
 
             </Container>
         </React.Fragment >
-
-
+        
     );
 };
 

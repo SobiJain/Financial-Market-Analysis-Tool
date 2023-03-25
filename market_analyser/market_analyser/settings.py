@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# AUTH_USER_MODEL = 'api.UserData'
 
 # Application definition
 
@@ -38,8 +40,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
-    "api.apps.ApiConfig",
+    "api.apps.ApiConfig"
 ]
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -54,10 +58,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "market_analyser.urls"
 
+TEMPLATE_DIR=os.path.join(BASE_DIR,'templates')
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [TEMPLATE_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -69,6 +75,9 @@ TEMPLATES = [
         },
     },
 ]
+
+JWT_SECRET_KEY = 'marketanalyser'
+
 
 WSGI_APPLICATION = "market_analyser.wsgi.application"
 
@@ -82,6 +91,14 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'marketanalyserproj@gmail.com'
+EMAIL_HOST_PASSWORD = 'rabznbrjggeojvbl'
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (

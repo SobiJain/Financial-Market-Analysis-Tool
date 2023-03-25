@@ -8,7 +8,7 @@ import LandingPage from "./pages/LandingPage";
 import "react-toastify/dist/ReactToastify.css";
 import SearchAppBar from "./components/UI/Navbar";
 import List from "./pages/CompanyList";
-import CompanyList from "./components/Display/CompanyList";
+import Loginnew from "./pages/auth/Loginnew";
 
 import { useSelector } from "react-redux";
 import Register from "./pages/auth/Register";
@@ -16,6 +16,7 @@ import Verify from "./pages/auth/Verify";
 import Login from "./pages/auth/Login";
 import Forgot from "./pages/auth/Forgot";
 import Reset from "./pages/auth/Reset";
+
 
 function App() {
 
@@ -47,6 +48,8 @@ function App() {
                   <Route path="/" element={<LandingPage />} />
                   <Route path="/CompanyInfo" element={<CompanyInfo />} />
                   <Route path="/CompanyList" element={<List />} />
+                  {/* <Route path="/login" element={<Loginnew />} /> */}
+
                 </>
               {auth.isAuthenticated ? (
                 <>

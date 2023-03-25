@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles.css'
+import './styles.css'
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 

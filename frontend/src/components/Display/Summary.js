@@ -15,12 +15,13 @@ const Test = () => {
     const companyData = useSelector((store) => store.company);
     let auth = useSelector((state) => state.auth);
     console.log(auth)
-
     //temporary change function
     const [initial, setInitial] = useState('+ FOLLOW');
-    // const [wishItem, setWishItem] = useState({})
-    const [wishItem, setWishItem] = useState({'email':localStorage.getItem("email"),'company':companyData.companyData.profileDataResult.Symbol, 'state':'true'})
+    const [wishItem, setWishItem] = useState({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+
     console.log(initial + JSON.stringify(wishItem))
+
+
     const Onchange = () =>  {
         const url = "http://127.0.0.1:8000/wishlist"
         if(initial==='+ FOLLOW') {
@@ -38,12 +39,14 @@ const Test = () => {
                     console.log(response.error)
                     toast.error("Already in wishlist")
                     setInitial('- UNFOLLOW')
-                    setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'false'})
+                    localStorage.setItem("state", 'false')
+                    setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
             }
             else {
                 toast.success("Added to wishlist successfully");
                 setInitial('- UNFOLLOW')
-                setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'false'})
+                localStorage.setItem("state", 'false')
+                setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
                 }
                 return response.json()
             });
@@ -62,13 +65,15 @@ const Test = () => {
             .then(response=>{
                 if(response.status!==200) {
                     setInitial('+ FOLLOW')
-                    setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'true'})
+                    localStorage.setItem("state", 'true')
+                    setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
                     toast.error("Never was in Wishlist")
             }
             else {
                 toast.success("Removed from wishlist successfully ");
                 setInitial('+ FOLLOW')
-                setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'true'})
+                localStorage.setItem("state", 'true')
+                setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
                 }
                 return response.json()
             });

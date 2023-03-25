@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getCompanyThunk, getDataThunk } from "./companyThunk";
+import { getDataThunk } from "./companyThunk";
 import { toast } from "react-toastify";
 
 const initialState = {
@@ -8,7 +8,6 @@ const initialState = {
   companyData: null,
 }
 
-export const getCompany = createAsyncThunk("company/getCompany", getCompanyThunk);
 export const getData = createAsyncThunk("company/getData", getDataThunk);
 
 const companySlice = createSlice({
@@ -30,18 +29,6 @@ const companySlice = createSlice({
     },
   },
   extraReducers: {
-    [getCompany.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [getCompany.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.companyList = payload.companyList;
-      toast.success(`request successful`);
-    },
-    [getCompany.rejected]: (state, { payload }) => {
-      state.isLoading = false;
-      toast.error(payload);
-    },
     [getData.pending]: (state) => {
       state.isLoading = true;
     },

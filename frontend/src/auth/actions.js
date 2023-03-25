@@ -10,3 +10,9 @@ export const logout = () => async(dispatch) =>{
     localStorage.removeItem("email")
     dispatch({type:"USER_LOGOUT"})
 }
+
+export const companyfound = (company) => async(dispatch) => {
+    localStorage.setItem("company", company)
+    localStorage.setItem("state", 'true')
+    dispatch({type:"COMPANY_FOUND"})
+}

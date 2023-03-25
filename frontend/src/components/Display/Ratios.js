@@ -1,7 +1,6 @@
 import Card from "../UI/Card";
 import './QuaterlyResults.css'
 import { useSelector } from 'react-redux'
-import BalanceSheet from "./BalanceSheet";
 
 const Ratios = () =>{
     
@@ -67,7 +66,7 @@ const Ratios = () =>{
                 </div>
                     <h6> </h6>
                 <div class="col-4rs">
-                            <h7 style= {{color: 'white'}}>hbhdbcjbdj</h7>
+                            <h6 style= {{color: 'white'}}>hbhdbcjbdj</h6>
                 </div>
             </div>
         </Card>

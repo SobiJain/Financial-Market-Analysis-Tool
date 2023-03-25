@@ -16,6 +16,7 @@ import Verify from "./pages/auth/Verify";
 import Login from "./pages/auth/Login";
 import Forgot from "./pages/auth/Forgot";
 import Reset from "./pages/auth/Reset";
+import Wishlist from './pages/auth/Wishlist'
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
                 </>
               {auth.isAuthenticated ? (
                 <>
+                    <Route path="/wishlist" element={<Wishlist/>} exact/>
                 </>
               ) : (
                 <>

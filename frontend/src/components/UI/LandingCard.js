@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { companyfound } from '../../auth/actions';
 
 //styling of the search component
 const Search = styled('div')(({ theme }) => ({
@@ -86,12 +87,12 @@ const LandingCard = () => {
             dispatch(getData(mapping[input])).then(() => {
                 setActive(true)
             });
+            dispatch(companyfound(mapping[input])).then(() => {
+                localStorage.setItem("company", mapping[input])
+                localStorage.setItem("state", 'true')
+            });
             //navigating to the user to the CompanyInfo page
             navigate('/CompanyInfo')
-            // <Navigate replace to="/CompanyInfo" />
-            // dispatch(getData(input.key)).then(() => {
-            //     setActive(true)
-            // });
         }
     }
 

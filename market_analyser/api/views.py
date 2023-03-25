@@ -11,6 +11,7 @@ import json
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
+from django.core import serializers
 import jwt
 
 cgitb.enable()
@@ -204,5 +205,27 @@ def wishlist(request):
             print(wishItem)
             wishItem.delete()
         return JsonResponse({'success': True}, status=200, safe=False)
+    except :
+        return JsonResponse({'success': False}, status=400, safe=False)
+    
+@csrf_exempt
+def getwishlist(request):
+    try:
+        email = request.GET.get('email')
+        wishlist = Wishlist.objects.filter(user = User.objects.get(email=email))
+        wishlist_json = serializers.serialize('json',wishlist)
+        print(wishlist_json)
+        return JsonResponse(wishlist_json, status=200, safe=False)
+    except :
+        return JsonResponse({'success': False}, status=400, safe=False)
+    
+def isWishlisted(request):
+    try:
+        email = request.GET.get('email')
+        item =  request.GET.get('company')
+        wishlist = Wishlist.objects.filter(user = User.objects.get(email=email), item = item)
+        wishlist_json = serializers.serialize('json',wishlist)
+        print(wishlist_json)
+        return JsonResponse(wishlist_json, status=200, safe=False)
     except :
         return JsonResponse({'success': False}, status=400, safe=False)

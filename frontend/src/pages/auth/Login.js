@@ -3,6 +3,7 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../auth/actions";
+import Button from "../../components/UI/ButtonC";
 
 const Login = () => {
   
@@ -140,7 +141,7 @@ const Login = () => {
             </div>
           </div>
           <a href="/forgot" onClick={()=>handleForgotPasswordClick()} className="discrete" >Forgot password?</a>
-          <button type="button" onClick={()=>handleSubmit()}>Log in</button>
+          <Button type="button" onClick={()=>handleSubmit()}>Log in</Button>
         </form>
       </div>
   );

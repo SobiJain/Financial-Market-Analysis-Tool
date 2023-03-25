@@ -17,8 +17,8 @@ import { companyList } from '../../data/companyList';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-
 import { logout } from '../../auth/actions';
+
 
 
 
@@ -139,9 +139,6 @@ const SearchAppBar = () => {
           >
             Financial Market Analysis Tool
           </Typography>
-          {
-            auth.isAuthenticated ?
-            <>
             <Search sx={{ backgroundColor: 'white' }}>
             <Autocomplete
               disablePortal
@@ -158,10 +155,13 @@ const SearchAppBar = () => {
             />
           </Search>
           <Button variant="contained" onClick={() => handleClick()} disabled={!active} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}><SearchIcon /></Button>
-          <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button>
-          </>:null
-        }
-          
+          { auth.isAuthenticated ? 
+          <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button> : 
+          <>
+          <Button variant="contained" onClick={() => (navigate('/login'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Login</Button>
+          <Button variant="contained" onClick={() => (navigate('/register'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Register</Button>
+          </>
+            }
           
         </Toolbar>
       </AppBar>

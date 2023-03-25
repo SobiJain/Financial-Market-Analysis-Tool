@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../styles.css";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Forgot = () => {
   const [user, setUser] = useState({email: "" });
 
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Register = () => {
     })
       .then((response) => {
         if (response.status !== 200) {
-          alert("Invalid Credentials");
+          alert("Make sure you're  registered first");
         } else {
           alert("Password Reset mail has been sent to your registered email");
           navigate("/")
@@ -62,4 +62,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Forgot;

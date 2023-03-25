@@ -43,20 +43,21 @@ function App() {
               }
             > */}
               {/* OTHER PROTECTED ROUTES */}
-
-              {auth.isAuthenticated ? (
                 <>
                   <Route path="/" element={<LandingPage />} />
                   <Route path="/CompanyInfo" element={<CompanyInfo />} />
                   <Route path="/CompanyList" element={<List />} />
                 </>
+              {auth.isAuthenticated ? (
+                <>
+                </>
               ) : (
                 <>
                   <Route path="/register" element={<Register/>} exact/>
                   <Route path="/verify/*" element={<Verify/>} exact/>
+                  <Route path="/login" element={<Login />} />
                   <Route path="/forgot" element={<Forgot />} exact />
                   <Route path="/reset" element={<Reset/>} exact/>
-                  <Route path="/*" element={<Login />} />
                 </>
               )}
 

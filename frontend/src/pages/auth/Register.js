@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles.css'
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = () => {
   
@@ -21,15 +22,15 @@ const Register = () => {
     })
     .then(response=>{
       if(response.status!==200) {
-        alert("EmailID already exist. Please try again")
+        toast.error("EmailID already exist. Please try again")
       }
       else {
-        alert("Registraion successful");
+        toast.success("Registraion successful");
       }
       return response.json()
     })
     .then((data) => {
-      navigate('/');
+      navigate('/login');
     });
   }
 

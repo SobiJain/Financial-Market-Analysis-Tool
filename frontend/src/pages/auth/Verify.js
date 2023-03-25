@@ -38,7 +38,7 @@ const Verify = () => {
         return response.json();
       })
       .then((data) => {
-        navigate('/');
+        navigate('/login');
       });
   });
 

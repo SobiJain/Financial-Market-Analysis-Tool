@@ -3,7 +3,7 @@ from . import ratios, companyList, combined
 import cgitb
 from django.conf import settings
 
-from .models import User
+from .models import User, Wishlist
 import bcrypt
 import math
 import random
@@ -119,11 +119,8 @@ def login(request):
     
     try:
         user = json.loads(request.body.decode('utf-8'))
-
         email, input_password =  user["email"], user["password"]
-    
         db_user = User.objects.get(email=email)
-
         if db_user is None:
             return JsonResponse({'success': False, "message":'Invalid Credentials'}, status=400, safe=False)
         
@@ -151,17 +148,12 @@ def login(request):
 def forgot(request):
     try:
         user = json.loads(request.body.decode('utf-8'))
-
         email, otp =  user["email"], get_otp()
-
         db_user = User.objects.get(email=email, verified=True)
-
         if db_user is None:
             return JsonResponse({'success': False}, status=400, safe=False)
-
         db_user.otp = otp
         db_user.save()
-
         subject = 'Reset Password'
         message = render_to_string('reset.html', {
             'email': email,
@@ -182,19 +174,29 @@ def forgot(request):
 def reset(request):
     try:
         verification = json.loads(request.body.decode('utf-8'))
-
         email, new_password, otp =  verification["email"], verification["new_password"], verification["otp"]
-
         db_user = User.objects.get(email=email, otp=otp, verified=True)
-
         if db_user is None:
             return JsonResponse({'success': False}, status=400, safe=False)
         
         salt = bcrypt.gensalt()
         hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), salt).decode('utf-8')
-
         db_user.password = hashed_password
         db_user.save()
+
+        return JsonResponse({'success': True}, status=200, safe=False)
+
+    except:
+        return JsonResponse({'success': False}, status=400, safe=False)
+    
+def wishlist(request):
+    try:
+        wishlist = json.loads(request.body.decode('utf-8'))
+    
+        email, company = wishlist["email"], wishlist["company"]
+        user = User.objects.get(email=email)
+        wishItem = Wishlist(user=user, company = company)
+        wishItem.save()
 
         return JsonResponse({'success': True}, status=200, safe=False)
 

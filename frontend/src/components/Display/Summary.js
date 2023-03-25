@@ -4,7 +4,6 @@ import DateTime from "./Date";
 import { useState } from "react";
 import CardTable from "../UI/CardTable";
 import { useSelector } from 'react-redux'
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Test = () => {

@@ -184,22 +184,15 @@ def reset(request):
     except:
         return JsonResponse({'success': False}, status=400, safe=False)
     
-@csrf_exempt
 def wishlist(request):
     try:
         wishlist = json.loads(request.body.decode('utf-8'))
-        print(wishlist)
-        email, company, add = wishlist["email"], wishlist["company"], wishlist['state']
+    
+        email, company = wishlist["email"], wishlist["company"]
         user = User.objects.get(email=email)
-        print(user)
-        if add=='true':
-            wishItem = Wishlist(user=user, item=company)
-            print("here ",wishItem)
-            wishItem.save()
-        else:
-            wishItem = Wishlist.objects.get(user=user, item=company)
-            print(wishItem)
-            wishItem.delete()
+        wishItem = Wishlist(user=user, company = company)
+        wishItem.save()
+
         return JsonResponse({'success': True}, status=200, safe=False)
     except :
         return JsonResponse({'success': False}, status=400, safe=False)

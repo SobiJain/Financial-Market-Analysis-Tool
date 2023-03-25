@@ -184,14 +184,19 @@ def reset(request):
     except:
         return JsonResponse({'success': False}, status=400, safe=False)
     
+@csrf_exempt
 def wishlist(request):
     try:
         wishlist = json.loads(request.body.decode('utf-8'))
     
-        email, company = wishlist["email"], wishlist["company"]
+        email, company, state = wishlist["email"], wishlist["company"], wishlist["state"]
         user = User.objects.get(email=email)
-        wishItem = Wishlist(user=user, company = company)
-        wishItem.save()
+        if state=='true':
+            wishItem = Wishlist(user=user, item = company)
+            wishItem.save()
+        else:
+            wishItem = Wishlist.objects.get(user=user, item = company)
+            wishItem.delete()
 
         return JsonResponse({'success': True}, status=200, safe=False)
     except :
@@ -208,6 +213,7 @@ def getwishlist(request):
     except :
         return JsonResponse({'success': False}, status=400, safe=False)
     
+@csrf_exempt
 def isWishlisted(request):
     try:
         email = request.GET.get('email')

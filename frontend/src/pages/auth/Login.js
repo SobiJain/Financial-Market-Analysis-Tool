@@ -13,6 +13,7 @@ const Login = () => {
 
   const handleSubmit = () => {
     const url = "http://127.0.0.1:8000/login";
+
     fetch(url, {
       method: "POST",
       headers: {
@@ -36,7 +37,7 @@ const Login = () => {
       })
       .then((data) => {
         if(data['success'] === true) {
-            dispatch(login(data.token, user.email))
+            dispatch(login(data.token))
         }
         setUser({ email:"", password: "" })
         navigate('/');

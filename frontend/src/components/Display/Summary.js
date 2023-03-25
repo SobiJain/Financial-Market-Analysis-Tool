@@ -4,8 +4,6 @@ import DateTime from "./Date";
 import { useState } from "react";
 import CardTable from "../UI/CardTable";
 import { useSelector } from 'react-redux'
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const Test = () => {
 
@@ -13,59 +11,11 @@ const Test = () => {
     const isLoading = useSelector((state) => state.company.isLoading);
     // fetching the companyData state from redux-store setup 
     const companyData = useSelector((store) => store.company);
-    let auth = useSelector((state) => state.auth);
-    console.log(auth)
 
     //temporary change function
     const [initial, setInitial] = useState('+ FOLLOW');
-    const [wishItem, setWishItem] = useState({'email':'','company':'', 'state':''})
-
     const Onchange = () => {
-        const url = "http://127.0.0.1:8000/wishlist"
-        if(initial==='+ FOLLOW') {
-            setWishItem({...wishItem,"email": localStorage.getItem("email"),"company": companyData.companyData.profileDataResult.Symbol, state:'true'})
-            console.log(JSON.stringify(wishItem))
-            fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(wishItem),
-            })
-            .then(response=>{
-                if(response.status!==200) {
-                    console.log(response.error)
-            }
-            else {
-                toast.success("Added to wishlist successfully");
-                setInitial('- UNFOLLOW')
-                }
-                return response.json()
-            });
-        }
-        if (initial==='- UNFOLLOW') 
-        {
-            setWishItem({...wishItem,"email": localStorage.getItem("email"),"company": companyData.companyData.profileDataResult.Symbol, state:'false'})
-            console.log(JSON.stringify(wishItem))
-            fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(wishItem),
-            })
-            .then(response=>{
-                if(response.status!==200) {
-                    toast.error("Never was in Wishlist")
-            }
-            else {
-                toast.success("Removed from wishlist successfully ");
-                setInitial('+ FOLLOW')
-                }
-                return response.json()
-            });
-        }
-        // setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
+        setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
     }
 
 // the if statement is responsible for rendering the Card component only if the state of isLoading is false, i.e when the entire data of the company is fetched
@@ -117,14 +67,11 @@ const Test = () => {
                                         EXPORT TO EXCEL
                                     </Button>
                                 </div>
-                                {auth.isAuthenticated ? 
-                                    <div style={{ flexBasis: '50%', marginTop: "10%" }}>
-                                        <Button onClick={Onchange}>
-                                            {initial}
-                                        </Button>
-                                    </div> : null
-                                }
-                                
+                                <div style={{ flexBasis: '50%', marginTop: "10%" }}>
+                                    <Button onClick={Onchange}>
+                                        {initial}
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                         <div style={{ flexBasis: '20%', color: 'white' }}> dnjkdnvjjsvd </div>

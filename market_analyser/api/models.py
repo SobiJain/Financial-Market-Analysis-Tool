@@ -9,8 +9,8 @@ class User(models.Model):
     verified = models.BooleanField()
     password = models.CharField(max_length=50,unique=True)
     
-    # def email(self):
-    #     return self.email
+    def __str__(self):
+        return self.email
     
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)

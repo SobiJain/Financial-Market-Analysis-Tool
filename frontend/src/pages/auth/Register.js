@@ -22,6 +22,7 @@ const Register = () => {
     })
     .then(response=>{
       if(response.status!==200) {
+        console.log(response.error)
         toast.error("EmailID already exist. Please try again")
       }
       else {

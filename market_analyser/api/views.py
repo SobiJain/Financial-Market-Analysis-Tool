@@ -71,12 +71,11 @@ def register(request):
     
     try:
         user = json.loads(request.body.decode('utf-8'))
-    
         email, password, otp = user["email"], user["password"], get_otp()
         salt = bcrypt.gensalt()
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
-
         user = User(email=email, password=hashed_password, otp=otp, verified=False)
+        print("user mila?", email, hashed_password)
         user.save()
 
         subject = 'Confirm your email address'

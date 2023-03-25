@@ -18,12 +18,13 @@ const Test = () => {
 
     //temporary change function
     const [initial, setInitial] = useState('+ FOLLOW');
-    const [wishItem, setWishItem] = useState({'email':'','company':'', 'state':''})
-
+    // const [wishItem, setWishItem] = useState({})
+    const [wishItem, setWishItem] = useState({'email':localStorage.getItem("email"),'company':companyData.companyData.profileDataResult.Symbol, 'state':'true'})
+    console.log(initial + JSON.stringify(wishItem))
     const Onchange = () =>  {
         const url = "http://127.0.0.1:8000/wishlist"
         if(initial==='+ FOLLOW') {
-            setWishItem({...wishItem,"email": localStorage.getItem("email"),"company": companyData.companyData.profileDataResult.Symbol, state:'true'})
+            // setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'true'})
             console.log(JSON.stringify(wishItem))
             fetch(url, {
                 method: "POST",
@@ -35,17 +36,21 @@ const Test = () => {
             .then(response=>{
                 if(response.status!==200) {
                     console.log(response.error)
+                    toast.error("Already in wishlist")
+                    setInitial('- UNFOLLOW')
+                    setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'false'})
             }
             else {
                 toast.success("Added to wishlist successfully");
                 setInitial('- UNFOLLOW')
+                setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'false'})
                 }
                 return response.json()
             });
         }
-        if (initial==='- UNFOLLOW') 
+        else
         {
-            setWishItem({...wishItem,"email": localStorage.getItem("email"),"company": companyData.companyData.profileDataResult.Symbol, state:'false'})
+            // setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'false'})
             console.log(JSON.stringify(wishItem))
             fetch(url, {
                 method: "POST",
@@ -56,11 +61,14 @@ const Test = () => {
             })
             .then(response=>{
                 if(response.status!==200) {
+                    setInitial('+ FOLLOW')
+                    setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'true'})
                     toast.error("Never was in Wishlist")
             }
             else {
                 toast.success("Removed from wishlist successfully ");
                 setInitial('+ FOLLOW')
+                setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'true'})
                 }
                 return response.json()
             });
@@ -112,17 +120,17 @@ const Test = () => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div style={{ flexBasis: '50%', marginTop: "10%" }}>
+                                {/* <div style={{ flexBasis: '50%', marginTop: "10%" }}>
                                     <Button>
                                         EXPORT TO EXCEL
                                     </Button>
-                                </div>
-                                {auth.isAuthenticated ? 
+                                </div> */}
+                                {auth.isAuthenticated && wishItem.email!=='' &&
                                     <div style={{ flexBasis: '50%', marginTop: "10%" }}>
                                         <Button onClick={Onchange}>
                                             {initial}
                                         </Button>
-                                    </div> : null
+                                    </div>
                                 }
                                 
                             </div>

@@ -220,12 +220,14 @@ def getwishlist(request):
         return JsonResponse({'success': False}, status=400, safe=False)
     
 def isWishlisted(request):
-    try:
+    # try:
         email = request.GET.get('email')
         item =  request.GET.get('company')
         wishlist = Wishlist.objects.filter(user = User.objects.get(email=email), item = item)
         wishlist_json = serializers.serialize('json',wishlist)
-        print(wishlist_json)
-        return JsonResponse(wishlist_json, status=200, safe=False)
-    except :
-        return JsonResponse({'success': False}, status=400, safe=False)
+        if len(wishlist_json)==2:
+            return JsonResponse({'resp': "Yes"}, status=200, safe=False)
+        else:
+            return JsonResponse({'resp': "No"}, status=200, safe=False)
+    # except :
+    #     return JsonResponse({'success': False}, status=400, safe=False)

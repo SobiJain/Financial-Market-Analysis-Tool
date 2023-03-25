@@ -19,4 +19,5 @@ urlpatterns = [
     path('reset', views.reset, name='reset'),
     path('wishlist', views.wishlist, name='wishlist'),
     path('getwishlist', views.getwishlist, name='getwishlist'),
+    path('iswishlist', views.isWishlisted, name='iswishlist'),
 ]

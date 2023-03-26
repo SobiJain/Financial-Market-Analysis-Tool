@@ -76,9 +76,3 @@ After starting the backend server, start the frontend. To start the frontend:
 4. Start the development server: `npm start`
 5. The application will start at `localhost:3000`
 6. Open the browser and view the development code.
-   
-
-## Docs
-[User authentication](https://docs.google.com/document/d/16kC3Rr5X64QmFoPHTAoaVAOUVmbAvX-uhWPNbjiVOpI/edit?usp=sharing)
-
-[API details](https://docs.google.com/document/d/1s7nfVO4Mz16NXC_R91yipsEnooUfruzLGOG4eWFRSy8/edit)

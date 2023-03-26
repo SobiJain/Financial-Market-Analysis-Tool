@@ -8,13 +8,13 @@ import '../components/UI/Card.css'
 function CompanyInfo(props) {
   return (
     <>
-        <div /*style ={{background: "rgb(218, 213, 213)", width:"100%"}}*/>
+        {/* <div style ={{background: "rgb(218, 213, 213)", width:"100%"}}> */}
         <Summary/>
         <QuaterlyResults />
         <PF />
         <BalanceSheet />
         <CashFlows />
-        </div>
+        {/* </div> */}
     </>
   )
 }

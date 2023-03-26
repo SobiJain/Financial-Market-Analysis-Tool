@@ -45,7 +45,6 @@ function App() {
             > */}
               {/* OTHER PROTECTED ROUTES */}
                 <>
-                  <Route path="/" element={<LandingPage />} />
                   <Route path="/CompanyInfo" element={<CompanyInfo />} />
                   <Route path="/CompanyList" element={<List />} />
                 </>
@@ -72,6 +71,9 @@ function App() {
           </Container>
         </Box>
       </Box>
+      <Routes> 
+            <Route path="/" element={<LandingPage />} />
+       </Routes>
     </BrowserRouter>
     // <CompanyList/>
   );

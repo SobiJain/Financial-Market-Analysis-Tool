@@ -1,21 +1,23 @@
-.button {
-    font: inherit;
-    border: 1px solid #6084a0;
-    background: #6084a0;
-    color: white;
-    padding: 0.25rem 1rem;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    justify-content: center;
-    
+.gradient-button {
+  background: linear-gradient(to right, #cf60cb, #b08bf8);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-left: 10px;
+}
+
+.gradient-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 600px) {
+  .gradient-button {
+    padding: 8px 16px;
+    font-size: 14px;
   }
-  
-  .button:hover,
-  .button:active {
-    background: #92cde4;
-    border-color: #92cde4;
-  }
-  
-  .button:focus {
-    outline: none;
-  }
+}

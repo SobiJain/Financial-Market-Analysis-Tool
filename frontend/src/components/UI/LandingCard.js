@@ -1,10 +1,9 @@
 
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import { styled, alpha } from '@mui/material/styles';
+// import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 //import InputBase from '@mui/material/InputBase';
 import TextField from '@mui/material/TextField';
@@ -15,33 +14,35 @@ import { getData } from '../../features/company/companySlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import RefreshButton from './RefreshButton';
+import { companyfound } from '../../auth/actions';
+import './Landing.css'
 
-//styling of the search component
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.black),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.black),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-    },
-}));
 
-const styles = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+// //styling of the search component
+// const Search = styled('div')(({ theme }) => ({
+//     position: 'relative',
+//     borderRadius: theme.shape.borderRadius,
+//     backgroundColor: alpha(theme.palette.common.black),
+//     '&:hover': {
+//         backgroundColor: alpha(theme.palette.common.black),
+//     },
+//     marginRight: '1rem',
+//     width: '100%',
+//     [theme.breakpoints.up('sm')]: {
+//         marginLeft: theme.spacing(1),
+//         width: 'auto',
+//     },
+// }));
 
-};
+// const styles = {
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+
+// };
+
 const LandingCard = () => {
-    const dispatch = useDispatch();
-    const [input, setInput] = React.useState("");
-    const [active, setActive] = React.useState(false);
+
     const [companyData, setCompanyData] = React.useState({});
     const [companySymbol, setCompanySymbol] = React.useState({});
 
@@ -71,80 +72,10 @@ const LandingCard = () => {
         mapping[companyData[i]] = companySymbol[i];
     }
 
-    const handleInput = (value) => {
-        setInput(value)
-        setActive(value ? true : false)
-        // console.log(value)
-    }
-
-    const navigate = useNavigate();
-
-    // this function is used when the user search for a particular company and hit the search button
-    const handleClick = () => {
-        if (input) {
-            setActive(false);
-            //dispatching the key to the react store to forward it to the backend
-            dispatch(getData(mapping[input])).then(() => {
-                setActive(true)
-            });
-            //navigating to the user to the CompanyInfo page
-            navigate('/CompanyInfo')
-            // <Navigate replace to="/CompanyInfo" />
-            // dispatch(getData(input.key)).then(() => {
-            //     setActive(true)
-            // });
-        }
-    }
-
     return (
-        <React.Fragment>
-            <CssBaseline />
-            <Container maxWidth="lg">
-                <Box sx={{}}>
-                    <header className="header" >
-                        <div className="header-container" >
-                            <div className="logo-container" >
-                                {/* <div style={styles}>
-                                    <img src="Financial-Market-Analysis-Tool\frontend\src\components\UI\logo.jpg" alt="Logo" className="logo" />
-                                </div> */}
-
-                                <h1 className="punchline">
-                                    <Typography align='center' sx={{ fontSize: 24 }} color="text.primary" gutterBottom >
-                                        Stock analysis tool for investors
-                                    </Typography>
-                                </h1>
-                                <div style={{ display: 'flex' }}>
-                                    <Search style={{ width: "80%", marginRight: "1rem" }}>
-                                        {/* <SearchIconWrapper>
-                                        <SearchIcon />
-                                    </SearchIconWrapper> */}
-                                        {/* <StyledInputBase
-                                        placeholder="Search…"
-                                        inputProps={{ 'aria-label': 'search' }}
-                                    /> */}
-                                        <Autocomplete
-                                            disablePortal
-                                            id="combo-box-demo"
-                                            options={companyData}
-                                            sx={{}}
-                                            onChange={(event, value) => handleInput(value)}
-                                            renderInput={(params) => <TextField {...params} label="Company" />}
-                                        />
-                                    </Search>
-                                    <Button variant="contained" onClick={() => handleClick()} disabled={!active}><SearchIcon /></Button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </header>
-                </Box>
-
-
-
-            </Container>
-        </React.Fragment >
-
-
+        <div className="GeeksForGeeks" style= {{"padding-bottom": "0px", "padding-top": "0px"}}>
+            <h1>.</h1>
+        </div>
     );
 };
 

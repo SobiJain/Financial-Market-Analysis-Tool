@@ -13,5 +13,7 @@ class User(models.Model):
         return self.email
     
 class Wishlist(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     item = models.CharField(max_length=10, unique=False)
+    def __str__(self):
+        return self.item

@@ -63,11 +63,6 @@ function CardTable() {
                         </tr>
                     </tbody>
                 </table>
-                <div>
-                    {/* <h5>Add ratio to table</h5>
-                    <input placeholder='eg: Promoter holding'>
-                    </input> */}
-                </div>
             </div>
         );
     }

@@ -1,0 +1,10 @@
+.GeeksForGeeks {
+    background-image:url("./bg.jpg");
+    background-size: "cover";
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    margin-top: 0px;
+    font-size: 50px;
+    background-repeat: no-repeat;
+}

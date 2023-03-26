@@ -21,7 +21,6 @@ const initialState = {
 
 }
 
-export const getCompany = createAsyncThunk("company/getCompany", getCompanyThunk);
 export const getData = createAsyncThunk("company/getData", getDataThunk);
 export const getProfileData = createAsyncThunk("company/getProfileData", getProfileThunk);
 export const getBalanceData = createAsyncThunk("company/getBalanceData", getBalancedatathunk);

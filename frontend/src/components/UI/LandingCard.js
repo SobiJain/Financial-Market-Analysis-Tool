@@ -78,8 +78,11 @@ const LandingCard = () => {
     //         <p></p> </div>
     <>
     <div class="MuiBox-root" style= {{"margin-bottom": "2300px", "margin-top": "-100px"}}>
-        <div style = {{"text-align":"center", "color":"white", "margin-top": "250px", "font-size":"100px"}}>
-            Welcome to Markert Analysers
+        <div style = {{ "margin-left": "750px", "color":"black", "margin-top": "150px", "font-size":"80px"}}>
+            Welcome to 
+        </div>
+        <div style = {{ "color":"black", "margin-top": "-20px", "font-size":"90px", "margin-left": "800px"}}>
+            Market Analysers
         </div>
     </div></>
     );

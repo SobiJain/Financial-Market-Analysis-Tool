@@ -74,8 +74,8 @@ section {
 
 span.gradient {
   background: #cf60cb;
-  background: -webkit-linear-gradient(45deg, #cf60cb, #b08bf8);
-  background: linear-gradient(45deg, #cf60cb, #b08bf8);
+  background: -webkit-linear-gradient(45deg, #cf60cb, #6084a0);
+  background: linear-gradient(45deg, #cf60cb, #6084a0);
   padding: 0 1em;
   position: relative;
   right: 1em;

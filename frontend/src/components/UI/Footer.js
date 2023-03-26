@@ -15,7 +15,7 @@ const Footer = () => {
         position: 'fixed'
       }}
     >
-      © Copyright 2023. All Rights Reserved.
+      Created with 
     </footer>
   );
 };

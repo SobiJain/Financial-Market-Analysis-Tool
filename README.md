@@ -1,4 +1,4 @@
-# Financial-Market-Analysis-Tool
+# finAnalytica 
 
 Our project aims to develop a comprehensive financial
 market analysis and research platform that caters to

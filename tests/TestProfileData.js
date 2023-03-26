@@ -28,12 +28,12 @@ export const TestProfileData = async (companyKey) => {
                     break;
                 }
             }
-            if(!found) {
-                passed=false;
+            if (!found) {
+                passed = false;
                 break;
             }
         }
-        if(pass) console.log("Test for ProfileData Passed!");
+        if (passed) console.log("Test for ProfileData Passed!");
         else console.log("Test for ProfileData Failed!");
     }catch(error){
         console.log("Test for ProfileData Failed!",error);

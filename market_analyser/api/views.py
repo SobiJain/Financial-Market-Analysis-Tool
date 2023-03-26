@@ -184,14 +184,22 @@ def reset(request):
     except:
         return JsonResponse({'success': False}, status=400, safe=False)
     
+@csrf_exempt
 def wishlist(request):
     try:
         wishlist = json.loads(request.body.decode('utf-8'))
     
-        email, company = wishlist["email"], wishlist["company"]
+        email, compan, state = wishlist["email"], wishlist["company"], wishlist["state"]
         user = User.objects.get(email=email)
-        wishItem = Wishlist(user=user, company = company)
-        wishItem.save()
+        wishlist = Wishlist.objects.filter(user = user, item = compan)
+        wishlist_json = serializers.serialize('json',wishlist)
+        print(state, " ", wishlist_json)
+        if (state=='true' and len(wishlist_json)==2) :
+            wishItem = Wishlist(user=user, item = compan)
+            wishItem.save()
+        elif (state=='false' and len(wishlist_json)>2):
+            wishItem = Wishlist.objects.get(user=user, item = compan)
+            wishItem.delete()
 
         return JsonResponse({'success': True}, status=200, safe=False)
     except :
@@ -208,11 +216,13 @@ def getwishlist(request):
     except :
         return JsonResponse({'success': False}, status=400, safe=False)
     
+@csrf_exempt
 def isWishlisted(request):
     try:
         email = request.GET.get('email')
         item =  request.GET.get('company')
-        wishlist = Wishlist.objects.filter(user = User.objects.get(email=email), item = item)
+        user = User.objects.get(email=email)
+        wishlist = Wishlist.objects.filter(user = user, item = item)
         wishlist_json = serializers.serialize('json',wishlist)
         if len(wishlist_json)==2:
             return JsonResponse({'resp': "Yes"}, status=200, safe=False)

@@ -9,7 +9,6 @@ export const logout = () => async(dispatch) =>{
 }
 
 export const companyfound = (company) => async(dispatch) => {
-    localStorage.setItem("company", company)
-    localStorage.setItem("state", 'true')
+    localStorage.setItem("company", company);
     dispatch({type:"COMPANY_FOUND"})
 }

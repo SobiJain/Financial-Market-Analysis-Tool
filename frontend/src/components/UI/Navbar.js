@@ -18,19 +18,21 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { logout, companyfound } from '../../auth/actions';
 import ButtonC from './ButtonC';
-
-
+// import 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'
+// import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css'
+// import 'https://fonts.googleapis.com/css?family=Open+Sans:400,500|Saira+Semi+Condensed:300,500&display=swap'
+import { getinfo } from './css/script.js'
 
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
-  borderRadius: theme.shape.borderRadius,
+//   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
-  width: '100%',
+  width: '10%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(1),
     width: 'auto',
@@ -72,7 +74,7 @@ const SearchAppBar = () => {
   const [companySymbol, setCompanySymbol] = React.useState({});
 
   let auth = useSelector((state) => state.auth);
-
+    getinfo();
   React.useEffect(() => {
     fetchData();
   }, [])
@@ -104,6 +106,7 @@ const SearchAppBar = () => {
     // console.log(value)
   }
   const navigate = useNavigate();
+
   const handleClick = () => {
     if (input) {
       setActive(false);
@@ -111,30 +114,34 @@ const SearchAppBar = () => {
       dispatch(getData(mapping[input])).then(() => {
         setActive(true)
       });
-      dispatch(companyfound(mapping[input])).then(() => {
-        localStorage.setItem("company", mapping[input])
-        localStorage.setItem("state", 'true')
-      });
+      dispatch(companyfound(mapping[input]));
+      fetch("http://127.0.0.1:8000/iswishlist?" + new URLSearchParams({
+            email: localStorage.getItem("email")}) + "&"+ new URLSearchParams({"company": localStorage.getItem("company")}))
+        .then((response) => response.json())
+        .then((user) => {
+            console.log(user.resp)
+           if(user.resp ==='Yes') {
+                localStorage.setItem('state','true')
+                console.log("can follow")
+           } else {
+                localStorage.setItem('state','false')
+                console.log("already following")
+           }
+           console.log(auth)
+        });
+
       //navigating to the user to the CompanyInfo page
       navigate('/CompanyInfo')
-
     }
 
 
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ backgroundColor: "#6084a0" }}>
+      <AppBar position="static" style={{ "background": "#cf60cb",
+  "background": "-webkit-linear-gradient(45deg, #cf60cb, #b08bf8)",
+  "background": "linear-gradient(45deg, #cf60cb, #b08bf8)" }}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
@@ -143,16 +150,17 @@ const SearchAppBar = () => {
           >
             Financial Market Analysis Tool
           </Typography>
-            <Search sx={{ backgroundColor: 'white' }}>
+            <Search sx={{ backgroundColor: 'white', opacity: "0.8" }}>
             <Autocomplete
               disablePortal
               id="combo-box-demo"
               options={companyData}
               sx={{
                 width: '450px', // increase width to 100%
+                height: '50%',
                 '& .MuiInputBase-root': {
-                  backgroundColor: 'white'
-                }
+                    backgroundColor: 'white'
+                },
               }}
               onChange={(event, value) => handleInput(value)}
               renderInput={(params) => <TextField color='primary' {...params} label="Company" />}

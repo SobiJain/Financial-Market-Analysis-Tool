@@ -138,9 +138,9 @@ const SearchAppBar = () => {
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ "background": "#cf60cb",
-  "background": "-webkit-linear-gradient(45deg, #cf60cb, #6084a0)",
-  "background": "linear-gradient(45deg, #cf60cb, #6084a0)" }}>
+      <AppBar position="static" style={{ "background": "#8fc2e9",
+  "background": "-webkit-linear-gradient(45deg, #8fc2e9, #6084a0)",
+  "background": "linear-gradient(45deg, #8fc2e9, #6084a0)" }}>
         <Toolbar>
           <Typography
             variant="h6"

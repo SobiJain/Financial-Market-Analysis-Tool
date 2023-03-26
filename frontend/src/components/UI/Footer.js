@@ -15,7 +15,7 @@ const Footer = () => {
         position: 'fixed'
       }}
     >
-      Created with 
+      Created with hardwork by senihers group 1
     </footer>
   );
 };

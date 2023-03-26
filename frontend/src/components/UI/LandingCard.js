@@ -14,7 +14,6 @@ import { getData } from '../../features/company/companySlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { companyfound } from '../../auth/actions';
-import background from "./bg.jpg";
 import './Landing.css'
 
 

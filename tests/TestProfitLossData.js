@@ -2,15 +2,16 @@ import axios from "axios";
 
 export const TestProfitLossData = async (companyKey) => {
     const expected_fields=[
-        "fiscalDateEnding",
-        "grossProfit",
-        "costofGoodsAndServicesSold",
-        "operatingIncome",
-        "interestIncome",
-        "depreciation",
-        "incomeBeforeTax",
-        "incomeTaxExpense",
-        "netIncome"
+        "grossProfit",//
+        "costofGoodsAndServicesSold",//
+        "operatingIncome",//
+        "interestIncome",//
+        "depreciation",//
+        "interestExpense",//
+        "incomeBeforeTax",//
+        "incomeTaxExpense",//
+        "operatingExpenses"//
+        
     ];
     try{
         const res = await axios.get("http://127.0.0.1:8000/profitloss", {
@@ -20,7 +21,7 @@ export const TestProfitLossData = async (companyKey) => {
         });
         const profitLossData=res.data;
         const result=Object.keys(profitLossData);
-        const passed=true;
+        let passed=true;
         for(let i=0 ; i < expected_fields.length ; i++){
             let found=false;
             for(let j=0; j< result.length ;j++ ){
@@ -34,7 +35,7 @@ export const TestProfitLossData = async (companyKey) => {
                 break;
             }
         }
-        if(pass) console.log("Test for ProfitLossData Passed!");
+        if(passed) console.log("Test for ProfitLossData Passed!");
         else console.log("Test for ProfitLossData Failed!");
     }catch(error){
         console.log("Test for ProfitLossData Failed!",error);

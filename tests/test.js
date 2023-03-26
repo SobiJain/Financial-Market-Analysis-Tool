@@ -1,8 +1,9 @@
-import { TestBalanceData } from "./TestBalanceData";
-import { TestCashFlowData } from "./TestCashFlowData";
-import { TestProfileData } from "./TestProfileData";
-import { TestProfitLossData } from "./TestProfitLossData";
-import { TestQuarterData } from "./TestQuarterData";
+import { TestBalanceData } from "./TestBalanceData.js";
+import { TestCashFlowData } from "./TestCashFlowData.js";
+import { TestProfileData } from "./TestProfileData.js";
+import { TestProfitLossData } from "./TestProfitLossData.js";
+import { TestQuarterData } from "./TestQuarterData.js";
+
 
 TestBalanceData('GOOG');
 TestCashFlowData('GOOG');

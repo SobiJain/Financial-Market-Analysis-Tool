@@ -1,35 +1,39 @@
 import axios from "axios";
 
 export const TestQuarterData = async (companyKey) => {
-    const expected_fields=[
-        
+    const expected_fields = [
+        "reportedEPS",
+        "estimatedEPS",
+        "surprise",
+        "surprisePercentage"
+
     ];
-    try{
+    try {
         const res = await axios.get("http://127.0.0.1:8000/quarter", {
             params: {
                 companyKeyValue: companyKey
             }
         });
-        const quarterData=res.data;
-        const result=Object.keys(quarterData);
-        const passed=true;
-        for(let i=0 ; i < expected_fields.length ; i++){
-            let found=false;
-            for(let j=0; j< result.length ;j++ ){
-                if(expected_fields[i] === result[j]){
-                    found=true;
+        const quarterData = res.data;
+        const result = Object.keys(quarterData);
+        let passed = true;
+        for (let i = 0; i < expected_fields.length; i++) {
+            let found = false;
+            for (let j = 0; j < result.length; j++) {
+                if (expected_fields[i] === result[j]) {
+                    found = true;
                     break;
                 }
             }
-            if(!found) {
-                passed=false;
+            if (!found) {
+                passed = false;
                 break;
             }
         }
-        if(pass) console.log("Test for QuarterData Passed!");
+        if (passed) console.log("Test for QuarterData Passed!");
         else console.log("Test for QuarterData Failed!");
-    }catch(error){
-        console.log("Test for QuarterData Failed!",error);
+    } catch (error) {
+        console.log("Test for QuarterData Failed!", error);
     }
 
 }

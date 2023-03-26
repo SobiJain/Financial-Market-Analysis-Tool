@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import SearchAppBar from "./components/UI/Navbar";
 import List from "./pages/CompanyList";
 import CompanyList from "./components/Display/CompanyList";
-
+import Footer from "./components/UI/Footer";
 import { useSelector } from "react-redux";
 import Register from "./pages/auth/Register";
 import Verify from "./pages/auth/Verify";
@@ -70,10 +70,11 @@ function App() {
             <ToastContainer position="top-center" />
           </Container>
         </Box>
-      </Box>
-      <Routes> 
+        <Routes> 
             <Route path="/" element={<LandingPage />} />
        </Routes>
+      </Box>
+      <Footer></Footer>
     </BrowserRouter>
     // <CompanyList/>
   );

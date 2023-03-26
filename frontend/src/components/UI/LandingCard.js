@@ -1,6 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
-// import '../../pages/auth/Login.css'
+import { useNavigate } from 'react-router-dom';
+import { companyfound } from '../../auth/actions';
 import './Landing.css'
 
 
@@ -75,7 +76,12 @@ const LandingCard = () => {
     //   </div>
     // <div style= {{"margin-bottom": "100px", "margin-top": "-800px"}}>
     //         <p></p> </div>
-    <></>
+    <>
+    <div class="MuiBox-root" style= {{"margin-bottom": "2300px", "margin-top": "-100px"}}>
+        <div style = {{"text-align":"center", "color":"white", "margin-top": "250px", "font-size":"100px"}}>
+            Welcome to Markert Analysers
+        </div>
+    </div></>
     );
 };
 

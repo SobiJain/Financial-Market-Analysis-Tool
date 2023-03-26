@@ -4,6 +4,11 @@ import DateTime from "./Date";
 import { useState } from "react";
 import CardTable from "../UI/CardTable";
 import { useSelector } from 'react-redux'
+import RefreshButton from "../UI/RefreshButton";
+import { useDispatch } from 'react-redux';
+import { getProfileData } from "../../features/company/companySlice";
+import ExportButton from "../UI/ExportButton";
+import { HandleExport } from "./HandleExport";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
@@ -13,6 +18,9 @@ const Test = () => {
     const isLoading = useSelector((state) => state.company.isLoading);
     // fetching the companyData state from redux-store setup 
     const companyData = useSelector((store) => store.company);
+
+    const summaryIsLoading = useSelector((state) => state.company.summaryIsLoading);
+
     let auth = useSelector((state) => state.auth);
     //temporary change function
     const [initial, setInitial] = useState(localStorage.getItem('state')==='true'? '+ FOLLOW': '- UNFOLLOW');
@@ -82,8 +90,42 @@ const Test = () => {
         // setInitial(initial === '+ FOLLOW' ? '- UNFOLLOW' : '+ FOLLOW')
     }
 
-// the if statement is responsible for rendering the Card component only if the state of isLoading is false, i.e when the entire data of the company is fetched
-    if (!isLoading)
+    const dispatch = useDispatch();
+    const SummaryHandler = () => {
+        const key = localStorage.getItem('company');
+        dispatch(getProfileData(key));
+
+
+    }
+
+    let summaryData = [];
+    if (!isLoading && !summaryIsLoading) {
+        summaryData = [{
+            "Market Cap": companyData.companyData.profileDataResult.MarketCapitalization !== null,
+            "High/Low": companyData.companyData.profileDataResult["52WeekHigh"] / companyData.companyData.profileDataResult["52WeekLow"],
+            "Stock(P/E)": companyData.companyData.profileDataResult.PERatio,
+            "Book Value": companyData.companyData.profileDataResult.BookValue,
+            "Dividend Yield": companyData.companyData.profileDataResult.DividendYield,
+            "Revenue": companyData.companyData.profileDataResult.RevenueTTM,
+            "ROE (TTM)": companyData.companyData.profileDataResult.ReturnOnEquityTTM,
+            "ROA (TTM)": companyData.companyData.profileDataResult.ReturnOnAssestsTTM,
+            "Sector": companyData.companyData.profileDataResult.Sector,
+            "Industry": companyData.companyData.profileDataResult.Industry,
+            "Assest Type": companyData.companyData.profileDataResult.AssestType
+
+
+
+
+        }];
+    }
+
+    const handleExport = () => {
+        HandleExport(summaryData, "SummaryData.xlsx");
+
+    }
+
+    // the if statement is responsible for rendering the Card component only if the state of isLoading is false, i.e when the entire data of the company is fetched
+    if (!isLoading && !summaryIsLoading)
         return <Card>
             <div style={{ display: 'flex' }}>
                 <div style={{ flexBasis: '70%' }}>
@@ -91,9 +133,17 @@ const Test = () => {
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <div style={{ flexBasis: '20%' }}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                    <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {companyData.companyData.profileDataResult.Name} </h1> </div>
-                                    <div style={{ flexBasis: '20%', paddingLeft: '10%' }}>
-                                        <h5 style={{ marginTop: "2px" }}> <DateTime /> </h5></div>
+                                    <div style={{ flexBasis: '80%', paddingLeft: '1.5%' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            <h1 style={{ marginRight: '10px' }}> {companyData.companyData.profileDataResult.Name} </h1>
+                                            <RefreshButton onClick={SummaryHandler} />
+
+                                        </div>
+
+                                    </div>
+                                    <div style={{ flexBasis: '20%' }}>
+                                        <h5 style={{ marginTop: "12px",  }}> <DateTime /> </h5></div>
+                                    
                                 </div>
                             </div>
                             <div style={{ flexBasis: '20%' }}>
@@ -107,7 +157,7 @@ const Test = () => {
 
                             </div>
                             <div style={{ flexBasis: '50%', }}>
-                                <CardTable></CardTable>
+                                <CardTable ></CardTable>
                             </div>
                         </div>
                     </div>
@@ -116,11 +166,9 @@ const Test = () => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                {/* <div style={{ flexBasis: '50%', marginTop: "10%" }}>
-                                    <Button>
-                                        EXPORT TO EXCEL
-                                    </Button>
-                                </div> */}
+                                <div style={{ flexBasis: '50%', marginTop: "10%", marginLeft: "10px" }}>
+                                    <ExportButton onClick={handleExport}> </ExportButton>
+                                </div>
                                 {auth.isAuthenticated && localStorage.getItem('email')!=='' &&
                                     <div style={{ flexBasis: '50%', marginTop: "10%" }}>
                                         <Button onClick={Onchange}>
@@ -131,18 +179,17 @@ const Test = () => {
                                 
                             </div>
                         </div>
-                        <div style={{ flexBasis: '20%', color: 'white' }}> dnjkdnvjjsvd </div>
+                        {/* <div style={{ flexBasis: '20%', color: 'white' }}> dnjkdnvjjsvd </div> */}
                         <div style={{ flexBasis: '60%' }}>
                             <p>
                                 ABOUT<br></br>
                                 {companyData.companyData.profileDataResult.Description}
-                                desc
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </Card>
+        </Card >
 
 }
 

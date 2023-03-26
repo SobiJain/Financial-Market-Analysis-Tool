@@ -93,7 +93,7 @@ const Login = () => {
               </svg>
             </div>
           </div>
-          <a href="/forgot" onClick={()=>handleForgotPasswordClick()} className="discrete" >Forgot password?</a>
+          <a href="#" onClick={()=>handleForgotPasswordClick()} className="discrete" >Forgot password?</a>
           <Button type="button" onClick={()=>handleSubmit()}>Log in</Button>
         </form>
       </div>

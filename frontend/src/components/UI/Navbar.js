@@ -18,7 +18,14 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { logout, companyfound } from '../../auth/actions';
 import ButtonC from './ButtonC';
-
+import './css/bootstrap.min.css';
+import "./css/font-awesome.min.css" 
+import "./css/owl.carousel.css" 
+import "./css/animate.css" 
+import "./css/main.css"
+import "./css/responsive.css"
+import logo1 from "./images/logo.png"
+import logo2 from "./images/logo-2.png"
 
 
 
@@ -135,55 +142,98 @@ const SearchAppBar = () => {
 
   }
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ backgroundColor: "#6084a0" }}>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            Financial Market Analysis Tool
-          </Typography>
-            <Search sx={{ backgroundColor: 'white' }}>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={companyData}
-              sx={{
-                width: '450px', // increase width to 100%
-                '& .MuiInputBase-root': {
-                  backgroundColor: 'white'
-                }
-              }}
-              onChange={(event, value) => handleInput(value)}
-              renderInput={(params) => <TextField color='primary' {...params} label="Company" />}
-            />
-          </Search>
-          <Button variant="contained" onClick={() => handleClick()} disabled={!active} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}><SearchIcon /></Button>
-          { auth.isAuthenticated ? <>
-          <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button> 
-          <Button variant="contained" onClick={() => (navigate('/wishlist'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Wishlist</Button> 
-          </>: 
-          <>
-          <Button variant="contained" onClick={() => (navigate('/login'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Login</Button>
-          <Button variant="contained" onClick={() => (navigate('/register'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Register</Button>
-          </>
-            }
+    // <Box sx={{ flexGrow: 1 }}>
+    //   <AppBar position="static" style={{ backgroundColor: "#6084a0" }}>
+    //     <Toolbar>
+    //       <IconButton
+    //         size="large"
+    //         edge="start"
+    //         color="inherit"
+    //         aria-label="open drawer"
+    //         sx={{ mr: 2 }}
+    //       >
+    //         <MenuIcon />
+    //       </IconButton>
+    //       <Typography
+    //         variant="h6"
+    //         noWrap
+    //         component="div"
+    //         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+    //       >
+    //         Financial Market Analysis Tool
+    //       </Typography>
+    //         <Search sx={{ backgroundColor: 'white' }}>
+    //         <Autocomplete
+    //           disablePortal
+    //           id="combo-box-demo"
+    //           options={companyData}
+    //           sx={{
+    //             width: '450px', // increase width to 100%
+    //             '& .MuiInputBase-root': {
+    //               backgroundColor: 'white'
+    //             }
+    //           }}
+    //           onChange={(event, value) => handleInput(value)}
+    //           renderInput={(params) => <TextField color='primary' {...params} label="Company" />}
+    //         />
+    //       </Search>
+    //       <Button variant="contained" onClick={() => handleClick()} disabled={!active} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}><SearchIcon /></Button>
+    //       { auth.isAuthenticated ? <>
+    //       <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button> 
+    //       <Button variant="contained" onClick={() => (navigate('/wishlist'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Wishlist</Button> 
+    //       </>: 
+    //       <>
+    //       <Button variant="contained" onClick={() => (navigate('/login'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Login</Button>
+    //       <Button variant="contained" onClick={() => (navigate('/register'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Register</Button>
+    //       </>
+    //         }
           
-        </Toolbar>
-      </AppBar>
-    </Box>
+    //     </Toolbar>
+    //   </AppBar>
+    // </Box>
+    <div>
+        <link href="http://fonts.googleapis.com/css?family=Lato:400,300,700" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+        
+        {/* 
+	    Header start
+	    ==================== */}
+        <div className="navbar-default navbar-fixed-top" id="navigation">
+          <div className="container">
+            {/* Brand and toggle get grouped for better mobile display */}
+            <div className="navbar-header">
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+              </button>
+              <a className="navbar-brand" href="/">
+                <img className="logo-1" src={logo1} alt="LOGO" />
+                <img className="logo-2" src={logo2} alt="LOGO" />
+              </a>
+            </div>
+            {/* Collect the nav links, forms, and other content for toggling */}
+            <nav className="collapse navbar-collapse" id="navbar">
+              <ul className="nav navbar-nav navbar-right" id="top-nav">
+                { auth.isAuthenticated ? 
+                <>
+                <li className="/logout"><a href="#body" onClick={() => (dispatch(logout()))}>Logout</a></li>
+                <li><a href="/wishlist">Wishlist</a></li>
+                </> : 
+                <>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+                </>}
+              </ul>
+            </nav>{/* /.navbar-collapse */}
+          </div>{/* /.container-fluid */}
+        </div>
+        <section clas="wow fadeInUp">
+          <div className="map-wrapper">
+          </div>
+        </section>
+      </div>
   );
 }
 export default SearchAppBar;

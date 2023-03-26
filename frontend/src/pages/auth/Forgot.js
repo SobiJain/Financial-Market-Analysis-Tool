@@ -43,7 +43,7 @@ const Forgot = () => {
           </svg>
         </div>
         <form action className="log-in" autoComplete="off">
-          <h4>We are <span>MARKET ANALYZERS</span></h4>
+          <h4>We are <span>FIN ANALYTICA</span></h4>
           <p>No worries, we'll send you a password reset link:</p>
           <div className="floating-label">
             <input placeholder="Email" type="email" name="email" id="email" value={user.email} onChange={(event) => setUser({ ...user, email: event.target.value })} autoComplete="on" />

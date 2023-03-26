@@ -60,7 +60,7 @@ const Login = () => {
           </svg>
         </div>
         <form action className="log-in" autoComplete="off">
-          <h4>We are <span>MARKET ANALYZERS</span></h4>
+          <h4>We are <span>FIN ANALYTICA</span></h4>
           <p>Welcome back! Log in to your account to view today's stats:</p>
           <div className="lfloating-label">
             <input placeholder="Email" type="email" name="email" id="email" value={user.email} onChange={(event) => setUser({ ...user, email: event.target.value })} autoComplete="on" />

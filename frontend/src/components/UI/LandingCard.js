@@ -69,7 +69,7 @@ const LandingCard = () => {
     //       </svg>
     //     </div>
     //     <form action className="log-in" autoComplete="off">
-    //       <h4>We are <span>MARKET ANALYZERS</span></h4>
+    //       <h4>We are <span>FIN ANALYTICA</span></h4>
     //       <p>Welcome back! Log in to your account to view today's stats:</p>
           
     //     </form>

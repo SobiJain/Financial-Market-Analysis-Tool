@@ -70,7 +70,7 @@ const Reset = () => {
           </svg>
         </div>
         <form action className="log-in" autoComplete="off">
-          <h4>We are <span>MARKET ANALYZERS</span></h4>
+          <h4>We are <span>FIN ANALYTICA</span></h4>
           <p>Please enter your new password</p>
           <div className="lfloating-label">
             <input placeholder="Password" type="password" name="password" id="password" value={user.password}

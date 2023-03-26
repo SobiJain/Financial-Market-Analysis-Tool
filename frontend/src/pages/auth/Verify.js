@@ -52,7 +52,7 @@ const Verify = () => {
           </svg>
         </div>
         <form action className="log-in" autoComplete="off">
-          <h4>We are <span>MARKET ANALYZERS</span></h4>
+          <h4>We are <span>FIN ANALYTICA</span></h4>
           <Button type="button">We're redirecting you to the login page in a short while</Button>
         </form>
       </div>

@@ -110,7 +110,7 @@ const QuaterlyResults = () => {
                             <td style={{ width: '19%', marginLeft: '10%' }}> Data	</td>
                             <td style={{ width: '9%' }}>Dec 2020</td>
                             <td style={{ width: '9%' }}>Mar 2021</td>
-                            <td style={{ width: '9%' }}>Jun 2021	</td>
+                            <td style={{ width: '9%' }}>Jun 2021</td>
                             <td style={{ width: '9%' }}>Sept 2021</td>
                             <td style={{ width: '9%' }}>Dec 2021</td>
                             <td style={{ width: '9%' }}>Mar 2022</td>

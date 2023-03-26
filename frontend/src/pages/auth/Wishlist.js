@@ -54,7 +54,7 @@ const Wishlist = () => {
                         <div class="row-11qr">
                         </div>
                         <div class="row-21qr">
-                            <h4 style={{ marginLeft: '15%' }}> </h4>
+                            <h4 style={{ marginLeft: '10%' }}> </h4>
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@ const Wishlist = () => {
                 <div class="col-3qr">
                     <table>
                         {wishlist.map((item) => {
-                                return <tr><td> {item.roe} </td> </tr>
+                                return <tr><td style={{ width: '4%', paddingLeft: '50%'}}> {item.roe} </td> </tr>
                             
                             })}
                     </table>

@@ -1,16 +1,24 @@
 import axios from "axios";
 
-//test 1
-const TestProfileData = async (companyKey) => {
-    const expected_fields=["Symbol","Name","Description","MarketCapitalization","BookValue","DividendYield","ReturnOnEquityTTM","52WeekHigh","52WeekLow"];
+export const TestProfileData = async (companyKey) => {
+    const expected_fields=[
+    "Symbol",
+    "Name",
+    "Description",
+    "MarketCapitalization",
+    "BookValue",
+    "DividendYield",
+    "ReturnOnEquityTTM",
+    "52WeekHigh",
+    "52WeekLow"];
     try{
-        const profile = await axios.get("http://127.0.0.1:8000/profile", {
+        const res = await axios.get("http://127.0.0.1:8000/profile", {
             params: {
                 companyKeyValue: companyKey
             }
         });
-        const res=profile.data;
-        const result=Object.keys(res);
+        const profileData=res.data;
+        const result=Object.keys(profileData);
         const passed=true;
         for(let i=0 ; i < expected_fields.length ; i++){
             let found=false;
@@ -28,7 +36,7 @@ const TestProfileData = async (companyKey) => {
         if(pass) console.log("Test for ProfileData Passed!");
         else console.log("Test for ProfileData Failed!");
     }catch(error){
-        console.log("Test for ProfileData Failed!");
+        console.log("Test for ProfileData Failed!",error);
     }
 
 }

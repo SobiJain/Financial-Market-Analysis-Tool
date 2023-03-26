@@ -20,7 +20,7 @@ function CompanyInfo(props) {
         <PF />
         <BalanceSheet />
         <CashFlows />
-        <Ratios />
+        {/* <Ratios /> */}
         {/* <Document /> */}
        
 

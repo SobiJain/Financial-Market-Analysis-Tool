@@ -3,6 +3,7 @@ import './BalanceSheet.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getProfileData } from "../../features/company/companySlice";
 import RefreshButton from "../UI/RefreshButton";
+import checkIsNan from "./CheckIsNan";
 
 
 const BalanceSheet = () => {
@@ -61,7 +62,7 @@ const BalanceSheet = () => {
                         <tr>
                             <td >Total Assets</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.totalAssets / 1000000000} </td>
+                                return <td> {checkIsNan(item.totalAssets / 1000000000)} </td>
 
                             })}
 
@@ -69,7 +70,7 @@ const BalanceSheet = () => {
                         <tr>
                             <td>Total Current Assets</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.totalCurrentAssets / 1000000000} </td>
+                                return <td> {checkIsNan(item.totalCurrentAssets / 1000000000)} </td>
 
                             })}
 
@@ -78,7 +79,7 @@ const BalanceSheet = () => {
                         <tr>
                             <td>Other Assets</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {(item.otherCurrentAssets) / 1000000000} </td>
+                                return <td> {(checkIsNan(item.otherCurrentAssets) / 1000000000)} </td>
 
                             })}
 
@@ -87,7 +88,7 @@ const BalanceSheet = () => {
                         <tr>
                             <td>Total Liabilities</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.totalLiabilities / 1000000000} </td>
+                                return <td> {checkIsNan(item.totalLiabilities / 1000000000)} </td>
 
                             })}
 
@@ -95,7 +96,7 @@ const BalanceSheet = () => {
                         <tr>
                             <td>Total Current liabilities</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.totalCurrentLiabilities / 1000000000} </td>
+                                return <td> {checkIsNan(item.totalCurrentLiabilities / 1000000000)} </td>
 
                             })}
                         </tr>
@@ -103,14 +104,14 @@ const BalanceSheet = () => {
                         <tr>
                             <td>Other liabilities</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {(item.otherCurrentLiabilities / 1000000000)} </td>
+                                return <td> {(checkIsNan(item.otherCurrentLiabilities / 1000000000))} </td>
                                 //   + (item.otherNonCurrentLiabilities/1000000000) 
                             })}
                         </tr>
                         <tr>
                             <td>Current Debt</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.currentDebt / 1000000000} </td>
+                                return <td> {checkIsNan(item.currentDebt / 1000000000)} </td>
 
                             })}
 
@@ -118,28 +119,28 @@ const BalanceSheet = () => {
                         <tr>
                             <td>Short Term Investments</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.shortTermInvestments / 1000000000} </td>
+                                return <td> {checkIsNan(item.shortTermInvestments / 1000000000)} </td>
 
                             })}
                         </tr>
                         <tr>
                             <td>Long Term Investments</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.longTermInvestments / 1000000000} </td>
+                                return <td> {checkIsNan(item.longTermInvestments / 1000000000)} </td>
 
                             })}
                         </tr>
                         <tr>
                             <td>Total Shareholder Equity</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.totalShareholderEquity / 1000000000} </td>
+                                return <td> {checkIsNan(item.totalShareholderEquity / 1000000000)} </td>
 
                             })}
                         </tr>
                         <tr>
                             <td>Inventory</td>
                             {companyData.companyData.balanceDataResult.annualReports && companyData.companyData.balanceDataResult.annualReports.slice(0, 6).map((item) => {
-                                return <td> {item.inventory / 1000000000} </td>
+                                return <td> {checkIsNan(item.inventory / 1000000000)} </td>
 
                             })}
                         </tr>

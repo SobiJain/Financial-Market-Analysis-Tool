@@ -10,7 +10,7 @@ export const getBalancedatathunk = async (companyKey, thunkAPI) => {
         })
 
         const balancesheetData = balancesheet.data;
-        return balancesheetData
+        return balancesheetData;
 
     }
     catch(error)

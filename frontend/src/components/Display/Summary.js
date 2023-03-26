@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux'
 import RefreshButton from "../UI/RefreshButton";
 import { useDispatch } from 'react-redux';
 import { getProfileData } from "../../features/company/companySlice";
-
+import ExportButton from "../UI/ExportButton";
+import { HandleExport } from "./HandleExport";
 
 const Test = () => {
 
@@ -32,6 +33,32 @@ const Test = () => {
 
     }
 
+    let summaryData = [];
+    if (!isLoading && !summaryIsLoading) {
+        summaryData = [{
+            "Market Cap": companyData.companyData.profileDataResult.MarketCapitalization !== null,
+            "High/Low": companyData.companyData.profileDataResult["52WeekHigh"] / companyData.companyData.profileDataResult["52WeekLow"],
+            "Stock(P/E)": companyData.companyData.profileDataResult.PERatio,
+            "Book Value": companyData.companyData.profileDataResult.BookValue,
+            "Dividend Yield": companyData.companyData.profileDataResult.DividendYield,
+            "Revenue": companyData.companyData.profileDataResult.RevenueTTM,
+            "ROE (TTM)": companyData.companyData.profileDataResult.ReturnOnEquityTTM,
+            "ROA (TTM)": companyData.companyData.profileDataResult.ReturnOnAssestsTTM,
+            "Sector": companyData.companyData.profileDataResult.Sector,
+            "Industry": companyData.companyData.profileDataResult.Industry,
+            "Assest Type": companyData.companyData.profileDataResult.AssestType
+
+
+
+
+        }];
+    }
+
+    const handleExport = () => {
+        HandleExport(summaryData, "SummaryData.xlsx");
+
+    }
+
     // the if statement is responsible for rendering the Card component only if the state of isLoading is false, i.e when the entire data of the company is fetched
     if (!isLoading && !summaryIsLoading)
         return <Card>
@@ -43,69 +70,67 @@ const Test = () => {
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <div style={{ flexBasis: '80%', paddingLeft: '1.5%' }}>
                                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            <h1 style={{marginRight: '10px'}}> {companyData.companyData.profileDataResult.Name} </h1>
+                                            <h1 style={{ marginRight: '10px' }}> {companyData.companyData.profileDataResult.Name} </h1>
                                             <RefreshButton onClick={SummaryHandler} />
 
                                         </div>
 
+                                    </div>
+                                    <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
+                                        <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
                                 </div>
-                                <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
-                                    <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
+                            </div>
+                            <div style={{ flexBasis: '20%' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                    <div style={{ flexBasis: '17%', paddingLeft: '1.5%' }}>
+                                        <a href="https://www.axisbank.com/" target="_blank" style={{ paddingLeft: "1%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
+                                            not found
+                                        </a>
+                                    </div>
+                                    <div style={{ flexBasis: '17%' }}>
+                                        <a href="https://https://www.bseindia.com/stock-share-price/axis-bank-ltd/AXISBANK/532215/.nseindia.com/get-quotes/equity?symbol=AXISBANK" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} target="_blank" rel="noreferrer">
+                                            {/* BSE: */}
+                                        </a>
+                                    </div>
+                                    <div style={{ flexBasis: '17%' }}>
+                                        <a href="https://www.nseindia.com/get-quotes/equity?symbol=AXISBANK" target="_blank" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
+                                            Ticker : {companyData.companyData.profileDataResult.Symbol}
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style={{ flexBasis: '50%', }}>
+                                <CardTable ></CardTable>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div style={{ flexBasis: '30%' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ flexBasis: '20%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div style={{ flexBasis: '17%', paddingLeft: '1.5%' }}>
-                                    <a href="https://www.axisbank.com/" target="_blank" style={{ paddingLeft: "1%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
-                                        not found
-                                    </a>
+                                <div style={{ flexBasis: '50%', marginTop: "10%", marginLeft: "10px" }}>
+                                    <ExportButton onClick={handleExport}> </ExportButton>
                                 </div>
-                                <div style={{ flexBasis: '17%' }}>
-                                    <a href="https://https://www.bseindia.com/stock-share-price/axis-bank-ltd/AXISBANK/532215/.nseindia.com/get-quotes/equity?symbol=AXISBANK" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} target="_blank" rel="noreferrer">
-                                        BSE:
-                                    </a>
-                                </div>
-                                <div style={{ flexBasis: '17%' }}>
-                                    <a href="https://www.nseindia.com/get-quotes/equity?symbol=AXISBANK" target="_blank" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
-                                        NSE : {companyData.companyData.profileDataResult.Symbol}
-                                    </a>
+                                <div style={{ flexBasis: '50%', marginTop: "10%" }}>
+                                    <Button onClick={Onchange}>
+                                        {initial}
+                                    </Button>
                                 </div>
                             </div>
-
                         </div>
-                        <div style={{ flexBasis: '50%', }}>
-                            <CardTable></CardTable>
+                        {/* <div style={{ flexBasis: '20%', color: 'white' }}> dnjkdnvjjsvd </div> */}
+                        <div style={{ flexBasis: '60%' }}>
+                            <p>
+                                ABOUT <br></br>
+                                {companyData.companyData.profileDataResult.Description}
+                                desc
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style={{ flexBasis: '30%' }}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ flexBasis: '20%' }}>
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                            <div style={{ flexBasis: '50%', marginTop: "10%" }}>
-                                <Button>
-                                    EXPORT TO EXCEL
-                                </Button>
-                            </div>
-                            <div style={{ flexBasis: '50%', marginTop: "10%" }}>
-                                <Button onClick={Onchange}>
-                                    {initial}
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                    {/* <div style={{ flexBasis: '20%', color: 'white' }}> dnjkdnvjjsvd </div> */}
-                    <div style={{ flexBasis: '60%' }}>
-                        <p>
-                            ABOUT <br></br>
-                            {companyData.companyData.profileDataResult.Description}
-                            desc
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
         </Card >
 
 }

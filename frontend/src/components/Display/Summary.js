@@ -143,9 +143,7 @@ const Test = () => {
                                     </div>
                                     <div style={{ flexBasis: '20%' }}>
                                         <h5 style={{ marginTop: "-18px" }}> <DateTime /> </h5></div>
-                                    <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {companyData.companyData.profileDataResult.Name} </h1> </div>
-                                    <div style={{ flexBasis: '20%', paddingLeft: '10%' }}>
-                                        <h5 style={{ marginTop: "2px" }}> <DateTime /> </h5></div>
+                                    
                                 </div>
                             </div>
                             <div style={{ flexBasis: '20%' }}>

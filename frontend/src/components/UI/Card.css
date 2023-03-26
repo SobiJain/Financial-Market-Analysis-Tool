@@ -1,5 +1,5 @@
 .card {
-    background: white;
+    background: rgb(218, 213, 213);
     box-shadow: 0 2px 8px #1b4174;
     border-radius: 10px;
     margin-left: 6%;
@@ -9,4 +9,11 @@
     /* flex-direction:row; */
   }
 
+.MuiContainer-root {
+    background-color: #eae2e8;
+    margin-top: -38px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    margin-bottom: -80px;
+}
 

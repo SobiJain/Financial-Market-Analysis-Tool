@@ -92,25 +92,15 @@ const Test = () => {
                             <div style={{ flexBasis: '20%' }}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <div style={{ flexBasis: '40%', paddingLeft: '1.5%' }}>  <h1> {companyData.companyData.profileDataResult.Name} </h1> </div>
-                                    <div style={{ flexBasis: '20%' }}> <h5> ₹ not found </h5>
+                                    <div style={{ flexBasis: '20%', paddingLeft: '10%' }}>
                                         <h5 style={{ marginTop: "2px" }}> <DateTime /> </h5></div>
                                 </div>
                             </div>
                             <div style={{ flexBasis: '20%' }}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                    <div style={{ flexBasis: '17%', paddingLeft: '1.5%' }}>
-                                        <a href="https://www.axisbank.com/" target="_blank" style={{ paddingLeft: "1%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
-                                            not found
-                                        </a>
-                                    </div>
-                                    <div style={{ flexBasis: '17%' }}>
-                                        <a href="https://https://www.bseindia.com/stock-share-price/axis-bank-ltd/AXISBANK/532215/.nseindia.com/get-quotes/equity?symbol=AXISBANK" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} target="_blank" rel="noreferrer">
-                                            BSE:
-                                        </a>
-                                    </div>
                                     <div style={{ flexBasis: '17%' }}>
                                         <a href="https://www.nseindia.com/get-quotes/equity?symbol=AXISBANK" target="_blank" style={{ paddingLeft: "1.5%", textDecoration: 'none', color: 'black', fontWeight: 'bold' }} rel="noreferrer">
-                                            NSE : {companyData.companyData.profileDataResult.Symbol}
+                                            Ticker: {companyData.companyData.profileDataResult.Symbol}
                                         </a>
                                     </div>
                                 </div>

@@ -32,7 +32,7 @@ After starting the backend server, start the frontend. To start the frontend:
 2. Install Node.js: https://docs.npmjs.com/getting-started/installing-node
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
-5. The application will start at <mark style="background-color: #8F9090"> localhost:3000 </mark>
+5. The application will start at `localhost:3000`
 6. Open the browser and view the development code.
    
 

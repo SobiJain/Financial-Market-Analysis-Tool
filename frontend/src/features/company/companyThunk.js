@@ -33,11 +33,11 @@ export const getDataThunk = async(companyKey, thunkAPI) => {
                 companyKeyValue: companyKey
             }
         });
-        const price = axios.get("http://127.0.0.1:8000/price", {
-            params: {
-                companyKeyValue: companyKey
-            }
-        })
+        // const price = axios.get("http://127.0.0.1:8000/price", {
+        //     params: {
+        //         companyKeyValue: companyKey
+        //     }
+        // })
     
     
         const [quarterData, cashData, balanceData, profileData, profitLossData] = await Promise.all([quarter, cash, balance, profile, profitLoss]);

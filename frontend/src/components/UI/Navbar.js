@@ -104,6 +104,7 @@ const SearchAppBar = () => {
     // console.log(value)
   }
   const navigate = useNavigate();
+
   const handleClick = () => {
     if (input) {
       setActive(false);
@@ -111,13 +112,24 @@ const SearchAppBar = () => {
       dispatch(getData(mapping[input])).then(() => {
         setActive(true)
       });
-      dispatch(companyfound(mapping[input])).then(() => {
-        localStorage.setItem("company", mapping[input])
-        localStorage.setItem("state", 'true')
-      });
+      dispatch(companyfound(mapping[input]));
+      fetch("http://127.0.0.1:8000/iswishlist?" + new URLSearchParams({
+            email: localStorage.getItem("email")}) + "&"+ new URLSearchParams({"company": localStorage.getItem("company")}))
+        .then((response) => response.json())
+        .then((user) => {
+            console.log(user.resp)
+           if(user.resp ==='Yes') {
+                localStorage.setItem('state','true')
+                console.log("can follow")
+           } else {
+                localStorage.setItem('state','false')
+                console.log("already following")
+           }
+           console.log(auth)
+        });
+
       //navigating to the user to the CompanyInfo page
       navigate('/CompanyInfo')
-
     }
 
 

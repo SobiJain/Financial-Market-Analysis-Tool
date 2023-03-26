@@ -5,6 +5,7 @@ import { useState } from "react";
 import CardTable from "../UI/CardTable";
 import { useSelector } from 'react-redux'
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const Test = () => {
 
@@ -13,19 +14,17 @@ const Test = () => {
     // fetching the companyData state from redux-store setup 
     const companyData = useSelector((store) => store.company);
     let auth = useSelector((state) => state.auth);
-    console.log(auth)
     //temporary change function
-    const [initial, setInitial] = useState('+ FOLLOW');
-    const [wishItem, setWishItem] = useState({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
-
-    console.log(initial + JSON.stringify(wishItem))
-
+    const [initial, setInitial] = useState(localStorage.getItem('state')==='true'? '+ FOLLOW': '- UNFOLLOW');
+    // const [wishItem, setWishItem] = useState({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem('state')})
+    console.log(localStorage.getItem("state"))
 
     const Onchange = () =>  {
         const url = "http://127.0.0.1:8000/wishlist"
-        if(initial==='+ FOLLOW') {
-            // setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'true'})
-            console.log(JSON.stringify(wishItem))
+        if(localStorage.getItem('state')==='true') {
+            // setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:'false'})
+            console.log(initial)
+            const wishItem = {'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:'true'};
             fetch(url, {
                 method: "POST",
                 headers: {
@@ -38,22 +37,24 @@ const Test = () => {
                     console.log(response.error)
                     toast.error("Already in wishlist")
                     setInitial('- UNFOLLOW')
-                    localStorage.setItem("state", 'false')
-                    setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
-            }
-            else {
-                toast.success("Added to wishlist successfully");
-                setInitial('- UNFOLLOW')
-                localStorage.setItem("state", 'false')
-                setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+                    localStorage.setItem('state', 'false')
+                    // setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
                 }
-                return response.json()
-            });
+                else {
+                    toast.success("Added to wishlist successfully");
+                    setInitial('- UNFOLLOW')
+                    localStorage.setItem('state', 'false')
+                    console.log(auth)
+                    // setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+                    }
+                    return response.json()
+                });
         }
         else
         {
-            // setWishItem({'email':localStorage.getItem("email"),"company":companyData.companyData.profileDataResult.Symbol, state:'false'})
-            console.log(JSON.stringify(wishItem))
+            // setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:'true'})
+            console.log(initial)
+            const wishItem = {'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:'false'};
             fetch(url, {
                 method: "POST",
                 headers: {
@@ -64,15 +65,16 @@ const Test = () => {
             .then(response=>{
                 if(response.status!==200) {
                     setInitial('+ FOLLOW')
-                    localStorage.setItem("state", 'true')
-                    setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+                    localStorage.setItem('state', 'true')
+                    // setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
                     toast.error("Never was in Wishlist")
             }
             else {
-                toast.success("Removed from wishlist successfully ");
                 setInitial('+ FOLLOW')
-                localStorage.setItem("state", 'true')
-                setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
+                localStorage.setItem('state', 'true')
+                console.log(auth)
+                toast.success("Removed from wishlist successfully ");
+                // setWishItem({'email':localStorage.getItem("email"),"company":localStorage.getItem("company"), state:localStorage.getItem("state")})
                 }
                 return response.json()
             });
@@ -129,10 +131,10 @@ const Test = () => {
                                         EXPORT TO EXCEL
                                     </Button>
                                 </div> */}
-                                {auth.isAuthenticated && wishItem.email!=='' &&
+                                {auth.isAuthenticated && localStorage.getItem('email')!=='' &&
                                     <div style={{ flexBasis: '50%', marginTop: "10%" }}>
                                         <Button onClick={Onchange}>
-                                            {initial}
+                                            {localStorage.getItem('state')==='true'? '+ FOLLOW': '- UNFOLLOW'}
                                         </Button>
                                     </div>
                                 }

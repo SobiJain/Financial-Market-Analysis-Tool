@@ -81,30 +81,6 @@ const LandingCard = () => {
         mapping[companyData[i]] = companySymbol[i];
     }
 
-    const handleInput = (value) => {
-        setInput(value)
-        setActive(value ? true : false)
-        // console.log(value)
-    }
-
-    const navigate = useNavigate();
-
-    // this function is used when the user search for a particular company and hit the search button
-    const handleClick = () => {
-        if (input) {
-            setActive(false);
-            //dispatching the key to the react store to forward it to the backend
-            dispatch(getData(mapping[input])).then(() => {
-                setActive(true)
-            });
-            dispatch(companyfound(mapping[input])).then(() => {
-                localStorage.setItem("company", mapping[input])
-                localStorage.setItem("state", 'true')
-            });
-            //navigating to the user to the CompanyInfo page
-            navigate('/CompanyInfo')
-        }
-    }
 
     return (
         <React.Fragment>
@@ -123,29 +99,6 @@ const LandingCard = () => {
                                         Stock analysis tool for investors
                                     </Typography>
                                 </h1>
-                                <div style={{ display: 'flex' }}>
-                                    <Search style={{ width: "80%", marginRight: "1rem" }}>
-                                        {/* <SearchIconWrapper>
-                                        <SearchIcon />
-                                    </SearchIconWrapper> */}
-                                        {/* <StyledInputBase
-                                        placeholder="Search…"
-                                        inputProps={{ 'aria-label': 'search' }}
-                                    /> */}
-                                        <Autocomplete
-                                            disablePortal
-                                            id="combo-box-demo"
-                                            options={companyData}
-                                            sx={{}}
-                                            onChange={(event, value) => handleInput(value)}
-                                            renderInput={(params) => <TextField {...params} label="Company" />}
-                                            PopperProps={{
-                                                style: customPopperStyles
-                                            }}
-                                        />
-                                    </Search>
-                                    <Button variant="contained" onClick={() => handleClick()} disabled={!active}><SearchIcon /></Button>
-                                </div>
                             </div>
 
                         </div>

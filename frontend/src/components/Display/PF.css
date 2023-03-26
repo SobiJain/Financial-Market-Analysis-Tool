@@ -38,24 +38,18 @@
   align-items: center;
 }
 
-.row-31pf button {
+.row-31pf {
   margin-right: 20px;
-  font: inherit;
-  border: 1px solid #6084a0;
-  background: #ffffff;
-  color: rgb(23, 69, 91);
-  font-weight: bolder;
   padding: 0.25rem 1rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
   justify-content: center;
+  margin-left: 250px;
 }
 
-.row-31pf button:hover,
+/* .row-31pf button:hover,
 .button:active {
   background: #bbc7cb;
   border-color: #92cde4;
-}
+} */
 
 table {
   border-collapse: collapse;

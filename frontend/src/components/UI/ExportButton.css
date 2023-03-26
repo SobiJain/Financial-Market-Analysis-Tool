@@ -1,0 +1,22 @@
+.export-btn {
+  font: inherit;
+  border: 1px solid #6084a0;
+  background-color: #6084a0;
+  color: white;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  justify-content: center;
+}
+.export-btn:hover,
+.export-btn:active {
+  background: #92cde4;
+  border-color: #92cde4;
+}
+.export-btn:focus {
+    outline: none;
+  }
+
+.download-icon {
+  margin-right: 8px;
+}

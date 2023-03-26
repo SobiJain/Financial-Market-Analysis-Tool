@@ -42,7 +42,7 @@
   align-items: center;
 }
 
-.row-31qr button {
+/* .row-31qr button {
   margin-right: 20px;
   font: inherit;
   border: 1px solid #6084a0;
@@ -59,7 +59,7 @@
 .button:active {
   background: #bbc7cb;
   border-color: #92cde4;
-}
+} */
 table {
   border-collapse: collapse;
 }

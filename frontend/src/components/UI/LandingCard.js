@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { getData } from '../../features/company/companySlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import RefreshButton from './RefreshButton';
 import { companyfound } from '../../auth/actions';
 import './Landing.css'
 

@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from . import companyList, combined
+from . import companyList, combined, profit, balance,cash, summary, quarter, price
 import cgitb
 from django.conf import settings
 
@@ -22,27 +22,27 @@ def getRoutes(request):
 
 def getCashflow(request):
     key = request.GET.get('companyKeyValue')
-    obj = combined.Cashflow()
+    obj = cash.Cashflow()
     return JsonResponse(obj.getData(key), safe=False)
 
 def getBalanceSheet(request):
     key = request.GET.get('companyKeyValue')
-    obj = combined.BalanceSheet()
+    obj = balance.BalanceSheet()
     return JsonResponse(obj.getData(key), safe=False)
 
 def getProfile(request):
     key = request.GET.get('companyKeyValue')
-    obj = combined.Profile()    
+    obj = summary.Profile()    
     return JsonResponse(obj.getData(key), safe=False)
 
 def getQuarter(request):
     key = request.GET.get('companyKeyValue')
-    obj = combined.Quarter()
+    obj = quarter.Quarter()
     return JsonResponse(obj.getData(key), safe=False)
 
 def getProfitLoss(request):
     key = request.GET.get('companyKeyValue')
-    obj = combined.Profit()
+    obj = profit.Profit()
     return JsonResponse(obj.getData(key), safe=False)
 
 def getCompanyList(request):
@@ -50,7 +50,7 @@ def getCompanyList(request):
 
 def getPrice(request):
     key = request.GET.get('companyKeyValue')
-    obj = combined.Price()
+    obj = price.Price()
     return JsonResponse(obj.getData(key), safe=False)
 
 

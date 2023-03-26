@@ -43,8 +43,8 @@ const Verify = () => {
   });
 
   return (
-        <div className="session">
-        <div className="left">
+        <div className="lsession">
+        <div className="lleft">
           {/*?xml version="1.0" encoding="UTF-8"?*/}
           <svg enableBackground="new 0 0 300 302.5" version="1.1" viewBox="0 0 300 302.5" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg">
             <style type="text/css" dangerouslySetInnerHTML={{__html: "\n          .st01 {\n            fill: #fff;\n          }\n        " }} />

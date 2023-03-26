@@ -82,7 +82,7 @@ const LandingCard = () => {
             Welcome to 
         </div>
         <div style = {{ "color":"black", "margin-top": "-20px", "font-size":"90px", "margin-left": "800px"}}>
-            Market Analysers
+            FinAnalytica
         </div>
     </div></>
     );

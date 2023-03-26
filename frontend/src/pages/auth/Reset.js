@@ -61,8 +61,8 @@ const Reset = () => {
     //     <button type="button" className="auth-submit" onClick={()=>handleSubmit()}>Submit</button>
     //   </form>
     // </div>
-    <div className="session">
-        <div className="left">
+    <div className="lsession">
+        <div className="lleft">
           {/*?xml version="1.0" encoding="UTF-8"?*/}
           <svg enableBackground="new 0 0 300 302.5" version="1.1" viewBox="0 0 300 302.5" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg">
             <style type="text/css" dangerouslySetInnerHTML={{__html: "\n          .st01 {\n            fill: #fff;\n          }\n        " }} />
@@ -72,7 +72,7 @@ const Reset = () => {
         <form action className="log-in" autoComplete="off">
           <h4>We are <span>MARKET ANALYZERS</span></h4>
           <p>Please enter your new password</p>
-          <div className="floating-label">
+          <div className="lfloating-label">
             <input placeholder="Password" type="password" name="password" id="password" value={user.password}
             onChange={(event) =>
               setUser({ ...user, password: event.target.value })

@@ -31,7 +31,7 @@ function CardTable() {
                     <tbody>
                         <tr>
                             <td style={{ padding: '10px' }}>Market Cap</td>
-                            <td style={{ padding: '10px' }}>$ {checkIsNan(companyData.companyData.profileDataResult.MarketCapitalization)}</td>
+                            <td style={{ padding: '10px' }}>$ {checkIsNan(companyData.companyData.profileDataResult.MarketCapitalization/ 1000000000)}</td>
                             <td style={{ padding: '10px' }}>Current Price</td>
                             <td style={{ padding: '10px' }}>$ </td>
                             <td style={{ padding: '10px' }}>High / Low</td>
@@ -41,7 +41,7 @@ function CardTable() {
                             <td style={{ padding: '10px' }}>Stock P/E</td>
                             <td style={{ padding: '10px' }}>{checkIsNan(companyData.companyData.profileDataResult.PERatio)}</td>
                             <td style={{ padding: '10px' }}>Book Value</td>
-                            <td style={{ padding: '10px' }}>$ {checkIsNan(companyData.companyData.profileDataResult.BookValue)}</td>
+                            <td style={{ padding: '10px' }}>$ {checkIsNan(companyData.companyData.profileDataResult.BookValue/ 1000000000)}</td>
                             <td style={{ padding: '10px' }}>Dividend Yield</td>
                             <td style={{ padding: '10px' }}>{checkIsNan(companyData.companyData.profileDataResult.DividendYield)} %</td>
                         </tr>

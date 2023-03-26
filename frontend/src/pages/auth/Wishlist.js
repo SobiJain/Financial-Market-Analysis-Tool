@@ -1,5 +1,5 @@
 import Card from "../../components/UI/Card";
-import '../../components/Display/QuaterlyResults.css'
+import './Wishlist.css'
 import { useEffect, useState } from 'react'
 
 
@@ -22,23 +22,55 @@ const Wishlist = () => {
         });
     },[])
     console.log(wishlist)
+    // return <Card>
+    //         <div class="flex-containerrs">
+    //             <div class="col-1rs">
+    //                 <h2 style={{ marginLeft: '1.5%', paddingTop: '1.5%' }}>Wishlists</h2>
+    //             </div>
+    //             <div class="col-3rs">
+    //                 <table>
+    //                         {wishlist.map((item) => {
+    //                             return <tr><td> {item.roe} </td> </tr>
+                            
+    //                         })}
+    //                 </table>
+
+    //             </div>
+    //                 <h6> </h6>
+    //             <div class="col-4rs">
+    //                         <h6 style= {{color: 'white'}}>hbhdbcjbdj</h6>
+    //             </div>
+    //         </div>
+    //     </Card>
     return <Card>
-            <div class="flex-containerrs">
-                <div class="col-1rs">
-                    <h2 style={{ marginLeft: '1.5%', paddingTop: '1.5%' }}>Wishlists</h2>
+            <div class="flex-containerqr">
+                <div class="col-1qr">
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <h2 style={{ marginLeft: '1.5%' }}>Wishlist</h2>
+                    </div>
                 </div>
-                <div class="col-3rs">
+                <div class="col-2qr">
+                    <div class="flex-container1qr">
+                        <div class="row-11qr">
+                        </div>
+                        <div class="row-21qr">
+                            <h4 style={{ marginLeft: '15%' }}> </h4>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-3qr">
                     <table>
-                            {wishlist.map((item) => {
+                        {wishlist.map((item) => {
                                 return <tr><td> {item.roe} </td> </tr>
                             
                             })}
                     </table>
 
                 </div>
-                    <h6> </h6>
-                <div class="col-4rs">
-                            <h6 style= {{color: 'white'}}>hbhdbcjbdj</h6>
+                <h6> </h6>
+                <div class="col-4qr">
+
                 </div>
             </div>
         </Card>

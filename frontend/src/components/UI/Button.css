@@ -1,5 +1,5 @@
 .gradient-button {
-  background: linear-gradient(to right, #8fc2e9, #6084a0);
+  background: linear-gradient(to right,#e2c5e2, #769ebd );
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -8,6 +8,7 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   margin-left: 10px;
+    align-self: center;
 }
 
 .gradient-button:hover {

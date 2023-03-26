@@ -139,8 +139,8 @@ const SearchAppBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ "background": "#8fc2e9",
-  "background": "-webkit-linear-gradient(45deg, #8fc2e9, #6084a0)",
-  "background": "linear-gradient(45deg, #8fc2e9, #6084a0)" }}>
+  "background": "-webkit-linear-gradient(45deg, #6084a0,#8fc2e9)",
+  "background": "linear-gradient(45deg, #6084a0, #8fc2e9)" }}>
         <Toolbar>
           <Typography
             variant="h6"
@@ -168,12 +168,12 @@ const SearchAppBar = () => {
           </Search>
           <Button variant="contained" onClick={() => handleClick()} disabled={!active} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}><SearchIcon /></Button>
           { auth.isAuthenticated ? <>
-          <Button variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</Button> 
-          <Button variant="contained" onClick={() => (navigate('/wishlist'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Wishlist</Button> 
+          <ButtonC variant="contained" onClick={() => (dispatch(logout()))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Logout</ButtonC> 
+          <ButtonC variant="contained" onClick={() => (navigate('/wishlist'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Wishlist</ButtonC> 
           </>: 
           <>
-          <Button variant="contained" onClick={() => (navigate('/login'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Login</Button>
-          <Button variant="contained" onClick={() => (navigate('/register'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Register</Button>
+          <ButtonC variant="contained" onClick={() => (navigate('/login'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Login</ButtonC>
+          <ButtonC variant="contained" onClick={() => (navigate('/register'))} sx={{ ml: 1, '& .MuiInputBase-root': { backgroundColor: 'wheat' } }}>Register</ButtonC>
           </>
             }
           

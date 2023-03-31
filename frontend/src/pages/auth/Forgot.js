@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../styles.css";
+import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/UI/ButtonC";
 
@@ -34,8 +35,8 @@ const Forgot = () => {
   };
 
   return (
-    <div className="session">
-        <div className="left">
+    <div className="lsession">
+        <div className="lleft">
           {/*?xml version="1.0" encoding="UTF-8"?*/}
           <svg enableBackground="new 0 0 300 302.5" version="1.1" viewBox="0 0 300 302.5" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg">
             <style type="text/css" dangerouslySetInnerHTML={{__html: "\n          .st01 {\n            fill: #fff;\n          }\n        " }} />
@@ -45,7 +46,7 @@ const Forgot = () => {
         <form action className="log-in" autoComplete="off">
           <h4>We are <span>FIN ANALYTICA</span></h4>
           <p>No worries, we'll send you a password reset link:</p>
-          <div className="floating-label">
+          <div className="lfloating-label">
             <input placeholder="Email" type="email" name="email" id="email" value={user.email} onChange={(event) => setUser({ ...user, email: event.target.value })} autoComplete="on" />
             <label htmlFor="email">Email:</label>
             <div className="icon">

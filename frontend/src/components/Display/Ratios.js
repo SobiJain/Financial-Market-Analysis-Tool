@@ -79,7 +79,7 @@ const Ratios = () => {
                 <div class="col-2rs">
                     <div class="flex-container1rs">
                         <div class="row-11rs">
-                            <h4 style={{ marginLeft: '1.5%' }}> Consolidated Figures / View Standalone </h4>
+                            <h4 style={{ marginLeft: '1.5%' }}> Consolidated Figures   </h4>
                         </div>
                         <div class="row-21rs">
                             <h4 style={{ marginLeft: '15%' }}> </h4>

@@ -310,7 +310,7 @@ const PF = () => {
                 <div class="col-2pf">
                     <div class="flex-container1pf">
                         <div class="row-11pf">
-                            <h4 style={{ marginLeft: '4.5%' }}> Consolidated Figures in Rs. Crores / View Standalone
+                            <h4 style={{ marginLeft: '4.5%' }}> Consolidated Figures in Rs. Crores  
 
                             </h4>
                         </div>

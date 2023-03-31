@@ -92,7 +92,7 @@ const QuaterlyResults = () => {
                 <div class="col-2qr">
                     <div class="flex-container1qr">
                         <div class="row-11qr">
-                            <h4 style={{ marginLeft: '3%' }}> Consolidated Figures in Rs. Crores / View Standalone </h4>
+                            <h4 style={{ marginLeft: '3%' }}> Consolidated Figures in Rs. Crores   </h4>
                         </div>
                         <div class="row-21qr">
                             <h4 style={{ marginLeft: '15%' }}> </h4>

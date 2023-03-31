@@ -34,7 +34,7 @@ const BalanceSheet = () => {
                 <div class="col-2bs">
                     <div class="flex-container1bs">
                         <div class="row-11bs">
-                            <h4 style={{ marginLeft: '3%' }}> Consolidated Figures in Billion USD/ View Standalone </h4>
+                            <h4 style={{ marginLeft: '3%' }}> Consolidated Figures in Billion USD  </h4>
                         </div>
                         <div class="row-21bs">
                             <h4 style={{ marginLeft: '15%' }}> </h4>

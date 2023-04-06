@@ -97,8 +97,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'marketanalyserproj@gmail.com'
-EMAIL_HOST_PASSWORD = 'rabznbrjggeojvbl'
+EMAIL_HOST_USER = 'stockscreener.deshaw@gmail.com'
+EMAIL_HOST_PASSWORD = 'itlpjlyzfydwbscf'
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (

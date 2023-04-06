@@ -37,35 +37,6 @@ const Register = () => {
   }
 
   return (
-    // <div className="login-form">
-    //   <h2>Register</h2>
-    //   <form>
-
-    //     <div className="form-group">
-    //       <label htmlFor="password">Email:</label>
-    //       <input
-    //         type="email"
-    //         id="email"
-    //         name="email"
-    //         value={user.email}
-    //         onChange={(event) => setUser({...user,"email":event.target.value})}
-    //       />
-    //     </div>
-
-    //     <div className="form-group">
-    //       <label htmlFor="password">Password:</label>
-    //       <input
-    //         type="password"
-    //         id="password"
-    //         name="password"
-    //         value={user.password}
-    //         onChange={(event) => setUser({...user,"password":event.target.value})}
-    //       />
-    //     </div>
-
-    //     <button type="button" className="auth-submit" onClick={()=>handleSubmit()}>Submit</button>
-    //   </form>
-    // </div>
     <div className="lsession">
         <div className="lleft">
           {/*?xml version="1.0" encoding="UTF-8"?*/}

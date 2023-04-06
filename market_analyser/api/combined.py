@@ -2,7 +2,7 @@ from abc import ABC
 import requests
 
 class FetchData(ABC):
-
+    
     def sendKey(self):
         return "7J8RXR1KX04UITEM"
 

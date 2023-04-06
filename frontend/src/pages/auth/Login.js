@@ -38,7 +38,8 @@ const Login = () => {
       })
       .then((data) => {
         if(data['success'] === true) {
-            dispatch(login(data.token))
+            console.log(data)
+            dispatch(login(data.token, user.email))
         }
         setUser({ email:"", password: "" })
         navigate('/');
@@ -63,7 +64,7 @@ const Login = () => {
           <h4>We are <span>FIN ANALYTICA</span></h4>
           <p>Welcome back! Log in to your account to view today's stats:</p>
           <div className="lfloating-label">
-            <input placeholder="Email" type="email" name="email" id="email" value={user.email} onChange={(event) => setUser({ ...user, email: event.target.value })} autoComplete="on" />
+            <input placeholder="Email" type="email" name="email" id="email" value={user.email} onChange={(event) => setUser({ email: event.target.value })} autoComplete="on" />
             <label htmlFor="email">Email:</label>
             <div className="icon">
               {/*?xml version="1.0" encoding="UTF-8"?*/}
